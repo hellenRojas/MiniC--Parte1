@@ -19,7 +19,7 @@ IN
 : 'in'
 ;
 INT 
-: 'int'C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\Lexer1.g4
+: 'int'
 ;
 
 STRING 
