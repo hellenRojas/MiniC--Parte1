@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\USUARIO1\Documents\Visual Studio 2013\Projects\AnalizadorSintactico\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
+// Generated from C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -35,214 +35,6 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IParser1Listener : IParseTreeListener {
 	/// <summary>
-	/// Enter a parse tree produced by the <c>exprsAST</c>
-	/// labeled alternative in <see cref="Parser1.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterExprsAST([NotNull] Parser1.ExprsASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>exprsAST</c>
-	/// labeled alternative in <see cref="Parser1.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitExprsAST([NotNull] Parser1.ExprsASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>epsStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterEpsStatAST([NotNull] Parser1.EpsStatASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>epsStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitEpsStatAST([NotNull] Parser1.EpsStatASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>asignStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterAsignStatAST([NotNull] Parser1.AsignStatASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>asignStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitAsignStatAST([NotNull] Parser1.AsignStatASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>exprStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterExprStatAST([NotNull] Parser1.ExprStatASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>exprStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitExprStatAST([NotNull] Parser1.ExprStatASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>idlistsAST</c>
-	/// labeled alternative in <see cref="Parser1.idlist"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterIdlistsAST([NotNull] Parser1.IdlistsASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>idlistsAST</c>
-	/// labeled alternative in <see cref="Parser1.idlist"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitIdlistsAST([NotNull] Parser1.IdlistsASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>statsAST</c>
-	/// labeled alternative in <see cref="Parser1.statements"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterStatsAST([NotNull] Parser1.StatsASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>statsAST</c>
-	/// labeled alternative in <see cref="Parser1.statements"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitStatsAST([NotNull] Parser1.StatsASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>termsAST</c>
-	/// labeled alternative in <see cref="Parser1.term"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterTermsAST([NotNull] Parser1.TermsASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>termsAST</c>
-	/// labeled alternative in <see cref="Parser1.term"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitTermsAST([NotNull] Parser1.TermsASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>sinDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterSinDeclAST([NotNull] Parser1.SinDeclASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>sinDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitSinDeclAST([NotNull] Parser1.SinDeclASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>conDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterConDeclAST([NotNull] Parser1.ConDeclASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>conDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitConDeclAST([NotNull] Parser1.ConDeclASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>exprFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterExprFactAST([NotNull] Parser1.ExprFactASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>exprFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitExprFactAST([NotNull] Parser1.ExprFactASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>idFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterIdFactAST([NotNull] Parser1.IdFactASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>idFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitIdFactAST([NotNull] Parser1.IdFactASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>numFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterNumFactAST([NotNull] Parser1.NumFactASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>numFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitNumFactAST([NotNull] Parser1.NumFactASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>strFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterStrFactAST([NotNull] Parser1.StrFactASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>strFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitStrFactAST([NotNull] Parser1.StrFactASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>strDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterStrDeclAST([NotNull] Parser1.StrDeclASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>strDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitStrDeclAST([NotNull] Parser1.StrDeclASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>intDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterIntDeclAST([NotNull] Parser1.IntDeclASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>intDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitIntDeclAST([NotNull] Parser1.IntDeclASTContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>declsAST</c>
-	/// labeled alternative in <see cref="Parser1.declarations"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterDeclsAST([NotNull] Parser1.DeclsASTContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>declsAST</c>
-	/// labeled alternative in <see cref="Parser1.declarations"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitDeclsAST([NotNull] Parser1.DeclsASTContext context);
-
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="Parser1.program"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -254,37 +46,70 @@ public interface IParser1Listener : IParseTreeListener {
 	void ExitProgram([NotNull] Parser1.ProgramContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.declarations"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.constantDecl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDeclarations([NotNull] Parser1.DeclarationsContext context);
+	void EnterConstantDecl([NotNull] Parser1.ConstantDeclContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.declarations"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.constantDecl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDeclarations([NotNull] Parser1.DeclarationsContext context);
+	void ExitConstantDecl([NotNull] Parser1.ConstantDeclContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.declaration"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.varDecl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDeclaration([NotNull] Parser1.DeclarationContext context);
+	void EnterVarDecl([NotNull] Parser1.VarDeclContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.declaration"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.varDecl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDeclaration([NotNull] Parser1.DeclarationContext context);
+	void ExitVarDecl([NotNull] Parser1.VarDeclContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.statements"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.classDecl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStatements([NotNull] Parser1.StatementsContext context);
+	void EnterClassDecl([NotNull] Parser1.ClassDeclContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.statements"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.classDecl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStatements([NotNull] Parser1.StatementsContext context);
+	void ExitClassDecl([NotNull] Parser1.ClassDeclContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.methodDecl"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMethodDecl([NotNull] Parser1.MethodDeclContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.methodDecl"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMethodDecl([NotNull] Parser1.MethodDeclContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.formPars"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFormPars([NotNull] Parser1.FormParsContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.formPars"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFormPars([NotNull] Parser1.FormParsContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterType([NotNull] Parser1.TypeContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitType([NotNull] Parser1.TypeContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="Parser1.statement"/>.
@@ -298,15 +123,70 @@ public interface IParser1Listener : IParseTreeListener {
 	void ExitStatement([NotNull] Parser1.StatementContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.expression"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.block"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterExpression([NotNull] Parser1.ExpressionContext context);
+	void EnterBlock([NotNull] Parser1.BlockContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.expression"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.block"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitExpression([NotNull] Parser1.ExpressionContext context);
+	void ExitBlock([NotNull] Parser1.BlockContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.actPars"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterActPars([NotNull] Parser1.ActParsContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.actPars"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitActPars([NotNull] Parser1.ActParsContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.condition"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCondition([NotNull] Parser1.ConditionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.condition"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCondition([NotNull] Parser1.ConditionContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.condTerm"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCondTerm([NotNull] Parser1.CondTermContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.condTerm"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCondTerm([NotNull] Parser1.CondTermContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.condFact"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCondFact([NotNull] Parser1.CondFactContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.condFact"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCondFact([NotNull] Parser1.CondFactContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterExpr([NotNull] Parser1.ExprContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitExpr([NotNull] Parser1.ExprContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="Parser1.term"/>.
@@ -331,14 +211,47 @@ public interface IParser1Listener : IParseTreeListener {
 	void ExitFactor([NotNull] Parser1.FactorContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.idlist"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.designator"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIdlist([NotNull] Parser1.IdlistContext context);
+	void EnterDesignator([NotNull] Parser1.DesignatorContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.idlist"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.designator"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIdlist([NotNull] Parser1.IdlistContext context);
+	void ExitDesignator([NotNull] Parser1.DesignatorContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterRelop([NotNull] Parser1.RelopContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitRelop([NotNull] Parser1.RelopContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.addop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAddop([NotNull] Parser1.AddopContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.addop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAddop([NotNull] Parser1.AddopContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMulop([NotNull] Parser1.MulopContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMulop([NotNull] Parser1.MulopContext context);
 }
 } // namespace AnalizadorSintactico

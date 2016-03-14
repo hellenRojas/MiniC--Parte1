@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\USUARIO1\Documents\Visual Studio 2013\Projects\AnalizadorSintactico\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
+// Generated from C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -36,134 +36,6 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by the <c>exprsAST</c>
-	/// labeled alternative in <see cref="Parser1.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExprsAST([NotNull] Parser1.ExprsASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>epsStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitEpsStatAST([NotNull] Parser1.EpsStatASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>asignStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitAsignStatAST([NotNull] Parser1.AsignStatASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>exprStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExprStatAST([NotNull] Parser1.ExprStatASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>idlistsAST</c>
-	/// labeled alternative in <see cref="Parser1.idlist"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitIdlistsAST([NotNull] Parser1.IdlistsASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>statsAST</c>
-	/// labeled alternative in <see cref="Parser1.statements"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitStatsAST([NotNull] Parser1.StatsASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>termsAST</c>
-	/// labeled alternative in <see cref="Parser1.term"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitTermsAST([NotNull] Parser1.TermsASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>sinDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitSinDeclAST([NotNull] Parser1.SinDeclASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>conDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitConDeclAST([NotNull] Parser1.ConDeclASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>exprFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExprFactAST([NotNull] Parser1.ExprFactASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>idFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitIdFactAST([NotNull] Parser1.IdFactASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>numFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitNumFactAST([NotNull] Parser1.NumFactASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>strFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitStrFactAST([NotNull] Parser1.StrFactASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>strDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitStrDeclAST([NotNull] Parser1.StrDeclASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>intDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitIntDeclAST([NotNull] Parser1.IntDeclASTContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>declsAST</c>
-	/// labeled alternative in <see cref="Parser1.declarations"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitDeclsAST([NotNull] Parser1.DeclsASTContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="Parser1.program"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -171,25 +43,46 @@ public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitProgram([NotNull] Parser1.ProgramContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="Parser1.declarations"/>.
+	/// Visit a parse tree produced by <see cref="Parser1.constantDecl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitDeclarations([NotNull] Parser1.DeclarationsContext context);
+	Result VisitConstantDecl([NotNull] Parser1.ConstantDeclContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="Parser1.declaration"/>.
+	/// Visit a parse tree produced by <see cref="Parser1.varDecl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitDeclaration([NotNull] Parser1.DeclarationContext context);
+	Result VisitVarDecl([NotNull] Parser1.VarDeclContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="Parser1.statements"/>.
+	/// Visit a parse tree produced by <see cref="Parser1.classDecl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitStatements([NotNull] Parser1.StatementsContext context);
+	Result VisitClassDecl([NotNull] Parser1.ClassDeclContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.methodDecl"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMethodDecl([NotNull] Parser1.MethodDeclContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.formPars"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFormPars([NotNull] Parser1.FormParsContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitType([NotNull] Parser1.TypeContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="Parser1.statement"/>.
@@ -199,11 +92,46 @@ public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitStatement([NotNull] Parser1.StatementContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="Parser1.expression"/>.
+	/// Visit a parse tree produced by <see cref="Parser1.block"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitExpression([NotNull] Parser1.ExpressionContext context);
+	Result VisitBlock([NotNull] Parser1.BlockContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.actPars"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitActPars([NotNull] Parser1.ActParsContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.condition"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCondition([NotNull] Parser1.ConditionContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.condTerm"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCondTerm([NotNull] Parser1.CondTermContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.condFact"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCondFact([NotNull] Parser1.CondFactContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExpr([NotNull] Parser1.ExprContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="Parser1.term"/>.
@@ -220,10 +148,31 @@ public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitFactor([NotNull] Parser1.FactorContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="Parser1.idlist"/>.
+	/// Visit a parse tree produced by <see cref="Parser1.designator"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitIdlist([NotNull] Parser1.IdlistContext context);
+	Result VisitDesignator([NotNull] Parser1.DesignatorContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitRelop([NotNull] Parser1.RelopContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.addop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAddop([NotNull] Parser1.AddopContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMulop([NotNull] Parser1.MulopContext context);
 }
 } // namespace AnalizadorSintactico

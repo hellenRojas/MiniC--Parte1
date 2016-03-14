@@ -20,102 +20,102 @@ program
 
 
 
-ConstantDecl
-: CONSTANTE Type IDENT ASIGN (NUMBER | CHARCONST) PyCOMA 
+constantDecl
+: CONSTANTE type IDENT ASIGN (NUMBER | CHARCONST) PyCOMA 
 ;
 
 
-VarDecl
-: Type IDENT (COMA IDENT)* PyComa
+varDecl
+: type IDENT (COMA IDENT)* PyComa
 ;
 
 
 
-ClassDecl
+classDecl
 : CLASS IDENT COR_DER (VarDecl)* COR_IZQ
 ;
 
 
 
-MethodDecl
-: (Type | VOID) IDENT PIZQ [FormPars] PDER (VarDecl)* Block
+methodDecl
+: (type | VOID) IDENT PIZQ (formPars) PDER (varDecl)* block
 ;
 
 
-FormPars
-: Type IDENT (COMA Type IDENT)*
+formPars
+: type IDENT (COMA type IDENT)*
 ;
 
-Type
-: IDENT [PCUADRADO_IZQ PCUADRADO_DER]
+type
+: IDENT (PCUADRADO_IZQ PCUADRADO_DER)
 ;
 
-Statment
-: Designator (ASIGN Expr | PIZQ [ActPars] PDER | INCRE | DECRE) PyCOMA
-| CONDICION_IF PIZQ Condition PDER Statement [CONDICION_ELSE Statement]
-| CICLO_FOR PIZQ Expr PyCOMA [Condition] PyCOMA [Statement] PDER Statement
-| CICLO_WHILE PIZQ Condition PDER Statement
-| CICLO_FOREACH PARIZQ Type IDENT IN Expr PARDER Stament
+statement
+: designator (ASIGN expr | PIZQ (actPars) PDER | INCRE | DECRE) PyCOMA
+| CONDICION_IF PIZQ condition PDER statement (CONDICION_ELSE statement)
+| CICLO_FOR PIZQ expr PyCOMA (condition) PyCOMA (statement) PDER statement
+| CICLO_WHILE PIZQ condition PDER statement
+| CICLO_FOREACH PARIZQ type IDENT IN expr PARDER statement
 | BREAK PyCOMA
-| RETURN [Expr] PyComa
-| READ PIZQ Designator PDER PyCOMA
-| WRITE PIZQ Expr [COMA NUMBER] PDER PyCOMA
-| Block
+| RETURN (expr) PyComa
+| READ PIZQ designator PDER PyCOMA
+| WRITE PIZQ Expr (COMA NUMBER) PDER PyCOMA
+| block
 | PyCOMA
 ;
 
 
-Block
+block
 : COR_DER (Statement)* COR_IZQ
 ;
 
 
 
-ActPars
+actPars
 : Expr (COMA Expr)*
 ;
 
-Condition
+condition
 : CondTerm (O CondTerm)*
 ;
 
-CondTerm
+condTerm
 : CondFact (Y CondFact)*
 ;
 
-CondFact
+condFact
 : Expr Relop Expr //preguntar si lleva |
 ;
 
-Expr
-: [RESTA] Term (Addop Term)*
+expr
+: (RESTA) Term (Addop Term)*
 ;
 
-Term
+term
 : Factor (Mulop Factor)*
 ;
 
-Factor
-: Designator [PIZQ [ActPars] PDER]
+factor
+: Designator (PIZQ (ActPars) PDER)
 | NUMBER
 | CHARCONST
 | (TRUE | FALSE)*
-| NEW IDENT [ PCUADRADO_IZQ Expr PCUADRADO_DER]
+| NEW IDENT (PCUADRADO_IZQ Expr PCUADRADO_DER)
 | PIZQ Expr PDER
 ;
 
-Designator
+designator
 : IDENT (PUNTO IDENT | PCUADRADO_IZQ Expr PCUADRADO_DER)*
 ;
 
-Relop
+relop
 : COMPARACION | DIFERENTE | MAYOR | MAYORIGUAL | MENOR | MENORIGUAL
 ;
 
-Addop
+addop
 : SUMA | RESTA
 ;
 
-Mulop
+mulop
 : MUL | DIV DIVMOD
 ;

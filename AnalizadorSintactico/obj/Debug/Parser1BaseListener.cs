@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\USUARIO1\Documents\Visual Studio 2013\Projects\AnalizadorSintactico\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
+// Generated from C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -39,246 +39,6 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class Parser1BaseListener : IParser1Listener {
 	/// <summary>
-	/// Enter a parse tree produced by the <c>exprsAST</c>
-	/// labeled alternative in <see cref="Parser1.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterExprsAST([NotNull] Parser1.ExprsASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>exprsAST</c>
-	/// labeled alternative in <see cref="Parser1.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitExprsAST([NotNull] Parser1.ExprsASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>epsStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterEpsStatAST([NotNull] Parser1.EpsStatASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>epsStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitEpsStatAST([NotNull] Parser1.EpsStatASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>asignStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterAsignStatAST([NotNull] Parser1.AsignStatASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>asignStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitAsignStatAST([NotNull] Parser1.AsignStatASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>exprStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterExprStatAST([NotNull] Parser1.ExprStatASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>exprStatAST</c>
-	/// labeled alternative in <see cref="Parser1.statement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitExprStatAST([NotNull] Parser1.ExprStatASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>idlistsAST</c>
-	/// labeled alternative in <see cref="Parser1.idlist"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIdlistsAST([NotNull] Parser1.IdlistsASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>idlistsAST</c>
-	/// labeled alternative in <see cref="Parser1.idlist"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIdlistsAST([NotNull] Parser1.IdlistsASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>statsAST</c>
-	/// labeled alternative in <see cref="Parser1.statements"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterStatsAST([NotNull] Parser1.StatsASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>statsAST</c>
-	/// labeled alternative in <see cref="Parser1.statements"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitStatsAST([NotNull] Parser1.StatsASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>termsAST</c>
-	/// labeled alternative in <see cref="Parser1.term"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterTermsAST([NotNull] Parser1.TermsASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>termsAST</c>
-	/// labeled alternative in <see cref="Parser1.term"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitTermsAST([NotNull] Parser1.TermsASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>sinDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterSinDeclAST([NotNull] Parser1.SinDeclASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>sinDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitSinDeclAST([NotNull] Parser1.SinDeclASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>conDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterConDeclAST([NotNull] Parser1.ConDeclASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>conDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.program"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitConDeclAST([NotNull] Parser1.ConDeclASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>exprFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterExprFactAST([NotNull] Parser1.ExprFactASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>exprFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitExprFactAST([NotNull] Parser1.ExprFactASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>idFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIdFactAST([NotNull] Parser1.IdFactASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>idFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIdFactAST([NotNull] Parser1.IdFactASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>numFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterNumFactAST([NotNull] Parser1.NumFactASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>numFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitNumFactAST([NotNull] Parser1.NumFactASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>strFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterStrFactAST([NotNull] Parser1.StrFactASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>strFactAST</c>
-	/// labeled alternative in <see cref="Parser1.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitStrFactAST([NotNull] Parser1.StrFactASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>strDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterStrDeclAST([NotNull] Parser1.StrDeclASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>strDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitStrDeclAST([NotNull] Parser1.StrDeclASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>intDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIntDeclAST([NotNull] Parser1.IntDeclASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>intDeclAST</c>
-	/// labeled alternative in <see cref="Parser1.declaration"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIntDeclAST([NotNull] Parser1.IntDeclASTContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>declsAST</c>
-	/// labeled alternative in <see cref="Parser1.declarations"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDeclsAST([NotNull] Parser1.DeclsASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>declsAST</c>
-	/// labeled alternative in <see cref="Parser1.declarations"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDeclsAST([NotNull] Parser1.DeclsASTContext context) { }
-
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="Parser1.program"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -292,43 +52,82 @@ public partial class Parser1BaseListener : IParser1Listener {
 	public virtual void ExitProgram([NotNull] Parser1.ProgramContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.declarations"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.constantDecl"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDeclarations([NotNull] Parser1.DeclarationsContext context) { }
+	public virtual void EnterConstantDecl([NotNull] Parser1.ConstantDeclContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.declarations"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.constantDecl"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDeclarations([NotNull] Parser1.DeclarationsContext context) { }
+	public virtual void ExitConstantDecl([NotNull] Parser1.ConstantDeclContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.declaration"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.varDecl"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDeclaration([NotNull] Parser1.DeclarationContext context) { }
+	public virtual void EnterVarDecl([NotNull] Parser1.VarDeclContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.declaration"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.varDecl"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDeclaration([NotNull] Parser1.DeclarationContext context) { }
+	public virtual void ExitVarDecl([NotNull] Parser1.VarDeclContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.statements"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.classDecl"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterStatements([NotNull] Parser1.StatementsContext context) { }
+	public virtual void EnterClassDecl([NotNull] Parser1.ClassDeclContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.statements"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.classDecl"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitStatements([NotNull] Parser1.StatementsContext context) { }
+	public virtual void ExitClassDecl([NotNull] Parser1.ClassDeclContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.methodDecl"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMethodDecl([NotNull] Parser1.MethodDeclContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.methodDecl"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMethodDecl([NotNull] Parser1.MethodDeclContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.formPars"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFormPars([NotNull] Parser1.FormParsContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.formPars"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFormPars([NotNull] Parser1.FormParsContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.type"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterType([NotNull] Parser1.TypeContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.type"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitType([NotNull] Parser1.TypeContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="Parser1.statement"/>.
@@ -344,17 +143,82 @@ public partial class Parser1BaseListener : IParser1Listener {
 	public virtual void ExitStatement([NotNull] Parser1.StatementContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.expression"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.block"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterExpression([NotNull] Parser1.ExpressionContext context) { }
+	public virtual void EnterBlock([NotNull] Parser1.BlockContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.expression"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.block"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitExpression([NotNull] Parser1.ExpressionContext context) { }
+	public virtual void ExitBlock([NotNull] Parser1.BlockContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.actPars"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterActPars([NotNull] Parser1.ActParsContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.actPars"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitActPars([NotNull] Parser1.ActParsContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.condition"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCondition([NotNull] Parser1.ConditionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.condition"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCondition([NotNull] Parser1.ConditionContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.condTerm"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCondTerm([NotNull] Parser1.CondTermContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.condTerm"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCondTerm([NotNull] Parser1.CondTermContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.condFact"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCondFact([NotNull] Parser1.CondFactContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.condFact"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCondFact([NotNull] Parser1.CondFactContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.expr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterExpr([NotNull] Parser1.ExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.expr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitExpr([NotNull] Parser1.ExprContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="Parser1.term"/>.
@@ -383,17 +247,56 @@ public partial class Parser1BaseListener : IParser1Listener {
 	public virtual void ExitFactor([NotNull] Parser1.FactorContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="Parser1.idlist"/>.
+	/// Enter a parse tree produced by <see cref="Parser1.designator"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIdlist([NotNull] Parser1.IdlistContext context) { }
+	public virtual void EnterDesignator([NotNull] Parser1.DesignatorContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="Parser1.idlist"/>.
+	/// Exit a parse tree produced by <see cref="Parser1.designator"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIdlist([NotNull] Parser1.IdlistContext context) { }
+	public virtual void ExitDesignator([NotNull] Parser1.DesignatorContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.relop"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterRelop([NotNull] Parser1.RelopContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.relop"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitRelop([NotNull] Parser1.RelopContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.addop"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAddop([NotNull] Parser1.AddopContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.addop"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAddop([NotNull] Parser1.AddopContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="Parser1.mulop"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMulop([NotNull] Parser1.MulopContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="Parser1.mulop"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMulop([NotNull] Parser1.MulopContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>
