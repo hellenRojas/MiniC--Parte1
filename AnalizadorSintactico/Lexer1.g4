@@ -19,7 +19,7 @@ IN
 : 'in'
 ;
 INT 
-: 'int'
+: 'int'C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\Lexer1.g4
 ;
 
 STRING 
@@ -144,14 +144,10 @@ IDENT
 : LETTER | (LETTER | DIGIT| '_')*
 ;
 
-//PRINTABLECHAR
-//: LETTER | DIGIT | 
-//;
+CharConst: '\'' (PrintableChar|'\n'|'\r') '\'';
 
-//CHARCONST
-//: "'" "("PRINTABLECHAR | NEWLINE")"
-//;
 
+PrintableChar: (LETTER|DIGIT|'!'| '"'| '#'| '$'| '%'| '&'|'\''| '(' | ')' | '*'| '+'| ','| '-'| '.'| '/' |':'| ';'| '<'| '='| '>'| '?'| '@');
 
 LQUOTE : '"' -> more, mode(STRI) ;
 
