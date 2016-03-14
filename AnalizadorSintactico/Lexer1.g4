@@ -15,9 +15,9 @@ COMMMETBLOCK
 COMMMET
 : ('//' ('0'..'9'|'A'..'Z'| 'a'..'z'|' ')* )-> channel(HIDDEN)
 ;
-
-
-
+IN
+: 'in'
+;
 INT 
 : 'int'
 ;
@@ -58,6 +58,9 @@ CICLO_WHILE
 CICLO_FOR
 : 'for'
 ;
+CICLO_FOREACH
+: 'foreach'
+;
 BREAK
 : 'break'
 ;
@@ -85,6 +88,15 @@ NEW
 CONSTANTE
 : 'const'
 ;
+TRUE
+: 'true'
+;
+
+FALSE
+: 'false'
+;
+
+
 
 PyCOMA : ';' ;
 COMA : ',' ;
@@ -94,6 +106,7 @@ PDER : ')' ;
 SUMA : '+' ;
 MUL : '*' ;
 DIV : '/';
+RESTA : '-';
 DIVMOD : '%';
 COMPARACION : '==' ;
 DIFERENTE : '!=' ;
@@ -106,31 +119,42 @@ Y : '&&';
 INCRE : '++';
 DECRE : '--';
 PUNTO : '.';
-PCUADRADO_DER: '[';
-PCUADRADO_IZQ: ']';
+PCUADRADO_IZQ: '[';
+PCUADRADO_DER: ']';
 COR_DER: '{';
 COR_IZQ: '}';
 
-NUM
-: '0' | '1'..'9' ('0'..'9')*
+LETTER
+: 'a'..'z' | 'A'..'Z'
+;
+
+DIGIT
+: '0'..'9'
+;
+
+NUMBER
+: DIGIT ('0'..'9')*
 ;
 
 ID
-: CharInicial CharContenido* 
+: LETTER (LETTER | DIGIT)*
 ;
+
+IDENT
+: LETTER | (LETTER | DIGIT| '_')*
+;
+
+//PRINTABLECHAR
+//: LETTER | DIGIT | 
+//;
+
+//CHARCONST
+//: "'" "("PRINTABLECHAR | NEWLINE")"
+//;
+
 
 LQUOTE : '"' -> more, mode(STRI) ;
 
-fragment
-CharContenido
-: CharInicial
-| '0'..'9'
-| '_'
-;
-fragment
-CharInicial
-: 'A'..'Z' | 'a'..'z'
-;
 
 mode STRI;
 STR : '"' -> mode(DEFAULT_MODE) ; 
