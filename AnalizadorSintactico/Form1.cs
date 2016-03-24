@@ -315,11 +315,23 @@ namespace AnalisisSintactico
                     Lexer1 lexer = new Lexer1(input);
                     CommonTokenStream tokens = new CommonTokenStream(lexer);
                     Parser1 parser = new Parser1(tokens);
+
+
+                    //imprimir todos los tokens
+
+                    IList<IToken> listatokens = lexer.GetAllTokens();
+                    foreach (IToken token in listatokens)
+                    {
+                        Console.WriteLine("Token: " + token.Type + " , Lexema: " + token.Text);
+                    }
+
                     parser.RemoveErrorListeners();
                     parser.AddErrorListener(ParserErrorListener.Instancia);
                     parser.ErrorHandler=new DefaultErrorStrategy1();
                     IParseTree tree = parser.program();
                     error.AppendText("Compilación Correcta...\n");
+                    PrettyPrint p = new PrettyPrint(treeView1);
+                    p.Visit(tree);
                     
                 }
                 catch(ParserException e){

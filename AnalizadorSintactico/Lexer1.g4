@@ -1,7 +1,6 @@
 lexer grammar Lexer1;
 
-WS
-: ' ' -> channel(HIDDEN)
+WS:	(' ')-> channel(HIDDEN)
 ;
 
 NEWLINE 
@@ -15,6 +14,11 @@ COMMMETBLOCK
 COMMMET
 : ('//' ('0'..'9'|'A'..'Z'| 'a'..'z'|' ')* )-> channel(HIDDEN)
 ;
+
+MULTICOMENT: ('/*' (options {greedy=false;
+                                 k = 2;}:.)* '*/') -> channel(HIDDEN);
+
+
 IN
 : 'in'
 ;
@@ -124,29 +128,32 @@ PCUADRADO_DER: ']';
 COR_DER: '{';
 COR_IZQ: '}';
 
-LETTER
-: 'a'..'z' | 'A'..'Z'
-;
 
-DIGIT
-: '0'..'9'
-;
+
 
 NUMBER
-: DIGIT ('0'..'9')*
+: '1'..'9' (DIGIT)*
 ;
+
 
 ID
 : LETTER (LETTER | DIGIT)*
 ;
 
+
 IDENT
-: LETTER | (LETTER | DIGIT| '_')*
+: LETTER (LETTER | DIGIT| '_')*
 ;
 
 CharConst: '\'' (PrintableChar|'\n'|'\r') '\'';
 
+fragment
+LETTER: 'a'..'z' | 'A'..'Z';
 
+fragment
+DIGIT: '0'..'9';
+
+fragment
 PrintableChar: (LETTER|DIGIT|'!'| '"'| '#'| '$'| '%'| '&'|'\''| '(' | ')' | '*'| '+'| ','| '-'| '.'| '/' |':'| ';'| '<'| '='| '>'| '?'| '@');
 
 LQUOTE : '"' -> more, mode(STRI) ;

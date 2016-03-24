@@ -34,32 +34,29 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 [System.CLSCompliant(false)]
 public partial class Parser1 : Parser {
 	public const int
-		WS=1, NEWLINE=2, COMMMETBLOCK=3, COMMMET=4, IN=5, INT=6, STRING=7, FLOAT=8, 
-		BOOLEAN=9, VOID=10, CONDICION_IF=11, CONDICION_ELSE_IF=12, CONDICION_ELSE=13, 
-		CICLO_WHILE=14, CICLO_FOR=15, CICLO_FOREACH=16, BREAK=17, RETURN=18, READ=19, 
-		WRITE=20, CLASE=21, NEW=22, CONSTANTE=23, TRUE=24, FALSE=25, PyCOMA=26, 
-		COMA=27, ASIGN=28, PIZQ=29, PDER=30, SUMA=31, MUL=32, DIV=33, RESTA=34, 
-		DIVMOD=35, COMPARACION=36, DIFERENTE=37, MENOR=38, MENORIGUAL=39, MAYOR=40, 
-		MAYORIGUAL=41, O=42, Y=43, INCRE=44, DECRE=45, PUNTO=46, PCUADRADO_IZQ=47, 
-		PCUADRADO_DER=48, COR_DER=49, COR_IZQ=50, LETTER=51, DIGIT=52, NUMBER=53, 
-		ID=54, IDENT=55, CharConst=56, PrintableChar=57, STR=58, LQUOTE=59, ConstDecl=60, 
-		VarDecl=61, ClassDecl=62, MethodDecl=63, CHARCONST=64, PyComa=65, CLASS=66, 
-		PARIZQ=67, PARDER=68, Expr=69, Statement=70, CondTerm=71, CondFact=72, 
-		Relop=73, Term=74, Addop=75, Factor=76, Mulop=77, Designator=78, ActPars=79;
+		WS=1, NEWLINE=2, COMMMETBLOCK=3, COMMMET=4, MULTICOMENT=5, IN=6, INT=7, 
+		STRING=8, FLOAT=9, BOOLEAN=10, VOID=11, CONDICION_IF=12, CONDICION_ELSE_IF=13, 
+		CONDICION_ELSE=14, CICLO_WHILE=15, CICLO_FOR=16, CICLO_FOREACH=17, BREAK=18, 
+		RETURN=19, READ=20, WRITE=21, CLASE=22, NEW=23, CONSTANTE=24, TRUE=25, 
+		FALSE=26, PyCOMA=27, COMA=28, ASIGN=29, PIZQ=30, PDER=31, SUMA=32, MUL=33, 
+		DIV=34, RESTA=35, DIVMOD=36, COMPARACION=37, DIFERENTE=38, MENOR=39, MENORIGUAL=40, 
+		MAYOR=41, MAYORIGUAL=42, O=43, Y=44, INCRE=45, DECRE=46, PUNTO=47, PCUADRADO_IZQ=48, 
+		PCUADRADO_DER=49, COR_DER=50, COR_IZQ=51, NUMBER=52, ID=53, IDENT=54, 
+		CharConst=55, STR=56, LQUOTE=57;
 	public const int
-		RULE_program = 0, RULE_constantDecl = 1, RULE_varDecl = 2, RULE_classDecl = 3, 
+		RULE_program = 0, RULE_constDecl = 1, RULE_varDecl = 2, RULE_classDecl = 3, 
 		RULE_methodDecl = 4, RULE_formPars = 5, RULE_type = 6, RULE_statement = 7, 
 		RULE_block = 8, RULE_actPars = 9, RULE_condition = 10, RULE_condTerm = 11, 
 		RULE_condFact = 12, RULE_expr = 13, RULE_term = 14, RULE_factor = 15, 
 		RULE_designator = 16, RULE_relop = 17, RULE_addop = 18, RULE_mulop = 19;
 	public static readonly string[] ruleNames = {
-		"program", "constantDecl", "varDecl", "classDecl", "methodDecl", "formPars", 
+		"program", "constDecl", "varDecl", "classDecl", "methodDecl", "formPars", 
 		"type", "statement", "block", "actPars", "condition", "condTerm", "condFact", 
 		"expr", "term", "factor", "designator", "relop", "addop", "mulop"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "' '", null, null, null, "'in'", "'int'", "'string'", "'float'", 
+		null, null, null, null, null, null, "'in'", "'int'", "'string'", "'float'", 
 		"'boolean'", "'void'", "'if'", "'else if'", "'else'", "'while'", "'for'", 
 		"'foreach'", "'break'", "'return'", "'read'", "'write'", "'class'", "'new'", 
 		"'const'", "'true'", "'false'", "';'", "','", "'='", "'('", "')'", "'+'", 
@@ -67,18 +64,14 @@ public partial class Parser1 : Parser {
 		"'||'", "'&&'", "'++'", "'--'", "'.'", "'['", "']'", "'{'", "'}'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "WS", "NEWLINE", "COMMMETBLOCK", "COMMMET", "IN", "INT", "STRING", 
-		"FLOAT", "BOOLEAN", "VOID", "CONDICION_IF", "CONDICION_ELSE_IF", "CONDICION_ELSE", 
-		"CICLO_WHILE", "CICLO_FOR", "CICLO_FOREACH", "BREAK", "RETURN", "READ", 
-		"WRITE", "CLASE", "NEW", "CONSTANTE", "TRUE", "FALSE", "PyCOMA", "COMA", 
-		"ASIGN", "PIZQ", "PDER", "SUMA", "MUL", "DIV", "RESTA", "DIVMOD", "COMPARACION", 
-		"DIFERENTE", "MENOR", "MENORIGUAL", "MAYOR", "MAYORIGUAL", "O", "Y", "INCRE", 
-		"DECRE", "PUNTO", "PCUADRADO_IZQ", "PCUADRADO_DER", "COR_DER", "COR_IZQ", 
-		"LETTER", "DIGIT", "NUMBER", "ID", "IDENT", "CharConst", "PrintableChar", 
-		"STR", "LQUOTE", "ConstDecl", "VarDecl", "ClassDecl", "MethodDecl", "CHARCONST", 
-		"PyComa", "CLASS", "PARIZQ", "PARDER", "Expr", "Statement", "CondTerm", 
-		"CondFact", "Relop", "Term", "Addop", "Factor", "Mulop", "Designator", 
-		"ActPars"
+		null, "WS", "NEWLINE", "COMMMETBLOCK", "COMMMET", "MULTICOMENT", "IN", 
+		"INT", "STRING", "FLOAT", "BOOLEAN", "VOID", "CONDICION_IF", "CONDICION_ELSE_IF", 
+		"CONDICION_ELSE", "CICLO_WHILE", "CICLO_FOR", "CICLO_FOREACH", "BREAK", 
+		"RETURN", "READ", "WRITE", "CLASE", "NEW", "CONSTANTE", "TRUE", "FALSE", 
+		"PyCOMA", "COMA", "ASIGN", "PIZQ", "PDER", "SUMA", "MUL", "DIV", "RESTA", 
+		"DIVMOD", "COMPARACION", "DIFERENTE", "MENOR", "MENORIGUAL", "MAYOR", 
+		"MAYORIGUAL", "O", "Y", "INCRE", "DECRE", "PUNTO", "PCUADRADO_IZQ", "PCUADRADO_DER", 
+		"COR_DER", "COR_IZQ", "NUMBER", "ID", "IDENT", "CharConst", "STR", "LQUOTE"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -131,42 +124,58 @@ public partial class Parser1 : Parser {
 		_interp = new ParserATNSimulator(this,_ATN);
 	}
 	public partial class ProgramContext : ParserRuleContext {
-		public ITerminalNode CLASE() { return GetToken(Parser1.CLASE, 0); }
-		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
-		public ITerminalNode COR_DER() { return GetToken(Parser1.COR_DER, 0); }
-		public ITerminalNode COR_IZQ() { return GetToken(Parser1.COR_IZQ, 0); }
-		public ITerminalNode[] MethodDecl() { return GetTokens(Parser1.MethodDecl); }
-		public ITerminalNode MethodDecl(int i) {
-			return GetToken(Parser1.MethodDecl, i);
-		}
-		public ITerminalNode[] ConstDecl() { return GetTokens(Parser1.ConstDecl); }
-		public ITerminalNode ConstDecl(int i) {
-			return GetToken(Parser1.ConstDecl, i);
-		}
-		public ITerminalNode[] VarDecl() { return GetTokens(Parser1.VarDecl); }
-		public ITerminalNode VarDecl(int i) {
-			return GetToken(Parser1.VarDecl, i);
-		}
-		public ITerminalNode[] ClassDecl() { return GetTokens(Parser1.ClassDecl); }
-		public ITerminalNode ClassDecl(int i) {
-			return GetToken(Parser1.ClassDecl, i);
-		}
 		public ProgramContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_program; } }
+	 
+		public ProgramContext() { }
+		public virtual void CopyFrom(ProgramContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ProgramASTContext : ProgramContext {
+		public ITerminalNode CLASE() { return GetToken(Parser1.CLASE, 0); }
+		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
+		public ITerminalNode COR_DER() { return GetToken(Parser1.COR_DER, 0); }
+		public ITerminalNode COR_IZQ() { return GetToken(Parser1.COR_IZQ, 0); }
+		public ConstDeclContext[] constDecl() {
+			return GetRuleContexts<ConstDeclContext>();
+		}
+		public ConstDeclContext constDecl(int i) {
+			return GetRuleContext<ConstDeclContext>(i);
+		}
+		public VarDeclContext[] varDecl() {
+			return GetRuleContexts<VarDeclContext>();
+		}
+		public VarDeclContext varDecl(int i) {
+			return GetRuleContext<VarDeclContext>(i);
+		}
+		public ClassDeclContext[] classDecl() {
+			return GetRuleContexts<ClassDeclContext>();
+		}
+		public ClassDeclContext classDecl(int i) {
+			return GetRuleContext<ClassDeclContext>(i);
+		}
+		public MethodDeclContext[] methodDecl() {
+			return GetRuleContexts<MethodDeclContext>();
+		}
+		public MethodDeclContext methodDecl(int i) {
+			return GetRuleContext<MethodDeclContext>(i);
+		}
+		public ProgramASTContext(ProgramContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterProgram(this);
+			if (typedListener != null) typedListener.EnterProgramAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitProgram(this);
+			if (typedListener != null) typedListener.ExitProgramAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitProgram(this);
+			if (typedVisitor != null) return typedVisitor.VisitProgramAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -177,44 +186,56 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 0, RULE_program);
 		int _la;
 		try {
+			_localctx = new ProgramASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
 			State = 40; Match(CLASE);
 			State = 41; Match(IDENT);
-			State = 45;
+			State = 47;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ConstDecl) | (1L << VarDecl) | (1L << ClassDecl))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CLASE) | (1L << CONSTANTE) | (1L << IDENT))) != 0)) {
 				{
-				{
-				State = 42;
-				_la = _input.La(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ConstDecl) | (1L << VarDecl) | (1L << ClassDecl))) != 0)) ) {
-				_errHandler.RecoverInline(this);
-				} else {
-					Consume();
+				State = 45;
+				switch (_input.La(1)) {
+				case CONSTANTE:
+					{
+					State = 42; constDecl();
+					}
+					break;
+				case IDENT:
+					{
+					State = 43; varDecl();
+					}
+					break;
+				case CLASE:
+					{
+					State = 44; classDecl();
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
 				}
-				}
-				State = 47;
+				State = 49;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
-			State = 48; Match(COR_DER);
-			State = 52;
+			State = 50; Match(COR_DER);
+			State = 54;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
-			while (_la==MethodDecl) {
+			while (_la==VOID || _la==IDENT) {
 				{
 				{
-				State = 49; Match(MethodDecl);
+				State = 51; methodDecl();
 				}
 				}
-				State = 54;
+				State = 56;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
-			State = 55; Match(COR_IZQ);
+			State = 57; Match(COR_IZQ);
 			}
 		}
 		catch (RecognitionException re) {
@@ -228,7 +249,19 @@ public partial class Parser1 : Parser {
 		return _localctx;
 	}
 
-	public partial class ConstantDeclContext : ParserRuleContext {
+	public partial class ConstDeclContext : ParserRuleContext {
+		public ConstDeclContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_constDecl; } }
+	 
+		public ConstDeclContext() { }
+		public virtual void CopyFrom(ConstDeclContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ConstDeclASTContext : ConstDeclContext {
 		public ITerminalNode CONSTANTE() { return GetToken(Parser1.CONSTANTE, 0); }
 		public TypeContext type() {
 			return GetRuleContext<TypeContext>(0);
@@ -237,47 +270,44 @@ public partial class Parser1 : Parser {
 		public ITerminalNode ASIGN() { return GetToken(Parser1.ASIGN, 0); }
 		public ITerminalNode PyCOMA() { return GetToken(Parser1.PyCOMA, 0); }
 		public ITerminalNode NUMBER() { return GetToken(Parser1.NUMBER, 0); }
-		public ITerminalNode CHARCONST() { return GetToken(Parser1.CHARCONST, 0); }
-		public ConstantDeclContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_constantDecl; } }
+		public ITerminalNode CharConst() { return GetToken(Parser1.CharConst, 0); }
+		public ConstDeclASTContext(ConstDeclContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterConstantDecl(this);
+			if (typedListener != null) typedListener.EnterConstDeclAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitConstantDecl(this);
+			if (typedListener != null) typedListener.ExitConstDeclAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitConstantDecl(this);
+			if (typedVisitor != null) return typedVisitor.VisitConstDeclAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public ConstantDeclContext constantDecl() {
-		ConstantDeclContext _localctx = new ConstantDeclContext(_ctx, State);
-		EnterRule(_localctx, 2, RULE_constantDecl);
+	public ConstDeclContext constDecl() {
+		ConstDeclContext _localctx = new ConstDeclContext(_ctx, State);
+		EnterRule(_localctx, 2, RULE_constDecl);
 		int _la;
 		try {
+			_localctx = new ConstDeclASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 57; Match(CONSTANTE);
-			State = 58; type();
-			State = 59; Match(IDENT);
-			State = 60; Match(ASIGN);
-			State = 61;
+			State = 59; Match(CONSTANTE);
+			State = 60; type();
+			State = 61; Match(IDENT);
+			State = 62; Match(ASIGN);
+			State = 63;
 			_la = _input.La(1);
-			if ( !(_la==NUMBER || _la==CHARCONST) ) {
+			if ( !(_la==NUMBER || _la==CharConst) ) {
 			_errHandler.RecoverInline(this);
 			} else {
 				Consume();
 			}
-			State = 62; Match(PyCOMA);
+			State = 64; Match(PyCOMA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -292,6 +322,18 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class VarDeclContext : ParserRuleContext {
+		public VarDeclContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_varDecl; } }
+	 
+		public VarDeclContext() { }
+		public virtual void CopyFrom(VarDeclContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class VarDeclASTContext : VarDeclContext {
 		public TypeContext type() {
 			return GetRuleContext<TypeContext>(0);
 		}
@@ -299,27 +341,23 @@ public partial class Parser1 : Parser {
 		public ITerminalNode IDENT(int i) {
 			return GetToken(Parser1.IDENT, i);
 		}
-		public ITerminalNode PyComa() { return GetToken(Parser1.PyComa, 0); }
+		public ITerminalNode PyCOMA() { return GetToken(Parser1.PyCOMA, 0); }
 		public ITerminalNode[] COMA() { return GetTokens(Parser1.COMA); }
 		public ITerminalNode COMA(int i) {
 			return GetToken(Parser1.COMA, i);
 		}
-		public VarDeclContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_varDecl; } }
+		public VarDeclASTContext(VarDeclContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterVarDecl(this);
+			if (typedListener != null) typedListener.EnterVarDeclAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitVarDecl(this);
+			if (typedListener != null) typedListener.ExitVarDeclAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitVarDecl(this);
+			if (typedVisitor != null) return typedVisitor.VisitVarDeclAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -330,25 +368,26 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 4, RULE_varDecl);
 		int _la;
 		try {
+			_localctx = new VarDeclASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 64; type();
-			State = 65; Match(IDENT);
-			State = 70;
+			State = 66; type();
+			State = 67; Match(IDENT);
+			State = 72;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
 			while (_la==COMA) {
 				{
 				{
-				State = 66; Match(COMA);
-				State = 67; Match(IDENT);
+				State = 68; Match(COMA);
+				State = 69; Match(IDENT);
 				}
 				}
-				State = 72;
+				State = 74;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
-			State = 73; Match(PyComa);
+			State = 75; Match(PyCOMA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -363,30 +402,40 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class ClassDeclContext : ParserRuleContext {
-		public ITerminalNode CLASS() { return GetToken(Parser1.CLASS, 0); }
-		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
-		public ITerminalNode COR_DER() { return GetToken(Parser1.COR_DER, 0); }
-		public ITerminalNode COR_IZQ() { return GetToken(Parser1.COR_IZQ, 0); }
-		public ITerminalNode[] VarDecl() { return GetTokens(Parser1.VarDecl); }
-		public ITerminalNode VarDecl(int i) {
-			return GetToken(Parser1.VarDecl, i);
-		}
 		public ClassDeclContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_classDecl; } }
+	 
+		public ClassDeclContext() { }
+		public virtual void CopyFrom(ClassDeclContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ClassDeclASTContext : ClassDeclContext {
+		public ITerminalNode CLASE() { return GetToken(Parser1.CLASE, 0); }
+		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
+		public ITerminalNode COR_DER() { return GetToken(Parser1.COR_DER, 0); }
+		public ITerminalNode COR_IZQ() { return GetToken(Parser1.COR_IZQ, 0); }
+		public VarDeclContext[] varDecl() {
+			return GetRuleContexts<VarDeclContext>();
+		}
+		public VarDeclContext varDecl(int i) {
+			return GetRuleContext<VarDeclContext>(i);
+		}
+		public ClassDeclASTContext(ClassDeclContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterClassDecl(this);
+			if (typedListener != null) typedListener.EnterClassDeclAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitClassDecl(this);
+			if (typedListener != null) typedListener.ExitClassDeclAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitClassDecl(this);
+			if (typedVisitor != null) return typedVisitor.VisitClassDeclAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -397,25 +446,26 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 6, RULE_classDecl);
 		int _la;
 		try {
+			_localctx = new ClassDeclASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 75; Match(CLASS);
-			State = 76; Match(IDENT);
-			State = 77; Match(COR_DER);
-			State = 81;
+			State = 77; Match(CLASE);
+			State = 78; Match(IDENT);
+			State = 79; Match(COR_DER);
+			State = 83;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
-			while (_la==VarDecl) {
+			while (_la==IDENT) {
 				{
 				{
-				State = 78; Match(VarDecl);
+				State = 80; varDecl();
 				}
 				}
-				State = 83;
+				State = 85;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
-			State = 84; Match(COR_IZQ);
+			State = 86; Match(COR_IZQ);
 			}
 		}
 		catch (RecognitionException re) {
@@ -430,6 +480,18 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class MethodDeclContext : ParserRuleContext {
+		public MethodDeclContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_methodDecl; } }
+	 
+		public MethodDeclContext() { }
+		public virtual void CopyFrom(MethodDeclContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class MethodDeclASTContext : MethodDeclContext {
 		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
 		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
 		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
@@ -449,22 +511,18 @@ public partial class Parser1 : Parser {
 		public VarDeclContext varDecl(int i) {
 			return GetRuleContext<VarDeclContext>(i);
 		}
-		public MethodDeclContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_methodDecl; } }
+		public MethodDeclASTContext(MethodDeclContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterMethodDecl(this);
+			if (typedListener != null) typedListener.EnterMethodDeclAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitMethodDecl(this);
+			if (typedListener != null) typedListener.ExitMethodDeclAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMethodDecl(this);
+			if (typedVisitor != null) return typedVisitor.VisitMethodDeclAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -475,43 +533,49 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 8, RULE_methodDecl);
 		int _la;
 		try {
+			_localctx = new MethodDeclASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 88;
+			State = 90;
 			switch (_input.La(1)) {
 			case IDENT:
 				{
-				State = 86; type();
+				State = 88; type();
 				}
 				break;
 			case VOID:
 				{
-				State = 87; Match(VOID);
+				State = 89; Match(VOID);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			State = 90; Match(IDENT);
-			State = 91; Match(PIZQ);
-			{
-			State = 92; formPars();
+			State = 92; Match(IDENT);
+			State = 93; Match(PIZQ);
+			State = 95;
+			_la = _input.La(1);
+			if (_la==IDENT) {
+				{
+				State = 94; formPars();
+				}
 			}
-			State = 93; Match(PDER);
-			State = 97;
+
+			State = 97; Match(PDER);
+			State = 101;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
 			while (_la==IDENT) {
 				{
 				{
-				State = 94; varDecl();
+				State = 98; varDecl();
 				}
 				}
-				State = 99;
+				State = 103;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
-			State = 100; block();
+			State = 104; block();
 			}
 		}
 		catch (RecognitionException re) {
@@ -526,6 +590,18 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class FormParsContext : ParserRuleContext {
+		public FormParsContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_formPars; } }
+	 
+		public FormParsContext() { }
+		public virtual void CopyFrom(FormParsContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class FormParsASTContext : FormParsContext {
 		public TypeContext[] type() {
 			return GetRuleContexts<TypeContext>();
 		}
@@ -540,22 +616,18 @@ public partial class Parser1 : Parser {
 		public ITerminalNode COMA(int i) {
 			return GetToken(Parser1.COMA, i);
 		}
-		public FormParsContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_formPars; } }
+		public FormParsASTContext(FormParsContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterFormPars(this);
+			if (typedListener != null) typedListener.EnterFormParsAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitFormPars(this);
+			if (typedListener != null) typedListener.ExitFormParsAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitFormPars(this);
+			if (typedVisitor != null) return typedVisitor.VisitFormParsAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -566,22 +638,23 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 10, RULE_formPars);
 		int _la;
 		try {
+			_localctx = new FormParsASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 102; type();
-			State = 103; Match(IDENT);
-			State = 110;
+			State = 106; type();
+			State = 107; Match(IDENT);
+			State = 114;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
 			while (_la==COMA) {
 				{
 				{
-				State = 104; Match(COMA);
-				State = 105; type();
-				State = 106; Match(IDENT);
+				State = 108; Match(COMA);
+				State = 109; type();
+				State = 110; Match(IDENT);
 				}
 				}
-				State = 112;
+				State = 116;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
@@ -599,25 +672,33 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class TypeContext : ParserRuleContext {
-		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
-		public ITerminalNode PCUADRADO_IZQ() { return GetToken(Parser1.PCUADRADO_IZQ, 0); }
-		public ITerminalNode PCUADRADO_DER() { return GetToken(Parser1.PCUADRADO_DER, 0); }
 		public TypeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_type; } }
+	 
+		public TypeContext() { }
+		public virtual void CopyFrom(TypeContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class TypeASTContext : TypeContext {
+		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
+		public ITerminalNode PCUADRADO_IZQ() { return GetToken(Parser1.PCUADRADO_IZQ, 0); }
+		public ITerminalNode PCUADRADO_DER() { return GetToken(Parser1.PCUADRADO_DER, 0); }
+		public TypeASTContext(TypeContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterType(this);
+			if (typedListener != null) typedListener.EnterTypeAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitType(this);
+			if (typedListener != null) typedListener.ExitTypeAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitType(this);
+			if (typedVisitor != null) return typedVisitor.VisitTypeAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -626,14 +707,21 @@ public partial class Parser1 : Parser {
 	public TypeContext type() {
 		TypeContext _localctx = new TypeContext(_ctx, State);
 		EnterRule(_localctx, 12, RULE_type);
+		int _la;
 		try {
+			_localctx = new TypeASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 113; Match(IDENT);
-			{
-			State = 114; Match(PCUADRADO_IZQ);
-			State = 115; Match(PCUADRADO_DER);
+			State = 117; Match(IDENT);
+			State = 120;
+			_la = _input.La(1);
+			if (_la==PCUADRADO_IZQ) {
+				{
+				State = 118; Match(PCUADRADO_IZQ);
+				State = 119; Match(PCUADRADO_DER);
+				}
 			}
+
 			}
 		}
 		catch (RecognitionException re) {
@@ -648,13 +736,163 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class StatementContext : ParserRuleContext {
+		public StatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_statement; } }
+	 
+		public StatementContext() { }
+		public virtual void CopyFrom(StatementContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ReadStatASTContext : StatementContext {
+		public ITerminalNode READ() { return GetToken(Parser1.READ, 0); }
+		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
 		public DesignatorContext designator() {
 			return GetRuleContext<DesignatorContext>(0);
 		}
-		public ITerminalNode[] PyCOMA() { return GetTokens(Parser1.PyCOMA); }
-		public ITerminalNode PyCOMA(int i) {
-			return GetToken(Parser1.PyCOMA, i);
+		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
+		public ITerminalNode PyCOMA() { return GetToken(Parser1.PyCOMA, 0); }
+		public ReadStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterReadStatAST(this);
 		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitReadStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitReadStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ReturnStatASTContext : StatementContext {
+		public ITerminalNode RETURN() { return GetToken(Parser1.RETURN, 0); }
+		public ITerminalNode PyCOMA() { return GetToken(Parser1.PyCOMA, 0); }
+		public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public ReturnStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterReturnStatAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitReturnStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitReturnStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class PyStatASTContext : StatementContext {
+		public ITerminalNode PyCOMA() { return GetToken(Parser1.PyCOMA, 0); }
+		public PyStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterPyStatAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitPyStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitPyStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class WhileStatASTContext : StatementContext {
+		public ITerminalNode CICLO_WHILE() { return GetToken(Parser1.CICLO_WHILE, 0); }
+		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
+		public ConditionContext condition() {
+			return GetRuleContext<ConditionContext>(0);
+		}
+		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
+		public StatementContext statement() {
+			return GetRuleContext<StatementContext>(0);
+		}
+		public WhileStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterWhileStatAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitWhileStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitWhileStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class WriteStatASTContext : StatementContext {
+		public ITerminalNode WRITE() { return GetToken(Parser1.WRITE, 0); }
+		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
+		public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
+		public ITerminalNode PyCOMA() { return GetToken(Parser1.PyCOMA, 0); }
+		public ITerminalNode COMA() { return GetToken(Parser1.COMA, 0); }
+		public ITerminalNode NUMBER() { return GetToken(Parser1.NUMBER, 0); }
+		public WriteStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterWriteStatAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitWriteStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitWriteStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ForeachStatASTContext : StatementContext {
+		public ITerminalNode CICLO_FOREACH() { return GetToken(Parser1.CICLO_FOREACH, 0); }
+		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
+		public TypeContext type() {
+			return GetRuleContext<TypeContext>(0);
+		}
+		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
+		public ITerminalNode IN() { return GetToken(Parser1.IN, 0); }
+		public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
+		public StatementContext statement() {
+			return GetRuleContext<StatementContext>(0);
+		}
+		public ForeachStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterForeachStatAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitForeachStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitForeachStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class DesignatorStatASTContext : StatementContext {
+		public DesignatorContext designator() {
+			return GetRuleContext<DesignatorContext>(0);
+		}
+		public ITerminalNode PyCOMA() { return GetToken(Parser1.PyCOMA, 0); }
 		public ITerminalNode ASIGN() { return GetToken(Parser1.ASIGN, 0); }
 		public ExprContext expr() {
 			return GetRuleContext<ExprContext>(0);
@@ -666,10 +904,28 @@ public partial class Parser1 : Parser {
 		public ActParsContext actPars() {
 			return GetRuleContext<ActParsContext>(0);
 		}
+		public DesignatorStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterDesignatorStatAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitDesignatorStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDesignatorStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class IfStatASTContext : StatementContext {
 		public ITerminalNode CONDICION_IF() { return GetToken(Parser1.CONDICION_IF, 0); }
+		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
 		public ConditionContext condition() {
 			return GetRuleContext<ConditionContext>(0);
 		}
+		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
 		public StatementContext[] statement() {
 			return GetRuleContexts<StatementContext>();
 		}
@@ -677,43 +933,90 @@ public partial class Parser1 : Parser {
 			return GetRuleContext<StatementContext>(i);
 		}
 		public ITerminalNode CONDICION_ELSE() { return GetToken(Parser1.CONDICION_ELSE, 0); }
-		public ITerminalNode CICLO_FOR() { return GetToken(Parser1.CICLO_FOR, 0); }
-		public ITerminalNode CICLO_WHILE() { return GetToken(Parser1.CICLO_WHILE, 0); }
-		public ITerminalNode CICLO_FOREACH() { return GetToken(Parser1.CICLO_FOREACH, 0); }
-		public ITerminalNode PARIZQ() { return GetToken(Parser1.PARIZQ, 0); }
-		public TypeContext type() {
-			return GetRuleContext<TypeContext>(0);
-		}
-		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
-		public ITerminalNode IN() { return GetToken(Parser1.IN, 0); }
-		public ITerminalNode PARDER() { return GetToken(Parser1.PARDER, 0); }
-		public ITerminalNode BREAK() { return GetToken(Parser1.BREAK, 0); }
-		public ITerminalNode RETURN() { return GetToken(Parser1.RETURN, 0); }
-		public ITerminalNode PyComa() { return GetToken(Parser1.PyComa, 0); }
-		public ITerminalNode READ() { return GetToken(Parser1.READ, 0); }
-		public ITerminalNode WRITE() { return GetToken(Parser1.WRITE, 0); }
-		public ITerminalNode Expr() { return GetToken(Parser1.Expr, 0); }
-		public ITerminalNode COMA() { return GetToken(Parser1.COMA, 0); }
-		public ITerminalNode NUMBER() { return GetToken(Parser1.NUMBER, 0); }
-		public BlockContext block() {
-			return GetRuleContext<BlockContext>(0);
-		}
-		public StatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_statement; } }
+		public IfStatASTContext(StatementContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterStatement(this);
+			if (typedListener != null) typedListener.EnterIfStatAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitStatement(this);
+			if (typedListener != null) typedListener.ExitIfStatAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitIfStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ForStatASTContext : StatementContext {
+		public ITerminalNode CICLO_FOR() { return GetToken(Parser1.CICLO_FOR, 0); }
+		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
+		public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public ITerminalNode[] PyCOMA() { return GetTokens(Parser1.PyCOMA); }
+		public ITerminalNode PyCOMA(int i) {
+			return GetToken(Parser1.PyCOMA, i);
+		}
+		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
+		public StatementContext[] statement() {
+			return GetRuleContexts<StatementContext>();
+		}
+		public StatementContext statement(int i) {
+			return GetRuleContext<StatementContext>(i);
+		}
+		public ConditionContext condition() {
+			return GetRuleContext<ConditionContext>(0);
+		}
+		public ForStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterForStatAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitForStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitForStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class BlockStatASTContext : StatementContext {
+		public BlockContext block() {
+			return GetRuleContext<BlockContext>(0);
+		}
+		public BlockStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterBlockStatAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitBlockStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitBlockStatAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class BreakStatASTContext : StatementContext {
+		public ITerminalNode BREAK() { return GetToken(Parser1.BREAK, 0); }
+		public ITerminalNode PyCOMA() { return GetToken(Parser1.PyCOMA, 0); }
+		public BreakStatASTContext(StatementContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterBreakStatAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitBreakStatAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitBreakStatAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -722,152 +1025,194 @@ public partial class Parser1 : Parser {
 	public StatementContext statement() {
 		StatementContext _localctx = new StatementContext(_ctx, State);
 		EnterRule(_localctx, 14, RULE_statement);
+		int _la;
 		try {
-			State = 185;
+			State = 199;
 			switch (_input.La(1)) {
 			case IDENT:
+				_localctx = new DesignatorStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 117; designator();
-				State = 126;
+				State = 122; designator();
+				State = 132;
 				switch (_input.La(1)) {
 				case ASIGN:
 					{
-					State = 118; Match(ASIGN);
-					State = 119; expr();
+					State = 123; Match(ASIGN);
+					State = 124; expr();
 					}
 					break;
 				case PIZQ:
 					{
-					State = 120; Match(PIZQ);
-					{
-					State = 121; actPars();
+					State = 125; Match(PIZQ);
+					State = 127;
+					_la = _input.La(1);
+					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NEW) | (1L << TRUE) | (1L << FALSE) | (1L << PIZQ) | (1L << RESTA) | (1L << NUMBER) | (1L << IDENT) | (1L << CharConst))) != 0)) {
+						{
+						State = 126; actPars();
+						}
 					}
-					State = 122; Match(PDER);
+
+					State = 129; Match(PDER);
 					}
 					break;
 				case INCRE:
 					{
-					State = 124; Match(INCRE);
+					State = 130; Match(INCRE);
 					}
 					break;
 				case DECRE:
 					{
-					State = 125; Match(DECRE);
+					State = 131; Match(DECRE);
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
-				State = 128; Match(PyCOMA);
+				State = 134; Match(PyCOMA);
 				}
 				break;
 			case CONDICION_IF:
+				_localctx = new IfStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 130; Match(CONDICION_IF);
-				State = 131; Match(PIZQ);
-				State = 132; condition();
-				State = 133; Match(PDER);
-				State = 134; statement();
-				{
-				State = 135; Match(CONDICION_ELSE);
-				State = 136; statement();
+				State = 136; Match(CONDICION_IF);
+				State = 137; Match(PIZQ);
+				State = 138; condition();
+				State = 139; Match(PDER);
+				State = 140; statement();
+				State = 143;
+				switch ( Interpreter.AdaptivePredict(_input,12,_ctx) ) {
+				case 1:
+					{
+					State = 141; Match(CONDICION_ELSE);
+					State = 142; statement();
+					}
+					break;
 				}
 				}
 				break;
 			case CICLO_FOR:
+				_localctx = new ForStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 138; Match(CICLO_FOR);
-				State = 139; Match(PIZQ);
-				State = 140; expr();
-				State = 141; Match(PyCOMA);
-				{
-				State = 142; condition();
+				State = 145; Match(CICLO_FOR);
+				State = 146; Match(PIZQ);
+				State = 147; expr();
+				State = 148; Match(PyCOMA);
+				State = 150;
+				_la = _input.La(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NEW) | (1L << TRUE) | (1L << FALSE) | (1L << PIZQ) | (1L << RESTA) | (1L << NUMBER) | (1L << IDENT) | (1L << CharConst))) != 0)) {
+					{
+					State = 149; condition();
+					}
 				}
-				State = 143; Match(PyCOMA);
-				{
-				State = 144; statement();
+
+				State = 152; Match(PyCOMA);
+				State = 154;
+				_la = _input.La(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CONDICION_IF) | (1L << CICLO_WHILE) | (1L << CICLO_FOR) | (1L << CICLO_FOREACH) | (1L << BREAK) | (1L << RETURN) | (1L << READ) | (1L << WRITE) | (1L << PyCOMA) | (1L << COR_DER) | (1L << IDENT))) != 0)) {
+					{
+					State = 153; statement();
+					}
 				}
-				State = 145; Match(PDER);
-				State = 146; statement();
+
+				State = 156; Match(PDER);
+				State = 157; statement();
 				}
 				break;
 			case CICLO_WHILE:
+				_localctx = new WhileStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 148; Match(CICLO_WHILE);
-				State = 149; Match(PIZQ);
-				State = 150; condition();
-				State = 151; Match(PDER);
-				State = 152; statement();
+				State = 159; Match(CICLO_WHILE);
+				State = 160; Match(PIZQ);
+				State = 161; condition();
+				State = 162; Match(PDER);
+				State = 163; statement();
 				}
 				break;
 			case CICLO_FOREACH:
+				_localctx = new ForeachStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 154; Match(CICLO_FOREACH);
-				State = 155; Match(PARIZQ);
-				State = 156; type();
-				State = 157; Match(IDENT);
-				State = 158; Match(IN);
-				State = 159; expr();
-				State = 160; Match(PARDER);
-				State = 161; statement();
+				State = 165; Match(CICLO_FOREACH);
+				State = 166; Match(PIZQ);
+				State = 167; type();
+				State = 168; Match(IDENT);
+				State = 169; Match(IN);
+				State = 170; expr();
+				State = 171; Match(PDER);
+				State = 172; statement();
 				}
 				break;
 			case BREAK:
+				_localctx = new BreakStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 163; Match(BREAK);
-				State = 164; Match(PyCOMA);
+				State = 174; Match(BREAK);
+				State = 175; Match(PyCOMA);
 				}
 				break;
 			case RETURN:
+				_localctx = new ReturnStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 165; Match(RETURN);
-				{
-				State = 166; expr();
+				State = 176; Match(RETURN);
+				State = 178;
+				_la = _input.La(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NEW) | (1L << TRUE) | (1L << FALSE) | (1L << PIZQ) | (1L << RESTA) | (1L << NUMBER) | (1L << IDENT) | (1L << CharConst))) != 0)) {
+					{
+					State = 177; expr();
+					}
 				}
-				State = 167; Match(PyComa);
+
+				State = 180; Match(PyCOMA);
 				}
 				break;
 			case READ:
+				_localctx = new ReadStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 8);
 				{
-				State = 169; Match(READ);
-				State = 170; Match(PIZQ);
-				State = 171; designator();
-				State = 172; Match(PDER);
-				State = 173; Match(PyCOMA);
+				State = 181; Match(READ);
+				State = 182; Match(PIZQ);
+				State = 183; designator();
+				State = 184; Match(PDER);
+				State = 185; Match(PyCOMA);
 				}
 				break;
 			case WRITE:
+				_localctx = new WriteStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 9);
 				{
-				State = 175; Match(WRITE);
-				State = 176; Match(PIZQ);
-				State = 177; Match(Expr);
-				{
-				State = 178; Match(COMA);
-				State = 179; Match(NUMBER);
+				State = 187; Match(WRITE);
+				State = 188; Match(PIZQ);
+				State = 189; expr();
+				State = 192;
+				_la = _input.La(1);
+				if (_la==COMA) {
+					{
+					State = 190; Match(COMA);
+					State = 191; Match(NUMBER);
+					}
 				}
-				State = 181; Match(PDER);
-				State = 182; Match(PyCOMA);
+
+				State = 194; Match(PDER);
+				State = 195; Match(PyCOMA);
 				}
 				break;
 			case COR_DER:
+				_localctx = new BlockStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 10);
 				{
-				State = 183; block();
+				State = 197; block();
 				}
 				break;
 			case PyCOMA:
+				_localctx = new PyStatASTContext(_localctx);
 				EnterOuterAlt(_localctx, 11);
 				{
-				State = 184; Match(PyCOMA);
+				State = 198; Match(PyCOMA);
 				}
 				break;
 			default:
@@ -886,28 +1231,38 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class BlockContext : ParserRuleContext {
-		public ITerminalNode COR_DER() { return GetToken(Parser1.COR_DER, 0); }
-		public ITerminalNode COR_IZQ() { return GetToken(Parser1.COR_IZQ, 0); }
-		public ITerminalNode[] Statement() { return GetTokens(Parser1.Statement); }
-		public ITerminalNode Statement(int i) {
-			return GetToken(Parser1.Statement, i);
-		}
 		public BlockContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_block; } }
+	 
+		public BlockContext() { }
+		public virtual void CopyFrom(BlockContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class BlockASTContext : BlockContext {
+		public ITerminalNode COR_DER() { return GetToken(Parser1.COR_DER, 0); }
+		public ITerminalNode COR_IZQ() { return GetToken(Parser1.COR_IZQ, 0); }
+		public StatementContext[] statement() {
+			return GetRuleContexts<StatementContext>();
+		}
+		public StatementContext statement(int i) {
+			return GetRuleContext<StatementContext>(i);
+		}
+		public BlockASTContext(BlockContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterBlock(this);
+			if (typedListener != null) typedListener.EnterBlockAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitBlock(this);
+			if (typedListener != null) typedListener.ExitBlockAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBlock(this);
+			if (typedVisitor != null) return typedVisitor.VisitBlockAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -918,23 +1273,24 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 16, RULE_block);
 		int _la;
 		try {
+			_localctx = new BlockASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 187; Match(COR_DER);
-			State = 191;
+			State = 201; Match(COR_DER);
+			State = 205;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
-			while (_la==Statement) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CONDICION_IF) | (1L << CICLO_WHILE) | (1L << CICLO_FOR) | (1L << CICLO_FOREACH) | (1L << BREAK) | (1L << RETURN) | (1L << READ) | (1L << WRITE) | (1L << PyCOMA) | (1L << COR_DER) | (1L << IDENT))) != 0)) {
 				{
 				{
-				State = 188; Match(Statement);
+				State = 202; statement();
 				}
 				}
-				State = 193;
+				State = 207;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
-			State = 194; Match(COR_IZQ);
+			State = 208; Match(COR_IZQ);
 			}
 		}
 		catch (RecognitionException re) {
@@ -949,30 +1305,40 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class ActParsContext : ParserRuleContext {
-		public ITerminalNode[] Expr() { return GetTokens(Parser1.Expr); }
-		public ITerminalNode Expr(int i) {
-			return GetToken(Parser1.Expr, i);
-		}
-		public ITerminalNode[] COMA() { return GetTokens(Parser1.COMA); }
-		public ITerminalNode COMA(int i) {
-			return GetToken(Parser1.COMA, i);
-		}
 		public ActParsContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_actPars; } }
+	 
+		public ActParsContext() { }
+		public virtual void CopyFrom(ActParsContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ActParsASTContext : ActParsContext {
+		public ExprContext[] expr() {
+			return GetRuleContexts<ExprContext>();
+		}
+		public ExprContext expr(int i) {
+			return GetRuleContext<ExprContext>(i);
+		}
+		public ITerminalNode[] COMA() { return GetTokens(Parser1.COMA); }
+		public ITerminalNode COMA(int i) {
+			return GetToken(Parser1.COMA, i);
+		}
+		public ActParsASTContext(ActParsContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterActPars(this);
+			if (typedListener != null) typedListener.EnterActParsAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitActPars(this);
+			if (typedListener != null) typedListener.ExitActParsAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitActPars(this);
+			if (typedVisitor != null) return typedVisitor.VisitActParsAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -983,20 +1349,21 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 18, RULE_actPars);
 		int _la;
 		try {
+			_localctx = new ActParsASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 196; Match(Expr);
-			State = 201;
+			State = 210; expr();
+			State = 215;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
 			while (_la==COMA) {
 				{
 				{
-				State = 197; Match(COMA);
-				State = 198; Match(Expr);
+				State = 211; Match(COMA);
+				State = 212; expr();
 				}
 				}
-				State = 203;
+				State = 217;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
@@ -1014,30 +1381,40 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class ConditionContext : ParserRuleContext {
-		public ITerminalNode[] CondTerm() { return GetTokens(Parser1.CondTerm); }
-		public ITerminalNode CondTerm(int i) {
-			return GetToken(Parser1.CondTerm, i);
-		}
-		public ITerminalNode[] O() { return GetTokens(Parser1.O); }
-		public ITerminalNode O(int i) {
-			return GetToken(Parser1.O, i);
-		}
 		public ConditionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_condition; } }
+	 
+		public ConditionContext() { }
+		public virtual void CopyFrom(ConditionContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ConditionASTContext : ConditionContext {
+		public CondTermContext[] condTerm() {
+			return GetRuleContexts<CondTermContext>();
+		}
+		public CondTermContext condTerm(int i) {
+			return GetRuleContext<CondTermContext>(i);
+		}
+		public ITerminalNode[] O() { return GetTokens(Parser1.O); }
+		public ITerminalNode O(int i) {
+			return GetToken(Parser1.O, i);
+		}
+		public ConditionASTContext(ConditionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterCondition(this);
+			if (typedListener != null) typedListener.EnterConditionAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitCondition(this);
+			if (typedListener != null) typedListener.ExitConditionAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCondition(this);
+			if (typedVisitor != null) return typedVisitor.VisitConditionAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1048,20 +1425,21 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 20, RULE_condition);
 		int _la;
 		try {
+			_localctx = new ConditionASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 204; Match(CondTerm);
-			State = 209;
+			State = 218; condTerm();
+			State = 223;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
 			while (_la==O) {
 				{
 				{
-				State = 205; Match(O);
-				State = 206; Match(CondTerm);
+				State = 219; Match(O);
+				State = 220; condTerm();
 				}
 				}
-				State = 211;
+				State = 225;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
@@ -1079,30 +1457,40 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class CondTermContext : ParserRuleContext {
-		public ITerminalNode[] CondFact() { return GetTokens(Parser1.CondFact); }
-		public ITerminalNode CondFact(int i) {
-			return GetToken(Parser1.CondFact, i);
-		}
-		public ITerminalNode[] Y() { return GetTokens(Parser1.Y); }
-		public ITerminalNode Y(int i) {
-			return GetToken(Parser1.Y, i);
-		}
 		public CondTermContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_condTerm; } }
+	 
+		public CondTermContext() { }
+		public virtual void CopyFrom(CondTermContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CondTermASTContext : CondTermContext {
+		public CondFactContext[] condFact() {
+			return GetRuleContexts<CondFactContext>();
+		}
+		public CondFactContext condFact(int i) {
+			return GetRuleContext<CondFactContext>(i);
+		}
+		public ITerminalNode[] Y() { return GetTokens(Parser1.Y); }
+		public ITerminalNode Y(int i) {
+			return GetToken(Parser1.Y, i);
+		}
+		public CondTermASTContext(CondTermContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterCondTerm(this);
+			if (typedListener != null) typedListener.EnterCondTermAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitCondTerm(this);
+			if (typedListener != null) typedListener.ExitCondTermAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCondTerm(this);
+			if (typedVisitor != null) return typedVisitor.VisitCondTermAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1113,20 +1501,21 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 22, RULE_condTerm);
 		int _la;
 		try {
+			_localctx = new CondTermASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 212; Match(CondFact);
-			State = 217;
+			State = 226; condFact();
+			State = 231;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
 			while (_la==Y) {
 				{
 				{
-				State = 213; Match(Y);
-				State = 214; Match(CondFact);
+				State = 227; Match(Y);
+				State = 228; condFact();
 				}
 				}
-				State = 219;
+				State = 233;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
@@ -1144,27 +1533,39 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class CondFactContext : ParserRuleContext {
-		public ITerminalNode[] Expr() { return GetTokens(Parser1.Expr); }
-		public ITerminalNode Expr(int i) {
-			return GetToken(Parser1.Expr, i);
-		}
-		public ITerminalNode Relop() { return GetToken(Parser1.Relop, 0); }
 		public CondFactContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_condFact; } }
+	 
+		public CondFactContext() { }
+		public virtual void CopyFrom(CondFactContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CondFactASTContext : CondFactContext {
+		public ExprContext[] expr() {
+			return GetRuleContexts<ExprContext>();
+		}
+		public ExprContext expr(int i) {
+			return GetRuleContext<ExprContext>(i);
+		}
+		public RelopContext relop() {
+			return GetRuleContext<RelopContext>(0);
+		}
+		public CondFactASTContext(CondFactContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterCondFact(this);
+			if (typedListener != null) typedListener.EnterCondFactAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitCondFact(this);
+			if (typedListener != null) typedListener.ExitCondFactAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCondFact(this);
+			if (typedVisitor != null) return typedVisitor.VisitCondFactAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1174,11 +1575,12 @@ public partial class Parser1 : Parser {
 		CondFactContext _localctx = new CondFactContext(_ctx, State);
 		EnterRule(_localctx, 24, RULE_condFact);
 		try {
+			_localctx = new CondFactASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 220; Match(Expr);
-			State = 221; Match(Relop);
-			State = 222; Match(Expr);
+			State = 234; expr();
+			State = 235; relop();
+			State = 236; expr();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1193,31 +1595,43 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class ExprContext : ParserRuleContext {
-		public ITerminalNode[] Term() { return GetTokens(Parser1.Term); }
-		public ITerminalNode Term(int i) {
-			return GetToken(Parser1.Term, i);
-		}
-		public ITerminalNode RESTA() { return GetToken(Parser1.RESTA, 0); }
-		public ITerminalNode[] Addop() { return GetTokens(Parser1.Addop); }
-		public ITerminalNode Addop(int i) {
-			return GetToken(Parser1.Addop, i);
-		}
 		public ExprContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_expr; } }
+	 
+		public ExprContext() { }
+		public virtual void CopyFrom(ExprContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ExprASTContext : ExprContext {
+		public TermContext[] term() {
+			return GetRuleContexts<TermContext>();
+		}
+		public TermContext term(int i) {
+			return GetRuleContext<TermContext>(i);
+		}
+		public ITerminalNode RESTA() { return GetToken(Parser1.RESTA, 0); }
+		public AddopContext[] addop() {
+			return GetRuleContexts<AddopContext>();
+		}
+		public AddopContext addop(int i) {
+			return GetRuleContext<AddopContext>(i);
+		}
+		public ExprASTContext(ExprContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterExpr(this);
+			if (typedListener != null) typedListener.EnterExprAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitExpr(this);
+			if (typedListener != null) typedListener.ExitExprAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExpr(this);
+			if (typedVisitor != null) return typedVisitor.VisitExprAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1228,23 +1642,29 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 26, RULE_expr);
 		int _la;
 		try {
+			_localctx = new ExprASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			{
-			State = 224; Match(RESTA);
+			State = 239;
+			_la = _input.La(1);
+			if (_la==RESTA) {
+				{
+				State = 238; Match(RESTA);
+				}
 			}
-			State = 225; Match(Term);
-			State = 230;
+
+			State = 241; term();
+			State = 247;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
-			while (_la==Addop) {
+			while (_la==SUMA || _la==RESTA) {
 				{
 				{
-				State = 226; Match(Addop);
-				State = 227; Match(Term);
+				State = 242; addop();
+				State = 243; term();
 				}
 				}
-				State = 232;
+				State = 249;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
@@ -1262,30 +1682,42 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class TermContext : ParserRuleContext {
-		public ITerminalNode[] Factor() { return GetTokens(Parser1.Factor); }
-		public ITerminalNode Factor(int i) {
-			return GetToken(Parser1.Factor, i);
-		}
-		public ITerminalNode[] Mulop() { return GetTokens(Parser1.Mulop); }
-		public ITerminalNode Mulop(int i) {
-			return GetToken(Parser1.Mulop, i);
-		}
 		public TermContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_term; } }
+	 
+		public TermContext() { }
+		public virtual void CopyFrom(TermContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class TermASTContext : TermContext {
+		public FactorContext[] factor() {
+			return GetRuleContexts<FactorContext>();
+		}
+		public FactorContext factor(int i) {
+			return GetRuleContext<FactorContext>(i);
+		}
+		public MulopContext[] mulop() {
+			return GetRuleContexts<MulopContext>();
+		}
+		public MulopContext mulop(int i) {
+			return GetRuleContext<MulopContext>(i);
+		}
+		public TermASTContext(TermContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterTerm(this);
+			if (typedListener != null) typedListener.EnterTermAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitTerm(this);
+			if (typedListener != null) typedListener.ExitTermAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTerm(this);
+			if (typedVisitor != null) return typedVisitor.VisitTermAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1296,20 +1728,21 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 28, RULE_term);
 		int _la;
 		try {
+			_localctx = new TermASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 233; Match(Factor);
-			State = 238;
+			State = 250; factor();
+			State = 256;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
-			while (_la==Mulop) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MUL) | (1L << DIV) | (1L << DIVMOD))) != 0)) {
 				{
 				{
-				State = 234; Match(Mulop);
-				State = 235; Match(Factor);
+				State = 251; mulop();
+				State = 252; factor();
 				}
 				}
-				State = 240;
+				State = 258;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
@@ -1327,41 +1760,134 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class FactorContext : ParserRuleContext {
-		public ITerminalNode Designator() { return GetToken(Parser1.Designator, 0); }
-		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
-		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
-		public ITerminalNode ActPars() { return GetToken(Parser1.ActPars, 0); }
-		public ITerminalNode NUMBER() { return GetToken(Parser1.NUMBER, 0); }
-		public ITerminalNode CHARCONST() { return GetToken(Parser1.CHARCONST, 0); }
-		public ITerminalNode[] TRUE() { return GetTokens(Parser1.TRUE); }
-		public ITerminalNode TRUE(int i) {
-			return GetToken(Parser1.TRUE, i);
-		}
-		public ITerminalNode[] FALSE() { return GetTokens(Parser1.FALSE); }
-		public ITerminalNode FALSE(int i) {
-			return GetToken(Parser1.FALSE, i);
-		}
-		public ITerminalNode NEW() { return GetToken(Parser1.NEW, 0); }
-		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
-		public ITerminalNode PCUADRADO_IZQ() { return GetToken(Parser1.PCUADRADO_IZQ, 0); }
-		public ITerminalNode Expr() { return GetToken(Parser1.Expr, 0); }
-		public ITerminalNode PCUADRADO_DER() { return GetToken(Parser1.PCUADRADO_DER, 0); }
 		public FactorContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_factor; } }
+	 
+		public FactorContext() { }
+		public virtual void CopyFrom(FactorContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ExprFactorASTContext : FactorContext {
+		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
+		public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
+		public ExprFactorASTContext(FactorContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterFactor(this);
+			if (typedListener != null) typedListener.EnterExprFactorAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitFactor(this);
+			if (typedListener != null) typedListener.ExitExprFactorAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitFactor(this);
+			if (typedVisitor != null) return typedVisitor.VisitExprFactorAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class TruefalseFactorASTContext : FactorContext {
+		public ITerminalNode TRUE() { return GetToken(Parser1.TRUE, 0); }
+		public ITerminalNode FALSE() { return GetToken(Parser1.FALSE, 0); }
+		public TruefalseFactorASTContext(FactorContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterTruefalseFactorAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitTruefalseFactorAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTruefalseFactorAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class NewFactorASTContext : FactorContext {
+		public ITerminalNode NEW() { return GetToken(Parser1.NEW, 0); }
+		public ITerminalNode IDENT() { return GetToken(Parser1.IDENT, 0); }
+		public ITerminalNode PCUADRADO_IZQ() { return GetToken(Parser1.PCUADRADO_IZQ, 0); }
+		public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public ITerminalNode PCUADRADO_DER() { return GetToken(Parser1.PCUADRADO_DER, 0); }
+		public NewFactorASTContext(FactorContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterNewFactorAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitNewFactorAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitNewFactorAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class DesignatorFactorASTContext : FactorContext {
+		public DesignatorContext designator() {
+			return GetRuleContext<DesignatorContext>(0);
+		}
+		public ITerminalNode PIZQ() { return GetToken(Parser1.PIZQ, 0); }
+		public ITerminalNode PDER() { return GetToken(Parser1.PDER, 0); }
+		public ActParsContext actPars() {
+			return GetRuleContext<ActParsContext>(0);
+		}
+		public DesignatorFactorASTContext(FactorContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterDesignatorFactorAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitDesignatorFactorAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDesignatorFactorAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class NumberFactorASTContext : FactorContext {
+		public ITerminalNode NUMBER() { return GetToken(Parser1.NUMBER, 0); }
+		public NumberFactorASTContext(FactorContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterNumberFactorAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitNumberFactorAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitNumberFactorAST(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CharconstFactorASTContext : FactorContext {
+		public ITerminalNode CharConst() { return GetToken(Parser1.CharConst, 0); }
+		public CharconstFactorASTContext(FactorContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.EnterCharconstFactorAST(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IParser1Listener typedListener = listener as IParser1Listener;
+			if (typedListener != null) typedListener.ExitCharconstFactorAST(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCharconstFactorAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1372,77 +1898,85 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 30, RULE_factor);
 		int _la;
 		try {
-			State = 261;
+			State = 282;
 			switch (_input.La(1)) {
-			case Designator:
+			case IDENT:
+				_localctx = new DesignatorFactorASTContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 241; Match(Designator);
-				{
-				State = 242; Match(PIZQ);
-				{
-				State = 243; Match(ActPars);
+				State = 259; designator();
+				State = 265;
+				_la = _input.La(1);
+				if (_la==PIZQ) {
+					{
+					State = 260; Match(PIZQ);
+					State = 262;
+					_la = _input.La(1);
+					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NEW) | (1L << TRUE) | (1L << FALSE) | (1L << PIZQ) | (1L << RESTA) | (1L << NUMBER) | (1L << IDENT) | (1L << CharConst))) != 0)) {
+						{
+						State = 261; actPars();
+						}
+					}
+
+					State = 264; Match(PDER);
+					}
 				}
-				State = 244; Match(PDER);
-				}
+
 				}
 				break;
 			case NUMBER:
+				_localctx = new NumberFactorASTContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 245; Match(NUMBER);
+				State = 267; Match(NUMBER);
 				}
 				break;
-			case CHARCONST:
+			case CharConst:
+				_localctx = new CharconstFactorASTContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 246; Match(CHARCONST);
+				State = 268; Match(CharConst);
 				}
 				break;
-			case Eof:
 			case TRUE:
 			case FALSE:
+				_localctx = new TruefalseFactorASTContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 250;
-				_errHandler.Sync(this);
+				State = 269;
 				_la = _input.La(1);
-				while (_la==TRUE || _la==FALSE) {
-					{
-					{
-					State = 247;
-					_la = _input.La(1);
-					if ( !(_la==TRUE || _la==FALSE) ) {
-					_errHandler.RecoverInline(this);
-					} else {
-						Consume();
-					}
-					}
-					}
-					State = 252;
-					_errHandler.Sync(this);
-					_la = _input.La(1);
+				if ( !(_la==TRUE || _la==FALSE) ) {
+				_errHandler.RecoverInline(this);
+				} else {
+					Consume();
 				}
 				}
 				break;
 			case NEW:
+				_localctx = new NewFactorASTContext(_localctx);
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 253; Match(NEW);
-				State = 254; Match(IDENT);
-				{
-				State = 255; Match(PCUADRADO_IZQ);
-				State = 256; Match(Expr);
-				State = 257; Match(PCUADRADO_DER);
+				State = 270; Match(NEW);
+				State = 271; Match(IDENT);
+				State = 276;
+				_la = _input.La(1);
+				if (_la==PCUADRADO_IZQ) {
+					{
+					State = 272; Match(PCUADRADO_IZQ);
+					State = 273; expr();
+					State = 274; Match(PCUADRADO_DER);
+					}
 				}
+
 				}
 				break;
 			case PIZQ:
+				_localctx = new ExprFactorASTContext(_localctx);
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 258; Match(PIZQ);
-				State = 259; Match(Expr);
-				State = 260; Match(PDER);
+				State = 278; Match(PIZQ);
+				State = 279; expr();
+				State = 280; Match(PDER);
 				}
 				break;
 			default:
@@ -1461,6 +1995,18 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class DesignatorContext : ParserRuleContext {
+		public DesignatorContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_designator; } }
+	 
+		public DesignatorContext() { }
+		public virtual void CopyFrom(DesignatorContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class DesignatorASTContext : DesignatorContext {
 		public ITerminalNode[] IDENT() { return GetTokens(Parser1.IDENT); }
 		public ITerminalNode IDENT(int i) {
 			return GetToken(Parser1.IDENT, i);
@@ -1473,30 +2019,28 @@ public partial class Parser1 : Parser {
 		public ITerminalNode PCUADRADO_IZQ(int i) {
 			return GetToken(Parser1.PCUADRADO_IZQ, i);
 		}
-		public ITerminalNode[] Expr() { return GetTokens(Parser1.Expr); }
-		public ITerminalNode Expr(int i) {
-			return GetToken(Parser1.Expr, i);
+		public ExprContext[] expr() {
+			return GetRuleContexts<ExprContext>();
+		}
+		public ExprContext expr(int i) {
+			return GetRuleContext<ExprContext>(i);
 		}
 		public ITerminalNode[] PCUADRADO_DER() { return GetTokens(Parser1.PCUADRADO_DER); }
 		public ITerminalNode PCUADRADO_DER(int i) {
 			return GetToken(Parser1.PCUADRADO_DER, i);
 		}
-		public DesignatorContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_designator; } }
+		public DesignatorASTContext(DesignatorContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterDesignator(this);
+			if (typedListener != null) typedListener.EnterDesignatorAST(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitDesignator(this);
+			if (typedListener != null) typedListener.ExitDesignatorAST(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitDesignator(this);
+			if (typedVisitor != null) return typedVisitor.VisitDesignatorAST(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1507,34 +2051,35 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 32, RULE_designator);
 		int _la;
 		try {
+			_localctx = new DesignatorASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 263; Match(IDENT);
-			State = 271;
+			State = 284; Match(IDENT);
+			State = 293;
 			_errHandler.Sync(this);
 			_la = _input.La(1);
 			while (_la==PUNTO || _la==PCUADRADO_IZQ) {
 				{
-				State = 269;
+				State = 291;
 				switch (_input.La(1)) {
 				case PUNTO:
 					{
-					State = 264; Match(PUNTO);
-					State = 265; Match(IDENT);
+					State = 285; Match(PUNTO);
+					State = 286; Match(IDENT);
 					}
 					break;
 				case PCUADRADO_IZQ:
 					{
-					State = 266; Match(PCUADRADO_IZQ);
-					State = 267; Match(Expr);
-					State = 268; Match(PCUADRADO_DER);
+					State = 287; Match(PCUADRADO_IZQ);
+					State = 288; expr();
+					State = 289; Match(PCUADRADO_DER);
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
 				}
-				State = 273;
+				State = 295;
 				_errHandler.Sync(this);
 				_la = _input.La(1);
 			}
@@ -1586,7 +2131,7 @@ public partial class Parser1 : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 274;
+			State = 296;
 			_la = _input.La(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << COMPARACION) | (1L << DIFERENTE) | (1L << MENOR) | (1L << MENORIGUAL) | (1L << MAYOR) | (1L << MAYORIGUAL))) != 0)) ) {
 			_errHandler.RecoverInline(this);
@@ -1637,7 +2182,7 @@ public partial class Parser1 : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 276;
+			State = 298;
 			_la = _input.La(1);
 			if ( !(_la==SUMA || _la==RESTA) ) {
 			_errHandler.RecoverInline(this);
@@ -1685,24 +2230,17 @@ public partial class Parser1 : Parser {
 	public MulopContext mulop() {
 		MulopContext _localctx = new MulopContext(_ctx, State);
 		EnterRule(_localctx, 38, RULE_mulop);
+		int _la;
 		try {
-			State = 281;
-			switch (_input.La(1)) {
-			case MUL:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 278; Match(MUL);
-				}
-				break;
-			case DIV:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 279; Match(DIV);
-				State = 280; Match(DIVMOD);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 300;
+			_la = _input.La(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MUL) | (1L << DIV) | (1L << DIVMOD))) != 0)) ) {
+			_errHandler.RecoverInline(this);
+			} else {
+				Consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1717,113 +2255,125 @@ public partial class Parser1 : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3Q\x11E\x4\x2\t\x2"+
+		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3;\x131\x4\x2\t\x2"+
 		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t"+
 		"\t\x4\n\t\n\x4\v\t\v\x4\f\t\f\x4\r\t\r\x4\xE\t\xE\x4\xF\t\xF\x4\x10\t"+
 		"\x10\x4\x11\t\x11\x4\x12\t\x12\x4\x13\t\x13\x4\x14\t\x14\x4\x15\t\x15"+
-		"\x3\x2\x3\x2\x3\x2\a\x2.\n\x2\f\x2\xE\x2\x31\v\x2\x3\x2\x3\x2\a\x2\x35"+
-		"\n\x2\f\x2\xE\x2\x38\v\x2\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
-		"\x3\x3\x3\x3\x4\x3\x4\x3\x4\x3\x4\a\x4G\n\x4\f\x4\xE\x4J\v\x4\x3\x4\x3"+
-		"\x4\x3\x5\x3\x5\x3\x5\x3\x5\a\x5R\n\x5\f\x5\xE\x5U\v\x5\x3\x5\x3\x5\x3"+
-		"\x6\x3\x6\x5\x6[\n\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\a\x6\x62\n\x6\f\x6"+
-		"\xE\x6\x65\v\x6\x3\x6\x3\x6\x3\a\x3\a\x3\a\x3\a\x3\a\x3\a\a\ao\n\a\f\a"+
-		"\xE\ar\v\a\x3\b\x3\b\x3\b\x3\b\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t"+
-		"\x3\t\x5\t\x81\n\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3"+
+		"\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\a\x2\x30\n\x2\f\x2\xE\x2\x33\v\x2\x3\x2"+
+		"\x3\x2\a\x2\x37\n\x2\f\x2\xE\x2:\v\x2\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\x3\x3\x3\x3\x3\x4\x3\x4\x3\x4\x3\x4\a\x4I\n\x4\f\x4\xE\x4L\v"+
+		"\x4\x3\x4\x3\x4\x3\x5\x3\x5\x3\x5\x3\x5\a\x5T\n\x5\f\x5\xE\x5W\v\x5\x3"+
+		"\x5\x3\x5\x3\x6\x3\x6\x5\x6]\n\x6\x3\x6\x3\x6\x3\x6\x5\x6\x62\n\x6\x3"+
+		"\x6\x3\x6\a\x6\x66\n\x6\f\x6\xE\x6i\v\x6\x3\x6\x3\x6\x3\a\x3\a\x3\a\x3"+
+		"\a\x3\a\x3\a\a\as\n\a\f\a\xE\av\v\a\x3\b\x3\b\x3\b\x5\b{\n\b\x3\t\x3\t"+
+		"\x3\t\x3\t\x3\t\x5\t\x82\n\t\x3\t\x3\t\x3\t\x5\t\x87\n\t\x3\t\x3\t\x3"+
+		"\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x5\t\x92\n\t\x3\t\x3\t\x3\t\x3\t\x3\t"+
+		"\x5\t\x99\n\t\x3\t\x3\t\x5\t\x9D\n\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3"+
 		"\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3"+
-		"\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3"+
-		"\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3"+
-		"\t\x3\t\x3\t\x3\t\x3\t\x5\t\xBC\n\t\x3\n\x3\n\a\n\xC0\n\n\f\n\xE\n\xC3"+
-		"\v\n\x3\n\x3\n\x3\v\x3\v\x3\v\a\v\xCA\n\v\f\v\xE\v\xCD\v\v\x3\f\x3\f\x3"+
-		"\f\a\f\xD2\n\f\f\f\xE\f\xD5\v\f\x3\r\x3\r\x3\r\a\r\xDA\n\r\f\r\xE\r\xDD"+
-		"\v\r\x3\xE\x3\xE\x3\xE\x3\xE\x3\xF\x3\xF\x3\xF\x3\xF\a\xF\xE7\n\xF\f\xF"+
-		"\xE\xF\xEA\v\xF\x3\x10\x3\x10\x3\x10\a\x10\xEF\n\x10\f\x10\xE\x10\xF2"+
-		"\v\x10\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\a\x11\xFB\n\x11"+
-		"\f\x11\xE\x11\xFE\v\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11"+
-		"\x3\x11\x5\x11\x108\n\x11\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\x3\x12\a"+
-		"\x12\x110\n\x12\f\x12\xE\x12\x113\v\x12\x3\x13\x3\x13\x3\x14\x3\x14\x3"+
-		"\x15\x3\x15\x3\x15\x5\x15\x11C\n\x15\x3\x15\x2\x2\x2\x16\x2\x2\x4\x2\x6"+
-		"\x2\b\x2\n\x2\f\x2\xE\x2\x10\x2\x12\x2\x14\x2\x16\x2\x18\x2\x1A\x2\x1C"+
-		"\x2\x1E\x2 \x2\"\x2$\x2&\x2(\x2\x2\a\x3\x2>@\x4\x2\x37\x37\x42\x42\x3"+
-		"\x2\x1A\x1B\x3\x2&+\x4\x2!!$$\x12C\x2*\x3\x2\x2\x2\x4;\x3\x2\x2\x2\x6"+
-		"\x42\x3\x2\x2\x2\bM\x3\x2\x2\x2\nZ\x3\x2\x2\x2\fh\x3\x2\x2\x2\xEs\x3\x2"+
-		"\x2\x2\x10\xBB\x3\x2\x2\x2\x12\xBD\x3\x2\x2\x2\x14\xC6\x3\x2\x2\x2\x16"+
-		"\xCE\x3\x2\x2\x2\x18\xD6\x3\x2\x2\x2\x1A\xDE\x3\x2\x2\x2\x1C\xE2\x3\x2"+
-		"\x2\x2\x1E\xEB\x3\x2\x2\x2 \x107\x3\x2\x2\x2\"\x109\x3\x2\x2\x2$\x114"+
-		"\x3\x2\x2\x2&\x116\x3\x2\x2\x2(\x11B\x3\x2\x2\x2*+\a\x17\x2\x2+/\a\x39"+
-		"\x2\x2,.\t\x2\x2\x2-,\x3\x2\x2\x2.\x31\x3\x2\x2\x2/-\x3\x2\x2\x2/\x30"+
-		"\x3\x2\x2\x2\x30\x32\x3\x2\x2\x2\x31/\x3\x2\x2\x2\x32\x36\a\x33\x2\x2"+
-		"\x33\x35\a\x41\x2\x2\x34\x33\x3\x2\x2\x2\x35\x38\x3\x2\x2\x2\x36\x34\x3"+
-		"\x2\x2\x2\x36\x37\x3\x2\x2\x2\x37\x39\x3\x2\x2\x2\x38\x36\x3\x2\x2\x2"+
-		"\x39:\a\x34\x2\x2:\x3\x3\x2\x2\x2;<\a\x19\x2\x2<=\x5\xE\b\x2=>\a\x39\x2"+
-		"\x2>?\a\x1E\x2\x2?@\t\x3\x2\x2@\x41\a\x1C\x2\x2\x41\x5\x3\x2\x2\x2\x42"+
-		"\x43\x5\xE\b\x2\x43H\a\x39\x2\x2\x44\x45\a\x1D\x2\x2\x45G\a\x39\x2\x2"+
-		"\x46\x44\x3\x2\x2\x2GJ\x3\x2\x2\x2H\x46\x3\x2\x2\x2HI\x3\x2\x2\x2IK\x3"+
-		"\x2\x2\x2JH\x3\x2\x2\x2KL\a\x43\x2\x2L\a\x3\x2\x2\x2MN\a\x44\x2\x2NO\a"+
-		"\x39\x2\x2OS\a\x33\x2\x2PR\a?\x2\x2QP\x3\x2\x2\x2RU\x3\x2\x2\x2SQ\x3\x2"+
-		"\x2\x2ST\x3\x2\x2\x2TV\x3\x2\x2\x2US\x3\x2\x2\x2VW\a\x34\x2\x2W\t\x3\x2"+
-		"\x2\x2X[\x5\xE\b\x2Y[\a\f\x2\x2ZX\x3\x2\x2\x2ZY\x3\x2\x2\x2[\\\x3\x2\x2"+
-		"\x2\\]\a\x39\x2\x2]^\a\x1F\x2\x2^_\x5\f\a\x2_\x63\a \x2\x2`\x62\x5\x6"+
-		"\x4\x2\x61`\x3\x2\x2\x2\x62\x65\x3\x2\x2\x2\x63\x61\x3\x2\x2\x2\x63\x64"+
-		"\x3\x2\x2\x2\x64\x66\x3\x2\x2\x2\x65\x63\x3\x2\x2\x2\x66g\x5\x12\n\x2"+
-		"g\v\x3\x2\x2\x2hi\x5\xE\b\x2ip\a\x39\x2\x2jk\a\x1D\x2\x2kl\x5\xE\b\x2"+
-		"lm\a\x39\x2\x2mo\x3\x2\x2\x2nj\x3\x2\x2\x2or\x3\x2\x2\x2pn\x3\x2\x2\x2"+
-		"pq\x3\x2\x2\x2q\r\x3\x2\x2\x2rp\x3\x2\x2\x2st\a\x39\x2\x2tu\a\x31\x2\x2"+
-		"uv\a\x32\x2\x2v\xF\x3\x2\x2\x2w\x80\x5\"\x12\x2xy\a\x1E\x2\x2y\x81\x5"+
-		"\x1C\xF\x2z{\a\x1F\x2\x2{|\x5\x14\v\x2|}\a \x2\x2}\x81\x3\x2\x2\x2~\x81"+
-		"\a.\x2\x2\x7F\x81\a/\x2\x2\x80x\x3\x2\x2\x2\x80z\x3\x2\x2\x2\x80~\x3\x2"+
-		"\x2\x2\x80\x7F\x3\x2\x2\x2\x81\x82\x3\x2\x2\x2\x82\x83\a\x1C\x2\x2\x83"+
-		"\xBC\x3\x2\x2\x2\x84\x85\a\r\x2\x2\x85\x86\a\x1F\x2\x2\x86\x87\x5\x16"+
-		"\f\x2\x87\x88\a \x2\x2\x88\x89\x5\x10\t\x2\x89\x8A\a\xF\x2\x2\x8A\x8B"+
-		"\x5\x10\t\x2\x8B\xBC\x3\x2\x2\x2\x8C\x8D\a\x11\x2\x2\x8D\x8E\a\x1F\x2"+
-		"\x2\x8E\x8F\x5\x1C\xF\x2\x8F\x90\a\x1C\x2\x2\x90\x91\x5\x16\f\x2\x91\x92"+
-		"\a\x1C\x2\x2\x92\x93\x5\x10\t\x2\x93\x94\a \x2\x2\x94\x95\x5\x10\t\x2"+
-		"\x95\xBC\x3\x2\x2\x2\x96\x97\a\x10\x2\x2\x97\x98\a\x1F\x2\x2\x98\x99\x5"+
-		"\x16\f\x2\x99\x9A\a \x2\x2\x9A\x9B\x5\x10\t\x2\x9B\xBC\x3\x2\x2\x2\x9C"+
-		"\x9D\a\x12\x2\x2\x9D\x9E\a\x45\x2\x2\x9E\x9F\x5\xE\b\x2\x9F\xA0\a\x39"+
-		"\x2\x2\xA0\xA1\a\a\x2\x2\xA1\xA2\x5\x1C\xF\x2\xA2\xA3\a\x46\x2\x2\xA3"+
-		"\xA4\x5\x10\t\x2\xA4\xBC\x3\x2\x2\x2\xA5\xA6\a\x13\x2\x2\xA6\xBC\a\x1C"+
-		"\x2\x2\xA7\xA8\a\x14\x2\x2\xA8\xA9\x5\x1C\xF\x2\xA9\xAA\a\x43\x2\x2\xAA"+
-		"\xBC\x3\x2\x2\x2\xAB\xAC\a\x15\x2\x2\xAC\xAD\a\x1F\x2\x2\xAD\xAE\x5\""+
-		"\x12\x2\xAE\xAF\a \x2\x2\xAF\xB0\a\x1C\x2\x2\xB0\xBC\x3\x2\x2\x2\xB1\xB2"+
-		"\a\x16\x2\x2\xB2\xB3\a\x1F\x2\x2\xB3\xB4\aG\x2\x2\xB4\xB5\a\x1D\x2\x2"+
-		"\xB5\xB6\a\x37\x2\x2\xB6\xB7\x3\x2\x2\x2\xB7\xB8\a \x2\x2\xB8\xBC\a\x1C"+
-		"\x2\x2\xB9\xBC\x5\x12\n\x2\xBA\xBC\a\x1C\x2\x2\xBBw\x3\x2\x2\x2\xBB\x84"+
-		"\x3\x2\x2\x2\xBB\x8C\x3\x2\x2\x2\xBB\x96\x3\x2\x2\x2\xBB\x9C\x3\x2\x2"+
-		"\x2\xBB\xA5\x3\x2\x2\x2\xBB\xA7\x3\x2\x2\x2\xBB\xAB\x3\x2\x2\x2\xBB\xB1"+
-		"\x3\x2\x2\x2\xBB\xB9\x3\x2\x2\x2\xBB\xBA\x3\x2\x2\x2\xBC\x11\x3\x2\x2"+
-		"\x2\xBD\xC1\a\x33\x2\x2\xBE\xC0\aH\x2\x2\xBF\xBE\x3\x2\x2\x2\xC0\xC3\x3"+
-		"\x2\x2\x2\xC1\xBF\x3\x2\x2\x2\xC1\xC2\x3\x2\x2\x2\xC2\xC4\x3\x2\x2\x2"+
-		"\xC3\xC1\x3\x2\x2\x2\xC4\xC5\a\x34\x2\x2\xC5\x13\x3\x2\x2\x2\xC6\xCB\a"+
-		"G\x2\x2\xC7\xC8\a\x1D\x2\x2\xC8\xCA\aG\x2\x2\xC9\xC7\x3\x2\x2\x2\xCA\xCD"+
-		"\x3\x2\x2\x2\xCB\xC9\x3\x2\x2\x2\xCB\xCC\x3\x2\x2\x2\xCC\x15\x3\x2\x2"+
-		"\x2\xCD\xCB\x3\x2\x2\x2\xCE\xD3\aI\x2\x2\xCF\xD0\a,\x2\x2\xD0\xD2\aI\x2"+
-		"\x2\xD1\xCF\x3\x2\x2\x2\xD2\xD5\x3\x2\x2\x2\xD3\xD1\x3\x2\x2\x2\xD3\xD4"+
-		"\x3\x2\x2\x2\xD4\x17\x3\x2\x2\x2\xD5\xD3\x3\x2\x2\x2\xD6\xDB\aJ\x2\x2"+
-		"\xD7\xD8\a-\x2\x2\xD8\xDA\aJ\x2\x2\xD9\xD7\x3\x2\x2\x2\xDA\xDD\x3\x2\x2"+
-		"\x2\xDB\xD9\x3\x2\x2\x2\xDB\xDC\x3\x2\x2\x2\xDC\x19\x3\x2\x2\x2\xDD\xDB"+
-		"\x3\x2\x2\x2\xDE\xDF\aG\x2\x2\xDF\xE0\aK\x2\x2\xE0\xE1\aG\x2\x2\xE1\x1B"+
-		"\x3\x2\x2\x2\xE2\xE3\a$\x2\x2\xE3\xE8\aL\x2\x2\xE4\xE5\aM\x2\x2\xE5\xE7"+
-		"\aL\x2\x2\xE6\xE4\x3\x2\x2\x2\xE7\xEA\x3\x2\x2\x2\xE8\xE6\x3\x2\x2\x2"+
-		"\xE8\xE9\x3\x2\x2\x2\xE9\x1D\x3\x2\x2\x2\xEA\xE8\x3\x2\x2\x2\xEB\xF0\a"+
-		"N\x2\x2\xEC\xED\aO\x2\x2\xED\xEF\aN\x2\x2\xEE\xEC\x3\x2\x2\x2\xEF\xF2"+
-		"\x3\x2\x2\x2\xF0\xEE\x3\x2\x2\x2\xF0\xF1\x3\x2\x2\x2\xF1\x1F\x3\x2\x2"+
-		"\x2\xF2\xF0\x3\x2\x2\x2\xF3\xF4\aP\x2\x2\xF4\xF5\a\x1F\x2\x2\xF5\xF6\a"+
-		"Q\x2\x2\xF6\x108\a \x2\x2\xF7\x108\a\x37\x2\x2\xF8\x108\a\x42\x2\x2\xF9"+
-		"\xFB\t\x4\x2\x2\xFA\xF9\x3\x2\x2\x2\xFB\xFE\x3\x2\x2\x2\xFC\xFA\x3\x2"+
-		"\x2\x2\xFC\xFD\x3\x2\x2\x2\xFD\x108\x3\x2\x2\x2\xFE\xFC\x3\x2\x2\x2\xFF"+
-		"\x100\a\x18\x2\x2\x100\x101\a\x39\x2\x2\x101\x102\a\x31\x2\x2\x102\x103"+
-		"\aG\x2\x2\x103\x108\a\x32\x2\x2\x104\x105\a\x1F\x2\x2\x105\x106\aG\x2"+
-		"\x2\x106\x108\a \x2\x2\x107\xF3\x3\x2\x2\x2\x107\xF7\x3\x2\x2\x2\x107"+
-		"\xF8\x3\x2\x2\x2\x107\xFC\x3\x2\x2\x2\x107\xFF\x3\x2\x2\x2\x107\x104\x3"+
-		"\x2\x2\x2\x108!\x3\x2\x2\x2\x109\x111\a\x39\x2\x2\x10A\x10B\a\x30\x2\x2"+
-		"\x10B\x110\a\x39\x2\x2\x10C\x10D\a\x31\x2\x2\x10D\x10E\aG\x2\x2\x10E\x110"+
-		"\a\x32\x2\x2\x10F\x10A\x3\x2\x2\x2\x10F\x10C\x3\x2\x2\x2\x110\x113\x3"+
-		"\x2\x2\x2\x111\x10F\x3\x2\x2\x2\x111\x112\x3\x2\x2\x2\x112#\x3\x2\x2\x2"+
-		"\x113\x111\x3\x2\x2\x2\x114\x115\t\x5\x2\x2\x115%\x3\x2\x2\x2\x116\x117"+
-		"\t\x6\x2\x2\x117\'\x3\x2\x2\x2\x118\x11C\a\"\x2\x2\x119\x11A\a#\x2\x2"+
-		"\x11A\x11C\a%\x2\x2\x11B\x118\x3\x2\x2\x2\x11B\x119\x3\x2\x2\x2\x11C)"+
-		"\x3\x2\x2\x2\x16/\x36HSZ\x63p\x80\xBB\xC1\xCB\xD3\xDB\xE8\xF0\xFC\x107"+
-		"\x10F\x111\x11B";
+		"\t\x3\t\x5\t\xB5\n\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t"+
+		"\x3\t\x3\t\x5\t\xC3\n\t\x3\t\x3\t\x3\t\x3\t\x3\t\x5\t\xCA\n\t\x3\n\x3"+
+		"\n\a\n\xCE\n\n\f\n\xE\n\xD1\v\n\x3\n\x3\n\x3\v\x3\v\x3\v\a\v\xD8\n\v\f"+
+		"\v\xE\v\xDB\v\v\x3\f\x3\f\x3\f\a\f\xE0\n\f\f\f\xE\f\xE3\v\f\x3\r\x3\r"+
+		"\x3\r\a\r\xE8\n\r\f\r\xE\r\xEB\v\r\x3\xE\x3\xE\x3\xE\x3\xE\x3\xF\x5\xF"+
+		"\xF2\n\xF\x3\xF\x3\xF\x3\xF\x3\xF\a\xF\xF8\n\xF\f\xF\xE\xF\xFB\v\xF\x3"+
+		"\x10\x3\x10\x3\x10\x3\x10\a\x10\x101\n\x10\f\x10\xE\x10\x104\v\x10\x3"+
+		"\x11\x3\x11\x3\x11\x5\x11\x109\n\x11\x3\x11\x5\x11\x10C\n\x11\x3\x11\x3"+
+		"\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x3\x11\x5\x11\x117\n\x11"+
+		"\x3\x11\x3\x11\x3\x11\x3\x11\x5\x11\x11D\n\x11\x3\x12\x3\x12\x3\x12\x3"+
+		"\x12\x3\x12\x3\x12\x3\x12\a\x12\x126\n\x12\f\x12\xE\x12\x129\v\x12\x3"+
+		"\x13\x3\x13\x3\x14\x3\x14\x3\x15\x3\x15\x3\x15\x2\x2\x2\x16\x2\x2\x4\x2"+
+		"\x6\x2\b\x2\n\x2\f\x2\xE\x2\x10\x2\x12\x2\x14\x2\x16\x2\x18\x2\x1A\x2"+
+		"\x1C\x2\x1E\x2 \x2\"\x2$\x2&\x2(\x2\x2\a\x4\x2\x36\x36\x39\x39\x3\x2\x1B"+
+		"\x1C\x3\x2\',\x4\x2\"\"%%\x4\x2#$&&\x14B\x2*\x3\x2\x2\x2\x4=\x3\x2\x2"+
+		"\x2\x6\x44\x3\x2\x2\x2\bO\x3\x2\x2\x2\n\\\x3\x2\x2\x2\fl\x3\x2\x2\x2\xE"+
+		"w\x3\x2\x2\x2\x10\xC9\x3\x2\x2\x2\x12\xCB\x3\x2\x2\x2\x14\xD4\x3\x2\x2"+
+		"\x2\x16\xDC\x3\x2\x2\x2\x18\xE4\x3\x2\x2\x2\x1A\xEC\x3\x2\x2\x2\x1C\xF1"+
+		"\x3\x2\x2\x2\x1E\xFC\x3\x2\x2\x2 \x11C\x3\x2\x2\x2\"\x11E\x3\x2\x2\x2"+
+		"$\x12A\x3\x2\x2\x2&\x12C\x3\x2\x2\x2(\x12E\x3\x2\x2\x2*+\a\x18\x2\x2+"+
+		"\x31\a\x38\x2\x2,\x30\x5\x4\x3\x2-\x30\x5\x6\x4\x2.\x30\x5\b\x5\x2/,\x3"+
+		"\x2\x2\x2/-\x3\x2\x2\x2/.\x3\x2\x2\x2\x30\x33\x3\x2\x2\x2\x31/\x3\x2\x2"+
+		"\x2\x31\x32\x3\x2\x2\x2\x32\x34\x3\x2\x2\x2\x33\x31\x3\x2\x2\x2\x34\x38"+
+		"\a\x34\x2\x2\x35\x37\x5\n\x6\x2\x36\x35\x3\x2\x2\x2\x37:\x3\x2\x2\x2\x38"+
+		"\x36\x3\x2\x2\x2\x38\x39\x3\x2\x2\x2\x39;\x3\x2\x2\x2:\x38\x3\x2\x2\x2"+
+		";<\a\x35\x2\x2<\x3\x3\x2\x2\x2=>\a\x1A\x2\x2>?\x5\xE\b\x2?@\a\x38\x2\x2"+
+		"@\x41\a\x1F\x2\x2\x41\x42\t\x2\x2\x2\x42\x43\a\x1D\x2\x2\x43\x5\x3\x2"+
+		"\x2\x2\x44\x45\x5\xE\b\x2\x45J\a\x38\x2\x2\x46G\a\x1E\x2\x2GI\a\x38\x2"+
+		"\x2H\x46\x3\x2\x2\x2IL\x3\x2\x2\x2JH\x3\x2\x2\x2JK\x3\x2\x2\x2KM\x3\x2"+
+		"\x2\x2LJ\x3\x2\x2\x2MN\a\x1D\x2\x2N\a\x3\x2\x2\x2OP\a\x18\x2\x2PQ\a\x38"+
+		"\x2\x2QU\a\x34\x2\x2RT\x5\x6\x4\x2SR\x3\x2\x2\x2TW\x3\x2\x2\x2US\x3\x2"+
+		"\x2\x2UV\x3\x2\x2\x2VX\x3\x2\x2\x2WU\x3\x2\x2\x2XY\a\x35\x2\x2Y\t\x3\x2"+
+		"\x2\x2Z]\x5\xE\b\x2[]\a\r\x2\x2\\Z\x3\x2\x2\x2\\[\x3\x2\x2\x2]^\x3\x2"+
+		"\x2\x2^_\a\x38\x2\x2_\x61\a \x2\x2`\x62\x5\f\a\x2\x61`\x3\x2\x2\x2\x61"+
+		"\x62\x3\x2\x2\x2\x62\x63\x3\x2\x2\x2\x63g\a!\x2\x2\x64\x66\x5\x6\x4\x2"+
+		"\x65\x64\x3\x2\x2\x2\x66i\x3\x2\x2\x2g\x65\x3\x2\x2\x2gh\x3\x2\x2\x2h"+
+		"j\x3\x2\x2\x2ig\x3\x2\x2\x2jk\x5\x12\n\x2k\v\x3\x2\x2\x2lm\x5\xE\b\x2"+
+		"mt\a\x38\x2\x2no\a\x1E\x2\x2op\x5\xE\b\x2pq\a\x38\x2\x2qs\x3\x2\x2\x2"+
+		"rn\x3\x2\x2\x2sv\x3\x2\x2\x2tr\x3\x2\x2\x2tu\x3\x2\x2\x2u\r\x3\x2\x2\x2"+
+		"vt\x3\x2\x2\x2wz\a\x38\x2\x2xy\a\x32\x2\x2y{\a\x33\x2\x2zx\x3\x2\x2\x2"+
+		"z{\x3\x2\x2\x2{\xF\x3\x2\x2\x2|\x86\x5\"\x12\x2}~\a\x1F\x2\x2~\x87\x5"+
+		"\x1C\xF\x2\x7F\x81\a \x2\x2\x80\x82\x5\x14\v\x2\x81\x80\x3\x2\x2\x2\x81"+
+		"\x82\x3\x2\x2\x2\x82\x83\x3\x2\x2\x2\x83\x87\a!\x2\x2\x84\x87\a/\x2\x2"+
+		"\x85\x87\a\x30\x2\x2\x86}\x3\x2\x2\x2\x86\x7F\x3\x2\x2\x2\x86\x84\x3\x2"+
+		"\x2\x2\x86\x85\x3\x2\x2\x2\x87\x88\x3\x2\x2\x2\x88\x89\a\x1D\x2\x2\x89"+
+		"\xCA\x3\x2\x2\x2\x8A\x8B\a\xE\x2\x2\x8B\x8C\a \x2\x2\x8C\x8D\x5\x16\f"+
+		"\x2\x8D\x8E\a!\x2\x2\x8E\x91\x5\x10\t\x2\x8F\x90\a\x10\x2\x2\x90\x92\x5"+
+		"\x10\t\x2\x91\x8F\x3\x2\x2\x2\x91\x92\x3\x2\x2\x2\x92\xCA\x3\x2\x2\x2"+
+		"\x93\x94\a\x12\x2\x2\x94\x95\a \x2\x2\x95\x96\x5\x1C\xF\x2\x96\x98\a\x1D"+
+		"\x2\x2\x97\x99\x5\x16\f\x2\x98\x97\x3\x2\x2\x2\x98\x99\x3\x2\x2\x2\x99"+
+		"\x9A\x3\x2\x2\x2\x9A\x9C\a\x1D\x2\x2\x9B\x9D\x5\x10\t\x2\x9C\x9B\x3\x2"+
+		"\x2\x2\x9C\x9D\x3\x2\x2\x2\x9D\x9E\x3\x2\x2\x2\x9E\x9F\a!\x2\x2\x9F\xA0"+
+		"\x5\x10\t\x2\xA0\xCA\x3\x2\x2\x2\xA1\xA2\a\x11\x2\x2\xA2\xA3\a \x2\x2"+
+		"\xA3\xA4\x5\x16\f\x2\xA4\xA5\a!\x2\x2\xA5\xA6\x5\x10\t\x2\xA6\xCA\x3\x2"+
+		"\x2\x2\xA7\xA8\a\x13\x2\x2\xA8\xA9\a \x2\x2\xA9\xAA\x5\xE\b\x2\xAA\xAB"+
+		"\a\x38\x2\x2\xAB\xAC\a\b\x2\x2\xAC\xAD\x5\x1C\xF\x2\xAD\xAE\a!\x2\x2\xAE"+
+		"\xAF\x5\x10\t\x2\xAF\xCA\x3\x2\x2\x2\xB0\xB1\a\x14\x2\x2\xB1\xCA\a\x1D"+
+		"\x2\x2\xB2\xB4\a\x15\x2\x2\xB3\xB5\x5\x1C\xF\x2\xB4\xB3\x3\x2\x2\x2\xB4"+
+		"\xB5\x3\x2\x2\x2\xB5\xB6\x3\x2\x2\x2\xB6\xCA\a\x1D\x2\x2\xB7\xB8\a\x16"+
+		"\x2\x2\xB8\xB9\a \x2\x2\xB9\xBA\x5\"\x12\x2\xBA\xBB\a!\x2\x2\xBB\xBC\a"+
+		"\x1D\x2\x2\xBC\xCA\x3\x2\x2\x2\xBD\xBE\a\x17\x2\x2\xBE\xBF\a \x2\x2\xBF"+
+		"\xC2\x5\x1C\xF\x2\xC0\xC1\a\x1E\x2\x2\xC1\xC3\a\x36\x2\x2\xC2\xC0\x3\x2"+
+		"\x2\x2\xC2\xC3\x3\x2\x2\x2\xC3\xC4\x3\x2\x2\x2\xC4\xC5\a!\x2\x2\xC5\xC6"+
+		"\a\x1D\x2\x2\xC6\xCA\x3\x2\x2\x2\xC7\xCA\x5\x12\n\x2\xC8\xCA\a\x1D\x2"+
+		"\x2\xC9|\x3\x2\x2\x2\xC9\x8A\x3\x2\x2\x2\xC9\x93\x3\x2\x2\x2\xC9\xA1\x3"+
+		"\x2\x2\x2\xC9\xA7\x3\x2\x2\x2\xC9\xB0\x3\x2\x2\x2\xC9\xB2\x3\x2\x2\x2"+
+		"\xC9\xB7\x3\x2\x2\x2\xC9\xBD\x3\x2\x2\x2\xC9\xC7\x3\x2\x2\x2\xC9\xC8\x3"+
+		"\x2\x2\x2\xCA\x11\x3\x2\x2\x2\xCB\xCF\a\x34\x2\x2\xCC\xCE\x5\x10\t\x2"+
+		"\xCD\xCC\x3\x2\x2\x2\xCE\xD1\x3\x2\x2\x2\xCF\xCD\x3\x2\x2\x2\xCF\xD0\x3"+
+		"\x2\x2\x2\xD0\xD2\x3\x2\x2\x2\xD1\xCF\x3\x2\x2\x2\xD2\xD3\a\x35\x2\x2"+
+		"\xD3\x13\x3\x2\x2\x2\xD4\xD9\x5\x1C\xF\x2\xD5\xD6\a\x1E\x2\x2\xD6\xD8"+
+		"\x5\x1C\xF\x2\xD7\xD5\x3\x2\x2\x2\xD8\xDB\x3\x2\x2\x2\xD9\xD7\x3\x2\x2"+
+		"\x2\xD9\xDA\x3\x2\x2\x2\xDA\x15\x3\x2\x2\x2\xDB\xD9\x3\x2\x2\x2\xDC\xE1"+
+		"\x5\x18\r\x2\xDD\xDE\a-\x2\x2\xDE\xE0\x5\x18\r\x2\xDF\xDD\x3\x2\x2\x2"+
+		"\xE0\xE3\x3\x2\x2\x2\xE1\xDF\x3\x2\x2\x2\xE1\xE2\x3\x2\x2\x2\xE2\x17\x3"+
+		"\x2\x2\x2\xE3\xE1\x3\x2\x2\x2\xE4\xE9\x5\x1A\xE\x2\xE5\xE6\a.\x2\x2\xE6"+
+		"\xE8\x5\x1A\xE\x2\xE7\xE5\x3\x2\x2\x2\xE8\xEB\x3\x2\x2\x2\xE9\xE7\x3\x2"+
+		"\x2\x2\xE9\xEA\x3\x2\x2\x2\xEA\x19\x3\x2\x2\x2\xEB\xE9\x3\x2\x2\x2\xEC"+
+		"\xED\x5\x1C\xF\x2\xED\xEE\x5$\x13\x2\xEE\xEF\x5\x1C\xF\x2\xEF\x1B\x3\x2"+
+		"\x2\x2\xF0\xF2\a%\x2\x2\xF1\xF0\x3\x2\x2\x2\xF1\xF2\x3\x2\x2\x2\xF2\xF3"+
+		"\x3\x2\x2\x2\xF3\xF9\x5\x1E\x10\x2\xF4\xF5\x5&\x14\x2\xF5\xF6\x5\x1E\x10"+
+		"\x2\xF6\xF8\x3\x2\x2\x2\xF7\xF4\x3\x2\x2\x2\xF8\xFB\x3\x2\x2\x2\xF9\xF7"+
+		"\x3\x2\x2\x2\xF9\xFA\x3\x2\x2\x2\xFA\x1D\x3\x2\x2\x2\xFB\xF9\x3\x2\x2"+
+		"\x2\xFC\x102\x5 \x11\x2\xFD\xFE\x5(\x15\x2\xFE\xFF\x5 \x11\x2\xFF\x101"+
+		"\x3\x2\x2\x2\x100\xFD\x3\x2\x2\x2\x101\x104\x3\x2\x2\x2\x102\x100\x3\x2"+
+		"\x2\x2\x102\x103\x3\x2\x2\x2\x103\x1F\x3\x2\x2\x2\x104\x102\x3\x2\x2\x2"+
+		"\x105\x10B\x5\"\x12\x2\x106\x108\a \x2\x2\x107\x109\x5\x14\v\x2\x108\x107"+
+		"\x3\x2\x2\x2\x108\x109\x3\x2\x2\x2\x109\x10A\x3\x2\x2\x2\x10A\x10C\a!"+
+		"\x2\x2\x10B\x106\x3\x2\x2\x2\x10B\x10C\x3\x2\x2\x2\x10C\x11D\x3\x2\x2"+
+		"\x2\x10D\x11D\a\x36\x2\x2\x10E\x11D\a\x39\x2\x2\x10F\x11D\t\x3\x2\x2\x110"+
+		"\x111\a\x19\x2\x2\x111\x116\a\x38\x2\x2\x112\x113\a\x32\x2\x2\x113\x114"+
+		"\x5\x1C\xF\x2\x114\x115\a\x33\x2\x2\x115\x117\x3\x2\x2\x2\x116\x112\x3"+
+		"\x2\x2\x2\x116\x117\x3\x2\x2\x2\x117\x11D\x3\x2\x2\x2\x118\x119\a \x2"+
+		"\x2\x119\x11A\x5\x1C\xF\x2\x11A\x11B\a!\x2\x2\x11B\x11D\x3\x2\x2\x2\x11C"+
+		"\x105\x3\x2\x2\x2\x11C\x10D\x3\x2\x2\x2\x11C\x10E\x3\x2\x2\x2\x11C\x10F"+
+		"\x3\x2\x2\x2\x11C\x110\x3\x2\x2\x2\x11C\x118\x3\x2\x2\x2\x11D!\x3\x2\x2"+
+		"\x2\x11E\x127\a\x38\x2\x2\x11F\x120\a\x31\x2\x2\x120\x126\a\x38\x2\x2"+
+		"\x121\x122\a\x32\x2\x2\x122\x123\x5\x1C\xF\x2\x123\x124\a\x33\x2\x2\x124"+
+		"\x126\x3\x2\x2\x2\x125\x11F\x3\x2\x2\x2\x125\x121\x3\x2\x2\x2\x126\x129"+
+		"\x3\x2\x2\x2\x127\x125\x3\x2\x2\x2\x127\x128\x3\x2\x2\x2\x128#\x3\x2\x2"+
+		"\x2\x129\x127\x3\x2\x2\x2\x12A\x12B\t\x4\x2\x2\x12B%\x3\x2\x2\x2\x12C"+
+		"\x12D\t\x5\x2\x2\x12D\'\x3\x2\x2\x2\x12E\x12F\t\x6\x2\x2\x12F)\x3\x2\x2"+
+		"\x2!/\x31\x38JU\\\x61gtz\x81\x86\x91\x98\x9C\xB4\xC2\xC9\xCF\xD9\xE1\xE9"+
+		"\xF1\xF9\x102\x108\x10B\x116\x11C\x125\x127";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

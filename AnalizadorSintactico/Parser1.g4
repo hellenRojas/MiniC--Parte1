@@ -15,107 +15,107 @@ tokenVocab = Lexer1;
 
 
 program 
-: CLASE IDENT (ConstDecl | VarDecl | ClassDecl)* COR_DER (MethodDecl)* COR_IZQ
+: CLASE IDENT (constDecl | varDecl | classDecl)* COR_DER (methodDecl)* COR_IZQ					#programAST
 ;
 
 
 
-constantDecl
-: CONSTANTE type IDENT ASIGN (NUMBER | CHARCONST) PyCOMA 
+constDecl
+: CONSTANTE type IDENT ASIGN (NUMBER | CharConst) PyCOMA										#constDeclAST
 ;
 
 
 varDecl
-: type IDENT (COMA IDENT)* PyComa
+: type IDENT (COMA IDENT)* PyCOMA																#varDeclAST
 ;
 
 
 
 classDecl
-: CLASS IDENT COR_DER (VarDecl)* COR_IZQ
+: CLASE IDENT COR_DER (varDecl)* COR_IZQ														#classDeclAST
 ;
 
 
 
 methodDecl
-: (type | VOID) IDENT PIZQ (formPars) PDER (varDecl)* block
+: (type | VOID) IDENT PIZQ (formPars)? PDER (varDecl)* block									#methodDeclAST
 ;
 
 
 formPars
-: type IDENT (COMA type IDENT)*
+: type IDENT (COMA type IDENT)*																	#formParsAST
 ;
 
 type
-: IDENT (PCUADRADO_IZQ PCUADRADO_DER)
+: IDENT (PCUADRADO_IZQ PCUADRADO_DER)?															#typeAST
 ;
 
 statement
-: designator (ASIGN expr | PIZQ (actPars) PDER | INCRE | DECRE) PyCOMA
-| CONDICION_IF PIZQ condition PDER statement (CONDICION_ELSE statement)
-| CICLO_FOR PIZQ expr PyCOMA (condition) PyCOMA (statement) PDER statement
-| CICLO_WHILE PIZQ condition PDER statement
-| CICLO_FOREACH PARIZQ type IDENT IN expr PARDER statement
-| BREAK PyCOMA
-| RETURN (expr) PyComa
-| READ PIZQ designator PDER PyCOMA
-| WRITE PIZQ Expr (COMA NUMBER) PDER PyCOMA
-| block
-| PyCOMA
+: designator (ASIGN expr | PIZQ (actPars)? PDER | INCRE | DECRE) PyCOMA							#designatorStatAST
+| CONDICION_IF PIZQ condition PDER statement (CONDICION_ELSE statement)?						#ifStatAST
+| CICLO_FOR PIZQ expr PyCOMA (condition)? PyCOMA (statement)? PDER statement					#forStatAST
+| CICLO_WHILE PIZQ condition PDER statement														#whileStatAST
+| CICLO_FOREACH PIZQ type IDENT IN expr PDER statement											#foreachStatAST
+| BREAK PyCOMA																					#breakStatAST
+| RETURN (expr)? PyCOMA																			#returnStatAST
+| READ PIZQ designator PDER PyCOMA																#readStatAST
+| WRITE PIZQ expr (COMA NUMBER)? PDER PyCOMA													#writeStatAST
+| block																							#blockStatAST
+| PyCOMA																						#pyStatAST
 ;
 
 
 block
-: COR_DER (Statement)* COR_IZQ
+: COR_DER (statement)* COR_IZQ																	#blockAST
 ;
 
 
 
 actPars
-: Expr (COMA Expr)*
+: expr (COMA expr)*																				#actParsAST
 ;
 
 condition
-: CondTerm (O CondTerm)*
+: condTerm (O condTerm)*																		#conditionAST
 ;
 
 condTerm
-: CondFact (Y CondFact)*
+: condFact (Y condFact)*																		#condTermAST
 ;
-
+/*preguntar si lleva |*/
 condFact
-: Expr Relop Expr //preguntar si lleva |
+: expr relop expr 																				#condFactAST
 ;
 
 expr
-: (RESTA) Term (Addop Term)*
+: (RESTA)? term (addop term)*																	#exprAST
 ;
 
 term
-: Factor (Mulop Factor)*
+: factor (mulop factor)*																		#termAST
 ;
 
 factor
-: Designator (PIZQ (ActPars) PDER)
-| NUMBER
-| CHARCONST
-| (TRUE | FALSE)*
-| NEW IDENT (PCUADRADO_IZQ Expr PCUADRADO_DER)
-| PIZQ Expr PDER
+: designator (PIZQ (actPars)? PDER)?															#designatorFactorAST
+| NUMBER																						#numberFactorAST
+| CharConst																						#charconstFactorAST
+| (TRUE | FALSE)																				#truefalseFactorAST
+| NEW IDENT (PCUADRADO_IZQ expr PCUADRADO_DER)?													#newFactorAST
+| PIZQ expr PDER																				#exprFactorAST
 ;
 
 designator
-: IDENT (PUNTO IDENT | PCUADRADO_IZQ Expr PCUADRADO_DER)*
+: IDENT (PUNTO IDENT | PCUADRADO_IZQ expr PCUADRADO_DER)*										#designatorAST
 ;
 
 relop
-: COMPARACION | DIFERENTE | MAYOR | MAYORIGUAL | MENOR | MENORIGUAL
+: COMPARACION | DIFERENTE | MAYOR | MAYORIGUAL | MENOR | MENORIGUAL								#relopAST
 ;
 
 addop
-: SUMA | RESTA
+: SUMA | RESTA																					#addopAST
 ;
 
 mulop
-: MUL | DIV DIVMOD
+: MUL | DIV | DIVMOD																			#mulopAST
 ;

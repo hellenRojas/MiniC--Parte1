@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="ParserErrorListener.cs" />
     <Compile Include="ParserException.cs" />
+    <Compile Include="PrettyPrint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
