@@ -1595,18 +1595,6 @@ public partial class Parser1 : Parser {
 	}
 
 	public partial class ExprContext : ParserRuleContext {
-		public ExprContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_expr; } }
-	 
-		public ExprContext() { }
-		public virtual void CopyFrom(ExprContext context) {
-			base.CopyFrom(context);
-		}
-	}
-	public partial class ExprASTContext : ExprContext {
 		public TermContext[] term() {
 			return GetRuleContexts<TermContext>();
 		}
@@ -1620,18 +1608,22 @@ public partial class Parser1 : Parser {
 		public AddopContext addop(int i) {
 			return GetRuleContext<AddopContext>(i);
 		}
-		public ExprASTContext(ExprContext context) { CopyFrom(context); }
+		public ExprContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_expr; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.EnterExprAST(this);
+			if (typedListener != null) typedListener.EnterExpr(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
-			if (typedListener != null) typedListener.ExitExprAST(this);
+			if (typedListener != null) typedListener.ExitExpr(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IParser1Visitor<TResult> typedVisitor = visitor as IParser1Visitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExprAST(this);
+			if (typedVisitor != null) return typedVisitor.VisitExpr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1642,7 +1634,6 @@ public partial class Parser1 : Parser {
 		EnterRule(_localctx, 26, RULE_expr);
 		int _la;
 		try {
-			_localctx = new ExprASTContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
 			State = 239;

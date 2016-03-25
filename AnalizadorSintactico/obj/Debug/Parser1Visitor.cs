@@ -220,14 +220,6 @@ public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitBlockAST([NotNull] Parser1.BlockASTContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>exprAST</c>
-	/// labeled alternative in <see cref="Parser1.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExprAST([NotNull] Parser1.ExprASTContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by the <c>termAST</c>
 	/// labeled alternative in <see cref="Parser1.term"/>.
 	/// </summary>

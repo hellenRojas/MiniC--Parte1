@@ -41,7 +41,25 @@ class PrettyPrint : Parser1BaseVisitor<Object>
     }
 
 	
-    public virtual object VisitCondTermAST([NotNull] Parser1.CondTermASTContext context) { return VisitChildren(context); }
+    public virtual object VisitCondTermAST([NotNull] Parser1.CondTermASTContext context) {
+        TreeNode condfact1 = (TreeNode)Visit(context.condFact(0));
+        int largo = context.Y().Count() + context.condFact().Count();
+        TreeNode[] arreglo = new TreeNode[largo];
+        arreglo[0] = condfact1;
+        int count = 1; //contador del arreglo
+        int iAnd = 0; //contador para AND
+        for (int i = 1; i <= context.condFact().Count(); i++)
+        {
+            TreeNode and = new TreeNode(context.Y(iAnd).ToString());
+            TreeNode condfact2 = (TreeNode)Visit(context.condFact(i));
+            arreglo[count] = and;
+            arreglo[count + 1] = condfact2;
+            count += 2;
+            iAnd++;
+        }
+        TreeNode final = new TreeNode("CondTerm", arreglo);
+        return final; 
+    }
 
 	
     public virtual object VisitConstDeclAST([NotNull] Parser1.ConstDeclASTContext context) { 
@@ -220,7 +238,22 @@ class PrettyPrint : Parser1BaseVisitor<Object>
     }
 
 	
-    public virtual object VisitTypeAST([NotNull] Parser1.TypeASTContext context) { return VisitChildren(context); }
+    public virtual object VisitTypeAST([NotNull] Parser1.TypeASTContext context) {
+        TreeNode ident = new TreeNode(context.IDENT().ToString());
+        TreeNode[] arreglo;
+        if (context.PCUADRADO_IZQ() != null) //comprobar si viene llaves o no (0/1)
+        {
+            TreeNode PI = new TreeNode(context.PCUADRADO_IZQ().ToString());
+            TreeNode PD = new TreeNode(context.PCUADRADO_DER().ToString());
+            arreglo = new TreeNode[] { ident, PI, PD };
+        }
+        else
+        {
+            arreglo = new TreeNode[] { ident };
+        }
+        TreeNode final = new TreeNode("Type", arreglo);
+        return final;
+    }
 
 	
     public virtual object VisitFormParsAST([NotNull] Parser1.FormParsASTContext context) {
@@ -228,64 +261,380 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         TreeNode ident1 = new TreeNode(context.IDENT(0).ToString());
         int largo = 2 + context.COMA().Count() + context.type().Count() + context.IDENT().Count();
         TreeNode[] arreglo = new TreeNode[largo];
-
-
-        return VisitChildren(context); 
+        arreglo[0] = type1;
+        arreglo[1] = ident1;
+        int count = 2;
+        for (int i = 1; i <= context.type().Count(); i++)
+        {
+            TreeNode coma = new TreeNode(context.COMA(i).ToString());
+            TreeNode type2 = (TreeNode)Visit(context.type(i));
+            TreeNode ident2 = new TreeNode(context.IDENT(i).ToString());
+            arreglo[count] = coma;
+            arreglo[count + 1] = type2;
+            count++;
+            arreglo[count + 1] = ident2;
+            count++;
+        }
+        TreeNode final = new TreeNode("FormPars", arreglo);
+        return final;
     }
 
 	
-    public virtual object VisitActParsAST([NotNull] Parser1.ActParsASTContext context) { return VisitChildren(context); }
+    public virtual object VisitActParsAST([NotNull] Parser1.ActParsASTContext context) {
+        TreeNode expr1 = (TreeNode)Visit(context.expr(0));
+        int largo = context.COMA().Count() + context.expr().Count();
+        TreeNode[] arreglo = new TreeNode[largo];
+        arreglo[0] = expr1;
+        int count = 1; //contador del arreglo
+        int icoma = 0; //contador para coma
+        for (int i = 1; i <= context.expr().Count(); i++)
+        {
+            TreeNode coma = new TreeNode(context.COMA(icoma).ToString());
+            TreeNode expr2 = (TreeNode)Visit(context.expr(i));
+            arreglo[count] = coma;
+            arreglo[count + 1] = expr2;
+            count += 2;
+            icoma++;
+        }
+        TreeNode final = new TreeNode("Actpars", arreglo);
+        return final; 
+    }
 
 	
     public virtual object VisitDesignatorAST([NotNull] Parser1.DesignatorASTContext context) { return VisitChildren(context); }
 
 	
-    public virtual object VisitCondFactAST([NotNull] Parser1.CondFactASTContext context) { return VisitChildren(context); }
+    public virtual object VisitCondFactAST([NotNull] Parser1.CondFactASTContext context) {
+        TreeNode expr1 = (TreeNode)Visit(context.expr(0));
+        TreeNode relop = (TreeNode)Visit(context.relop());
+        TreeNode expr2 = (TreeNode)Visit(context.expr(1));
+        TreeNode[] arreglo = new TreeNode[] { expr1, relop, expr2 };
+        TreeNode final = new TreeNode("Condfact", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitConditionAST([NotNull] Parser1.ConditionASTContext context) { return VisitChildren(context); }
+    public virtual object VisitConditionAST([NotNull] Parser1.ConditionASTContext context) { 
+        TreeNode condterm1 = (TreeNode)Visit(context.condTerm(0));
+        int largo = context.O().Count() + context.condTerm().Count();
+        TreeNode[] arreglo = new TreeNode[largo];
+        arreglo[0] = condterm1;
+        int count = 1; //contador del arreglo
+        int iOr = 0; //contador para Or
+        for (int i = 1; i <= context.condTerm().Count(); i++)
+        {
+            TreeNode Or = new TreeNode(context.O(iOr).ToString());
+            TreeNode condterm2 = (TreeNode)Visit(context.condTerm(i));
+            arreglo[count] = Or;
+            arreglo[count + 1] = condterm2;
+            count += 2;
+            iOr++;
+        }
+        TreeNode final = new TreeNode("Condition", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitReadStatAST([NotNull] Parser1.ReadStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitReadStatAST([NotNull] Parser1.ReadStatASTContext context) {
+        TreeNode read = new TreeNode(context.READ().ToString());
+        TreeNode PI = new TreeNode(context.PIZQ().ToString());
+        TreeNode designator = (TreeNode)Visit(context.designator());
+        TreeNode PD = new TreeNode(context.PDER().ToString());
+        TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
+        TreeNode[] arreglo = new TreeNode[] { read, PI, designator, PD, pycoma };
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final; 
+    }
 
 
-    public virtual object VisitReturnStatAST([NotNull] Parser1.ReturnStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitReturnStatAST([NotNull] Parser1.ReturnStatASTContext context) {
+        TreeNode returns = new TreeNode(context.RETURN().ToString());
+        TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
+        TreeNode[] arreglo;
+        if (context.expr() != null)
+        {
+            TreeNode expr = (TreeNode)Visit(context.expr());
+            arreglo = new TreeNode[3];
+            arreglo[0] = returns;
+            arreglo[1] = expr;
+            arreglo[2] = pycoma;
+        }
+        else
+        {
+            arreglo = new TreeNode[2];
+            arreglo[0] = returns;
+            arreglo[1] = pycoma;
+        }
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final; 
+    }
 
 
-    public virtual object VisitPyStatAST([NotNull] Parser1.PyStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitPyStatAST([NotNull] Parser1.PyStatASTContext context) {
+        TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
+        TreeNode[] arreglo = new TreeNode[] { pycoma };
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitWhileStatAST([NotNull] Parser1.WhileStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitWhileStatAST([NotNull] Parser1.WhileStatASTContext context) {
+        TreeNode ciclo_while = new TreeNode(context.CICLO_WHILE().ToString());
+        TreeNode PI = new TreeNode(context.PIZQ().ToString());
+        TreeNode condition = (TreeNode)Visit(context.condition());
+        TreeNode PD = new TreeNode(context.PDER().ToString());
+        TreeNode statement = (TreeNode)Visit(context.statement());
+        TreeNode[] arreglo = new TreeNode[]{ ciclo_while, PI, condition, PD, statement };
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final; 
+    }
 
 
-    public virtual object VisitWriteStatAST([NotNull] Parser1.WriteStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitWriteStatAST([NotNull] Parser1.WriteStatASTContext context) {
+        TreeNode write = new TreeNode(context.WRITE().ToString());
+        TreeNode PI = new TreeNode(context.PIZQ().ToString());
+        TreeNode expr = (TreeNode)Visit(context.expr());
+        TreeNode PD = new TreeNode(context.PDER().ToString());
+        TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
+        TreeNode[] arreglo;
+        if (context.NUMBER() != null)
+        {
+            TreeNode number = new TreeNode(context.NUMBER().ToString());
+            TreeNode coma = new TreeNode(context.COMA().ToString());
+            arreglo = new TreeNode[] { write, PI, expr, coma, number, PD, pycoma };
+        }
+        else
+        {
+            arreglo = new TreeNode[] { write, PI, expr, PD, pycoma };
+        }
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitForeachStatAST([NotNull] Parser1.ForeachStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitForeachStatAST([NotNull] Parser1.ForeachStatASTContext context) {
+        TreeNode ciclo_foreach = new TreeNode(context.CICLO_FOREACH().ToString());
+        TreeNode PI = new TreeNode(context.PIZQ().ToString());
+        TreeNode type = (TreeNode)Visit(context.type());
+        TreeNode ident = new TreeNode(context.IDENT().ToString());
+        TreeNode ins = new TreeNode(context.IN().ToString());
+        TreeNode expr = (TreeNode)Visit(context.expr());
+        TreeNode PD = new TreeNode(context.PDER().ToString());
+        TreeNode statement = (TreeNode)Visit(context.statement());
+        TreeNode[] arreglo = new TreeNode[] { ciclo_foreach, PI, type, ident, ins, expr, PD, statement };
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final;
+    }
 
 	
-    public virtual object VisitDesignatorStatAST([NotNull] Parser1.DesignatorStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitDesignatorStatAST([NotNull] Parser1.DesignatorStatASTContext context) {
+        TreeNode designator = (TreeNode)Visit(context.designator());
+        TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
+        TreeNode[] arreglo = new TreeNode[]{};
+        if (context.ASIGN() != null)
+        {
+            TreeNode expr = (TreeNode)Visit(context.expr());
+            TreeNode asign = new TreeNode(context.ASIGN().ToString());
+            arreglo[0] = designator;
+            arreglo[1] = asign;
+            arreglo[2] = expr;
+            arreglo[3] = pycoma;
+        }
+        else if (context.PIZQ()!=null)
+        {
+            if (context.actPars() != null) //comprobar si viene o no un actPars
+            {
+                TreeNode PI = new TreeNode(context.PIZQ().ToString());
+                TreeNode actpars = (TreeNode)Visit(context.actPars());
+                TreeNode PD = new TreeNode(context.PDER().ToString());
+                arreglo[0] = designator;
+                arreglo[1] = PI;
+                arreglo[2] = actpars;
+                arreglo[3] = PD;
+                arreglo[4] = pycoma;
+            }else{
+                TreeNode PI = new TreeNode(context.PIZQ().ToString());
+                TreeNode PD = new TreeNode(context.PDER().ToString());
+                arreglo[0] = designator;
+                arreglo[1] = PI;
+                arreglo[2] = PD;
+                arreglo[3] = pycoma;
+            }
+        }
+        else if(context.INCRE()!=null){
+            TreeNode incre = new TreeNode(context.INCRE().ToString());
+            arreglo[0] = designator;
+            arreglo[1] = incre;
+            arreglo[2] = pycoma;
+        }
+        else if(context.DECRE()!=null){
+            TreeNode decre = new TreeNode(context.DECRE().ToString());
+            arreglo[0] = designator;
+            arreglo[1] = decre;
+            arreglo[2] = pycoma;
+        }
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final;
+    }
 
 	
-    public virtual object VisitIfStatAST([NotNull] Parser1.IfStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitIfStatAST([NotNull] Parser1.IfStatASTContext context) {
+        TreeNode cond_if = new TreeNode(context.CONDICION_IF().ToString());
+        TreeNode PI = new TreeNode(context.PIZQ().ToString());
+        TreeNode condition = (TreeNode)Visit(context.condition());
+        TreeNode PD = new TreeNode(context.PDER().ToString());
+        TreeNode statement1 = (TreeNode)Visit(context.statement(0));
+        TreeNode[] arreglo;
+        if (context.CONDICION_ELSE() != null) //puede o no venir la condición else
+        {
+            TreeNode cond_else = new TreeNode(context.CONDICION_ELSE().ToString());
+            TreeNode statement2 = (TreeNode)Visit(context.statement(1)); //como viene o no viene y solo 1 vez se usa el 1 y no un ciclo
+            arreglo = new TreeNode[] { cond_if, PI, condition, PD, statement1, cond_else, statement2 };
+        }
+        arreglo = new TreeNode[] { cond_if, PI, condition, PD, statement1};
+        TreeNode final = new TreeNode("statement", arreglo);
+        return final;
+    }
 
 
-    public virtual object VisitForStatAST([NotNull] Parser1.ForStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitForStatAST([NotNull] Parser1.ForStatASTContext context) {
+        TreeNode ciclo_for = new TreeNode(context.CICLO_FOR().ToString());
+        TreeNode PI = new TreeNode(context.PIZQ().ToString());
+        TreeNode expr = (TreeNode)Visit(context.expr());
+        TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
+        TreeNode PD = new TreeNode(context.PDER().ToString());
+        TreeNode statement2 = (TreeNode)Visit(context.statement(1));
+        TreeNode[] arreglo;
+        if (context.condition() != null) //existe condición
+        {
+            TreeNode condition = (TreeNode)Visit(context.condition());
+            if (context.statement() != null) //existe un statement
+            {
+                arreglo = new TreeNode[9];
+                TreeNode statement1 = (TreeNode)Visit(context.statement(0));
+                arreglo[0] = ciclo_for;
+                arreglo[1] = PI;
+                arreglo[2] = expr;
+                arreglo[3] = pycoma;
+                arreglo[4] = condition;
+                arreglo[5] = pycoma;
+                arreglo[6] = statement1;
+                arreglo[7] = PD;
+                arreglo[8] = statement2;
+            }
+            else
+            {
+                arreglo = new TreeNode[8];
+                TreeNode statement1 = (TreeNode)Visit(context.statement(0));
+                arreglo[0] = ciclo_for;
+                arreglo[1] = PI;
+                arreglo[2] = expr;
+                arreglo[3] = pycoma;
+                arreglo[4] = condition;
+                arreglo[5] = pycoma;
+                arreglo[6] = PD;
+                arreglo[7] = statement2;
+            }
+
+        }
+        else
+        {
+            if (context.statement() != null) //existe un statement
+            {
+                arreglo = new TreeNode[8];
+                TreeNode statement1 = (TreeNode)Visit(context.statement(0));
+                arreglo[0] = ciclo_for;
+                arreglo[1] = PI;
+                arreglo[2] = expr;
+                arreglo[3] = pycoma;
+                arreglo[4] = pycoma;
+                arreglo[5] = statement1;
+                arreglo[6] = PD;
+                arreglo[7] = statement2;
+            }
+            else
+            {
+                arreglo = new TreeNode[7];
+                TreeNode statement1 = (TreeNode)Visit(context.statement(0));
+                arreglo[0] = ciclo_for;
+                arreglo[1] = PI;
+                arreglo[2] = expr;
+                arreglo[3] = pycoma;
+                arreglo[4] = pycoma;
+                arreglo[5] = PD;
+                arreglo[6] = statement2;
+            }
+
+        }
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitBlockStatAST([NotNull] Parser1.BlockStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitBlockStatAST([NotNull] Parser1.BlockStatASTContext context) {
+        TreeNode block = (TreeNode)Visit(context.block());
+        TreeNode[] arreglo = new TreeNode[] { block };
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitBreakStatAST([NotNull] Parser1.BreakStatASTContext context) { return VisitChildren(context); }
+    public virtual object VisitBreakStatAST([NotNull] Parser1.BreakStatASTContext context) {
+        TreeNode breaks = new TreeNode(context.BREAK().ToString());
+        TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
+        TreeNode[] arreglo = new TreeNode[] { breaks,pycoma};
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final;
+    }
 
 	
-    public virtual object VisitBlockAST([NotNull] Parser1.BlockASTContext context) { return VisitChildren(context); }
+    public virtual object VisitBlockAST([NotNull] Parser1.BlockASTContext context) {
+        TreeNode CD = new TreeNode(context.COR_DER().ToString());
+        TreeNode CI = new TreeNode(context.COR_IZQ().ToString());
+        int largo = 2 + context.statement().Count();
+        TreeNode[] arreglo = new TreeNode[largo];
+        arreglo[0] = CD;
+        int count = 1;
+        for (int i = 0; i <= context.statement().Count(); i++)
+        {
+            TreeNode statement = (TreeNode)Visit(context.statement(i));
+            arreglo[count] = statement;
+            count++;
+        }
+        arreglo[0] = CI;
+        TreeNode final = new TreeNode("Block", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitExprAST([NotNull] Parser1.ExprASTContext context) { return VisitChildren(context); }
+    public virtual object VisitExprAST([NotNull] Parser1.ExprASTContext context) {
+        if (context.RESTA() != null)
+        {
+            TreeNode resta = new TreeNode()//áquí
+        }
+        return VisitChildren(context); 
+    }
 
 	
-    public virtual object VisitTermAST([NotNull] Parser1.TermASTContext context) { return VisitChildren(context); }
+    public virtual object VisitTermAST([NotNull] Parser1.TermASTContext context) {
+        TreeNode factor1 = (TreeNode)Visit(context.factor(0));
+        int largo = context.mulop().Count() + context.factor().Count();
+        TreeNode[] arreglo = new TreeNode[largo];
+        arreglo[0] = factor1;
+        int count = 1; //contador del arreglo
+        int iMulop = 0; //contador para mulop
+        for (int i = 1; i <= context.factor().Count(); i++)
+        {
+            TreeNode mulop = new TreeNode(context.mulop(iMulop).ToString());
+            TreeNode factor2 = (TreeNode)Visit(context.factor(i));
+            arreglo[count] = mulop;
+            arreglo[count + 1] = factor2;
+            count += 2;
+            iMulop++;
+        }
+        TreeNode final = new TreeNode("Factor", arreglo);
+        return final; 
+    }
 
 	
     public virtual object VisitExprFactorAST([NotNull] Parser1.ExprFactorASTContext context) { return VisitChildren(context); }
@@ -323,7 +672,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             arreglo[cont] = coma;
             arreglo[cont + 1] = ident2;
             cont++;
-            i2++;
+            i2+=2;
         }
         arreglo[cont] = pycoma;
         TreeNode final = new TreeNode("varDecl", arreglo);

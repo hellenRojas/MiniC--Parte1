@@ -384,21 +384,6 @@ public partial class Parser1BaseListener : IParser1Listener {
 	public virtual void ExitBlockAST([NotNull] Parser1.BlockASTContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>exprAST</c>
-	/// labeled alternative in <see cref="Parser1.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterExprAST([NotNull] Parser1.ExprASTContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>exprAST</c>
-	/// labeled alternative in <see cref="Parser1.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitExprAST([NotNull] Parser1.ExprASTContext context) { }
-
-	/// <summary>
 	/// Enter a parse tree produced by the <c>termAST</c>
 	/// labeled alternative in <see cref="Parser1.term"/>.
 	/// <para>The default implementation does nothing.</para>

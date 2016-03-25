@@ -314,18 +314,6 @@ public partial class Parser1BaseVisitor<Result> : AbstractParseTreeVisitor<Resul
 	public virtual Result VisitBlockAST([NotNull] Parser1.BlockASTContext context) { return VisitChildren(context); }
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>exprAST</c>
-	/// labeled alternative in <see cref="Parser1.expr"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitExprAST([NotNull] Parser1.ExprASTContext context) { return VisitChildren(context); }
-
-	/// <summary>
 	/// Visit a parse tree produced by the <c>termAST</c>
 	/// labeled alternative in <see cref="Parser1.term"/>.
 	/// <para>

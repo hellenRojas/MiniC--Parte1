@@ -69,8 +69,6 @@ block
 : COR_DER (statement)* COR_IZQ																	#blockAST
 ;
 
-
-
 actPars
 : expr (COMA expr)*																				#actParsAST
 ;
@@ -88,10 +86,10 @@ condFact
 ;
 
 expr
-: (RESTA)? term (addop term)*																	#exprAST
+: (RESTA)? term (addop term)*		//aquí															#exprAST
 ;
 
-term
+term//ya
 : factor (mulop factor)*																		#termAST
 ;
 
