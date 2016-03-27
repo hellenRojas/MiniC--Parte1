@@ -44,6 +44,22 @@ public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitClassDeclAST([NotNull] Parser1.ClassDeclASTContext context);
 
 	/// <summary>
+	/// Visit a parse tree produced by the <c>sumaAddopAST</c>
+	/// labeled alternative in <see cref="Parser1.addop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSumaAddopAST([NotNull] Parser1.SumaAddopASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>restaAddopAST</c>
+	/// labeled alternative in <see cref="Parser1.addop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitRestaAddopAST([NotNull] Parser1.RestaAddopASTContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by the <c>condTermAST</c>
 	/// labeled alternative in <see cref="Parser1.condTerm"/>.
 	/// </summary>
@@ -84,6 +100,54 @@ public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitTypeAST([NotNull] Parser1.TypeASTContext context);
 
 	/// <summary>
+	/// Visit a parse tree produced by the <c>mayorigualRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMayorigualRelopAST([NotNull] Parser1.MayorigualRelopASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>mayorRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMayorRelopAST([NotNull] Parser1.MayorRelopASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>menorRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMenorRelopAST([NotNull] Parser1.MenorRelopASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>diferenteRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDiferenteRelopAST([NotNull] Parser1.DiferenteRelopASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>menorigualRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMenorigualRelopAST([NotNull] Parser1.MenorigualRelopASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>comparacionRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitComparacionRelopAST([NotNull] Parser1.ComparacionRelopASTContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by the <c>formParsAST</c>
 	/// labeled alternative in <see cref="Parser1.formPars"/>.
 	/// </summary>
@@ -122,6 +186,30 @@ public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitConditionAST([NotNull] Parser1.ConditionASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>divMulopAST</c>
+	/// labeled alternative in <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDivMulopAST([NotNull] Parser1.DivMulopASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>divmodMulopAST</c>
+	/// labeled alternative in <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDivmodMulopAST([NotNull] Parser1.DivmodMulopASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>mulMulopAST</c>
+	/// labeled alternative in <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMulMulopAST([NotNull] Parser1.MulMulopASTContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>readStatAST</c>
@@ -218,6 +306,14 @@ public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitBlockAST([NotNull] Parser1.BlockASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>exprAST</c>
+	/// labeled alternative in <see cref="Parser1.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExprAST([NotNull] Parser1.ExprASTContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>termAST</c>

@@ -86,10 +86,10 @@ condFact
 ;
 
 expr
-: (RESTA)? term (addop term)*		//aquí															#exprAST
+: (RESTA)? term (addop term)*															#exprAST
 ;
 
-term//ya
+term
 : factor (mulop factor)*																		#termAST
 ;
 
@@ -107,13 +107,21 @@ designator
 ;
 
 relop
-: COMPARACION | DIFERENTE | MAYOR | MAYORIGUAL | MENOR | MENORIGUAL								#relopAST
+: COMPARACION																					#comparacionRelopAST
+| DIFERENTE																						#diferenteRelopAST
+| MAYOR																							#mayorRelopAST
+| MAYORIGUAL																					#mayorigualRelopAST
+| MENOR																							#menorRelopAST
+| MENORIGUAL																					#menorigualRelopAST
 ;
 
 addop
-: SUMA | RESTA																					#addopAST
+: SUMA																							#sumaAddopAST
+| RESTA																							#restaAddopAST
 ;
 
 mulop
-: MUL | DIV | DIVMOD																			#mulopAST
+: MUL																							#mulMulopAST
+| DIV																							#divMulopAST
+| DIVMOD																						#divmodMulopAST
 ;

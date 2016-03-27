@@ -18,7 +18,6 @@ COMMMET
 MULTICOMENT: ('/*' (options {greedy=false;
                                  k = 2;}:.)* '*/') -> channel(HIDDEN);
 
-
 IN
 : 'in'
 ;

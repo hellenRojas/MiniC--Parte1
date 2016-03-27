@@ -48,6 +48,32 @@ public interface IParser1Listener : IParseTreeListener {
 	void ExitClassDeclAST([NotNull] Parser1.ClassDeclASTContext context);
 
 	/// <summary>
+	/// Enter a parse tree produced by the <c>sumaAddopAST</c>
+	/// labeled alternative in <see cref="Parser1.addop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterSumaAddopAST([NotNull] Parser1.SumaAddopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>sumaAddopAST</c>
+	/// labeled alternative in <see cref="Parser1.addop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitSumaAddopAST([NotNull] Parser1.SumaAddopASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>restaAddopAST</c>
+	/// labeled alternative in <see cref="Parser1.addop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterRestaAddopAST([NotNull] Parser1.RestaAddopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>restaAddopAST</c>
+	/// labeled alternative in <see cref="Parser1.addop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitRestaAddopAST([NotNull] Parser1.RestaAddopASTContext context);
+
+	/// <summary>
 	/// Enter a parse tree produced by the <c>condTermAST</c>
 	/// labeled alternative in <see cref="Parser1.condTerm"/>.
 	/// </summary>
@@ -113,6 +139,84 @@ public interface IParser1Listener : IParseTreeListener {
 	void ExitTypeAST([NotNull] Parser1.TypeASTContext context);
 
 	/// <summary>
+	/// Enter a parse tree produced by the <c>mayorigualRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMayorigualRelopAST([NotNull] Parser1.MayorigualRelopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>mayorigualRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMayorigualRelopAST([NotNull] Parser1.MayorigualRelopASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>mayorRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMayorRelopAST([NotNull] Parser1.MayorRelopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>mayorRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMayorRelopAST([NotNull] Parser1.MayorRelopASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>menorRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMenorRelopAST([NotNull] Parser1.MenorRelopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>menorRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMenorRelopAST([NotNull] Parser1.MenorRelopASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>diferenteRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDiferenteRelopAST([NotNull] Parser1.DiferenteRelopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>diferenteRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDiferenteRelopAST([NotNull] Parser1.DiferenteRelopASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>menorigualRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMenorigualRelopAST([NotNull] Parser1.MenorigualRelopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>menorigualRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMenorigualRelopAST([NotNull] Parser1.MenorigualRelopASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>comparacionRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterComparacionRelopAST([NotNull] Parser1.ComparacionRelopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>comparacionRelopAST</c>
+	/// labeled alternative in <see cref="Parser1.relop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitComparacionRelopAST([NotNull] Parser1.ComparacionRelopASTContext context);
+
+	/// <summary>
 	/// Enter a parse tree produced by the <c>formParsAST</c>
 	/// labeled alternative in <see cref="Parser1.formPars"/>.
 	/// </summary>
@@ -176,6 +280,45 @@ public interface IParser1Listener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitConditionAST([NotNull] Parser1.ConditionASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>divMulopAST</c>
+	/// labeled alternative in <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDivMulopAST([NotNull] Parser1.DivMulopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>divMulopAST</c>
+	/// labeled alternative in <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDivMulopAST([NotNull] Parser1.DivMulopASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>divmodMulopAST</c>
+	/// labeled alternative in <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDivmodMulopAST([NotNull] Parser1.DivmodMulopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>divmodMulopAST</c>
+	/// labeled alternative in <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDivmodMulopAST([NotNull] Parser1.DivmodMulopASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>mulMulopAST</c>
+	/// labeled alternative in <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMulMulopAST([NotNull] Parser1.MulMulopASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>mulMulopAST</c>
+	/// labeled alternative in <see cref="Parser1.mulop"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMulMulopAST([NotNull] Parser1.MulMulopASTContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>readStatAST</c>
@@ -332,6 +475,19 @@ public interface IParser1Listener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitBlockAST([NotNull] Parser1.BlockASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>exprAST</c>
+	/// labeled alternative in <see cref="Parser1.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterExprAST([NotNull] Parser1.ExprASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>exprAST</c>
+	/// labeled alternative in <see cref="Parser1.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitExprAST([NotNull] Parser1.ExprASTContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>termAST</c>

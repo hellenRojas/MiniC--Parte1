@@ -40,7 +40,23 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             return final; 
     }
 
+    
+    public virtual object VisitSumaAddopAST([NotNull] Parser1.SumaAddopASTContext context) {
+        TreeNode suma = new TreeNode(context.SUMA().ToString());
+        TreeNode[] arreglo = new TreeNode[] { suma };
+        TreeNode final = new TreeNode("Addop-Suma", arreglo);
+        return final; 
+    }
+
+
+    public virtual object VisitRestaAddopAST([NotNull] Parser1.RestaAddopASTContext context) {
+        TreeNode resta = new TreeNode(context.RESTA().ToString());
+        TreeNode[] arreglo = new TreeNode[] { resta };
+        TreeNode final = new TreeNode("Addop-Resta", arreglo);
+        return final; 
+    }
 	
+
     public virtual object VisitCondTermAST([NotNull] Parser1.CondTermASTContext context) {
         TreeNode condfact1 = (TreeNode)Visit(context.condFact(0));
         int largo = context.Y().Count() + context.condFact().Count();
@@ -254,8 +270,56 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         TreeNode final = new TreeNode("Type", arreglo);
         return final;
     }
+    
+    
+    public virtual object VisitMayorigualRelopAST([NotNull] Parser1.MayorigualRelopASTContext context) {
+        TreeNode mayorigual = new TreeNode(context.MAYORIGUAL().ToString());
+        TreeNode[] arreglo = new TreeNode[] { mayorigual };
+        TreeNode final = new TreeNode("Relop-MayorIgual", arreglo);
+        return final; 
+    }
 
+    
+    public virtual object VisitMayorRelopAST([NotNull] Parser1.MayorRelopASTContext context) {
+        TreeNode mayor = new TreeNode(context.MAYOR().ToString());
+        TreeNode[] arreglo = new TreeNode[] { mayor };
+        TreeNode final = new TreeNode("Relop-Mayor", arreglo);
+        return final; 
+    }
+
+    
+    public virtual object VisitMenorRelopAST([NotNull] Parser1.MenorRelopASTContext context) {
+        TreeNode menor = new TreeNode(context.MENOR().ToString());
+        TreeNode[] arreglo = new TreeNode[] { menor};
+        TreeNode final = new TreeNode("Relop-Menor", arreglo);
+        return final; 
+    }
+
+  
+    public virtual object VisitDiferenteRelopAST([NotNull] Parser1.DiferenteRelopASTContext context) {
+        TreeNode diferente = new TreeNode(context.DIFERENTE().ToString());
+        TreeNode[] arreglo = new TreeNode[] { diferente };
+        TreeNode final = new TreeNode("Relop-Diferente", arreglo);
+        return final; 
+    }
+
+    
+    public virtual object VisitMenorigualRelopAST([NotNull] Parser1.MenorigualRelopASTContext context) {
+        TreeNode menorigual = new TreeNode(context.MENORIGUAL().ToString());
+        TreeNode[] arreglo = new TreeNode[]{menorigual};
+        TreeNode final = new TreeNode("Relop-MenorIgual",arreglo);
+        return final; 
+    }
+
+
+    public virtual object VisitComparacionRelopAST([NotNull] Parser1.ComparacionRelopASTContext context) {
+        TreeNode comparacion = new TreeNode(context.COMPARACION().ToString());
+        TreeNode[] arreglo = new TreeNode[] { comparacion };
+        TreeNode final = new TreeNode("Relop-Comparacion", arreglo);
+        return final; 
+    }
 	
+    
     public virtual object VisitFormParsAST([NotNull] Parser1.FormParsASTContext context) {
         TreeNode type1 = (TreeNode)Visit(context.type(0));
         TreeNode ident1 = new TreeNode(context.IDENT(0).ToString());
@@ -301,7 +365,47 @@ class PrettyPrint : Parser1BaseVisitor<Object>
     }
 
 	
-    public virtual object VisitDesignatorAST([NotNull] Parser1.DesignatorASTContext context) { return VisitChildren(context); }
+    public virtual object VisitDesignatorAST([NotNull] Parser1.DesignatorASTContext context) {
+        TreeNode ident1 = new TreeNode(context.IDENT(0).ToString());
+        TreeNode[] arreglo;
+        if (context.PUNTO() != null)
+        {
+            int ipunto = 0; //contador para punto
+            int largo =context.PUNTO().Count() + context.IDENT().Count();
+            arreglo = new TreeNode[largo]; //inicializar arreglo
+            arreglo[0] = ident1;
+            int count = 1; //contador para arreglo
+            for (int i = 1; i <= context.IDENT().Count(); i++)
+            {
+                TreeNode punto = new TreeNode(context.PUNTO(ipunto).ToString());
+                TreeNode ident2 = new TreeNode(context.IDENT(i).ToString());
+                arreglo[count] = punto;
+                arreglo[count + 1] = ident2;
+                count += 2;
+                ipunto++;
+
+            }
+        }
+        else
+        {
+            int largo = 1 + context.PCUADRADO_IZQ().Count() + context.PCUADRADO_DER().Count() + context.expr().Count();
+            arreglo =  new TreeNode[largo];
+            arreglo[0] = ident1;
+            int count = 1; //contador de arreglo
+            for (int i = 0; i <= context.expr().Count(); i++)
+            {
+                TreeNode PI = new TreeNode(context.PCUADRADO_IZQ(i).ToString());
+                TreeNode expr = (TreeNode)Visit(context.expr(i));
+                TreeNode PD = new TreeNode(context.PCUADRADO_DER(i).ToString());
+                arreglo[count] = PI;
+                arreglo[count + 1] = expr;
+                arreglo[count + 2] = PD;
+                count += 3;
+            }
+        }
+        TreeNode final = new TreeNode("Designator", arreglo);
+        return final;
+    }
 
 	
     public virtual object VisitCondFactAST([NotNull] Parser1.CondFactASTContext context) {
@@ -333,8 +437,32 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         TreeNode final = new TreeNode("Condition", arreglo);
         return final; 
     }
+    
+    
+    public virtual object VisitDivMulopAST([NotNull] Parser1.DivMulopASTContext context) {
+        TreeNode div = new TreeNode(context.DIV().ToString());
+        TreeNode[] arreglo = new TreeNode[] { div };
+        TreeNode final = new TreeNode("Mulop-Div", arreglo);
+        return final;  
+    }
 
+
+    public virtual object VisitDivmodMulopAST([NotNull] Parser1.DivmodMulopASTContext context) {
+        TreeNode divmod = new TreeNode(context.DIVMOD().ToString());
+        TreeNode[] arreglo = new TreeNode[] { divmod };
+        TreeNode final = new TreeNode("Mulop-DivMod", arreglo);
+        return final; 
+    }
+
+
+    public virtual object VisitMulMulopAST([NotNull] Parser1.MulMulopASTContext context) {
+        TreeNode mul = new TreeNode(context.MUL().ToString());
+        TreeNode[] arreglo = new TreeNode[] { mul };
+        TreeNode final = new TreeNode("Mulop-Mul", arreglo);
+        return final; ;
+    }
 	
+
     public virtual object VisitReadStatAST([NotNull] Parser1.ReadStatASTContext context) {
         TreeNode read = new TreeNode(context.READ().ToString());
         TreeNode PI = new TreeNode(context.PIZQ().ToString());
@@ -608,11 +736,47 @@ class PrettyPrint : Parser1BaseVisitor<Object>
 
 	
     public virtual object VisitExprAST([NotNull] Parser1.ExprASTContext context) {
+        TreeNode[] arreglo;
         if (context.RESTA() != null)
         {
-            TreeNode resta = new TreeNode()//áquí
+            TreeNode resta = new TreeNode(context.RESTA().ToString());
+            TreeNode term1 = (TreeNode)Visit(context.term(0));
+            int largo = 1 + context.term().Count() + context.addop().Count();
+            arreglo = new TreeNode[largo];
+            arreglo[0] = resta;
+            arreglo[1] = term1;
+            int count = 2; //contador de arreglo
+            int iaddop = 0; //contador de mulop
+            for (int i = 1; i <= context.term().Count(); i++)
+            {
+                TreeNode addop = (TreeNode)Visit(context.addop(iaddop));
+                TreeNode term2 = (TreeNode)Visit(context.term(i));
+                arreglo[count] = addop;
+                arreglo[count+1] = term2;
+                count += 2;
+                iaddop++;
+            }
         }
-        return VisitChildren(context); 
+        else//no viene resta
+        {
+            TreeNode term1 = (TreeNode)Visit(context.term(0));
+            int largo = context.term().Count() + context.addop().Count();
+            arreglo = new TreeNode[largo];
+            arreglo[0] = term1;
+            int count = 1; //contador de arreglo
+            int iaddop = 0; //contador de mulop
+            for (int i = 1; i <= context.term().Count(); i++)
+            {
+                TreeNode addop = (TreeNode)Visit(context.addop(iaddop));
+                TreeNode term2 = (TreeNode)Visit(context.term(i));
+                arreglo[count] = addop;
+                arreglo[count + 1] = term2;
+                count += 2;
+                iaddop++;
+            }
+        }
+        TreeNode final = new TreeNode("Expr", arreglo);
+        return final; 
     }
 
 	
@@ -637,22 +801,90 @@ class PrettyPrint : Parser1BaseVisitor<Object>
     }
 
 	
-    public virtual object VisitExprFactorAST([NotNull] Parser1.ExprFactorASTContext context) { return VisitChildren(context); }
+    public virtual object VisitExprFactorAST([NotNull] Parser1.ExprFactorASTContext context) {
+        TreeNode PI = new TreeNode(context.PIZQ().ToString());
+        TreeNode expr = (TreeNode)Visit(context.expr());
+        TreeNode PD = new TreeNode(context.PDER().ToString());
+        TreeNode[] arreglo = new TreeNode[] { PI, expr, PD };
+        TreeNode final = new TreeNode("Factor-Expr", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitTruefalseFactorAST([NotNull] Parser1.TruefalseFactorASTContext context) { return VisitChildren(context); }
+    public virtual object VisitTruefalseFactorAST([NotNull] Parser1.TruefalseFactorASTContext context) {
+        TreeNode[] arreglo;
+        if (context.TRUE() != null)
+        {
+            TreeNode trues = new TreeNode(context.TRUE().ToString());
+            arreglo = new TreeNode[] { trues };
+        }
+        TreeNode falses = new TreeNode(context.FALSE().ToString());
+        arreglo = new TreeNode[] { falses };
+        TreeNode final = new TreeNode("Factor-TrueFalse", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitNewFactorAST([NotNull] Parser1.NewFactorASTContext context) { return VisitChildren(context); }
+    public virtual object VisitNewFactorAST([NotNull] Parser1.NewFactorASTContext context) {
+        TreeNode news = new TreeNode(context.NEW().ToString());
+        TreeNode ident = new TreeNode(context.IDENT().ToString());
+        TreeNode[] arreglo;
+        if (context.PCUADRADO_IZQ() != null)
+        {
+            TreeNode PI = new TreeNode(context.PCUADRADO_IZQ().ToString());
+            TreeNode expr = (TreeNode)Visit(context.expr());
+            TreeNode PD = new TreeNode(context.PCUADRADO_DER().ToString());
+            arreglo = new TreeNode[] { news, ident, PI, expr, PD };
+        }
+        arreglo = new TreeNode[] { news, ident};
+        TreeNode final = new TreeNode("Factor-New", arreglo);
+        return final; 
+    }
 
 	
-    public virtual object VisitDesignatorFactorAST([NotNull] Parser1.DesignatorFactorASTContext context) { return VisitChildren(context); }
+    public virtual object VisitDesignatorFactorAST([NotNull] Parser1.DesignatorFactorASTContext context) {
+        TreeNode designator = (TreeNode)Visit(context.designator());
+        TreeNode[] arreglo;
+        if (context.PIZQ() != null)
+        {
+            if (context.actPars() != null)
+            {
+                TreeNode PI = new TreeNode(context.PIZQ().ToString());
+                TreeNode actpars = (TreeNode)Visit(context.actPars());
+                TreeNode PD = new TreeNode(context.PDER().ToString());
+                arreglo = new TreeNode[] { designator, PI, actpars, PD };
+
+            }
+            else
+            {
+                TreeNode PI = new TreeNode(context.PIZQ().ToString());
+                TreeNode PD = new TreeNode(context.PDER().ToString());
+                arreglo = new TreeNode[] { designator, PI, PD };
+            }
+        }
+        else
+        {
+            arreglo = new TreeNode[] { designator};
+        }
+        TreeNode final = new TreeNode("Factor-Designator", arreglo);
+        return VisitChildren(context);
+    }
 
 	
-    public virtual object VisitNumberFactorAST([NotNull] Parser1.NumberFactorASTContext context) { return VisitChildren(context); }
+    public virtual object VisitNumberFactorAST([NotNull] Parser1.NumberFactorASTContext context) {
+        TreeNode number = new TreeNode(context.NUMBER().ToString());
+        TreeNode[] arreglo = new TreeNode[] { number };
+        TreeNode final = new TreeNode("Factor-Number",arreglo)  ;
+        return final;
+    }
 
 
-    public virtual object VisitCharconstFactorAST([NotNull] Parser1.CharconstFactorASTContext context) { return VisitChildren(context); }
+    public virtual object VisitCharconstFactorAST([NotNull] Parser1.CharconstFactorASTContext context) {
+        TreeNode charconst = new TreeNode(context.CharConst().ToString());
+        TreeNode[] arreglo = new TreeNode[] { charconst };
+        TreeNode final = new TreeNode("Factor-Charconst", arreglo);
+        return final; 
+    }
 
 	
     public virtual object VisitVarDeclAST([NotNull] Parser1.VarDeclASTContext context) {

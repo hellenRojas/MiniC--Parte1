@@ -30,6 +30,7 @@ C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\Antlr4
 C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\FastColoredTextBox.dll
 C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\Antlr4.Runtime.xml
 C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\FastColoredTextBox.xml
+C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.csprojResolveAssemblyReference.cache
 C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\Lexer1.cs
 C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\Parser1.cs
 C:\Users\usuario\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\Parser1Listener.cs
