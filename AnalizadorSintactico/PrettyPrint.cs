@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 class PrettyPrint : Parser1BaseVisitor<Object>
 {
-
+    
     //private var for tree
     private TreeView treeview;
 
@@ -17,10 +17,10 @@ class PrettyPrint : Parser1BaseVisitor<Object>
     {
         this.treeview = tree;
     }
-   
+   /*
 	public virtual object VisitClassDeclAST([NotNull] Parser1.ClassDeclASTContext context) {
         TreeNode clase = new TreeNode(context.CLASE().ToString());
-        TreeNode ident = new TreeNode(context.IDENT().ToString());
+        TreeNode ident = new TreeNode(context.ID().ToString());
         TreeNode CD = new TreeNode(context.COR_DER().ToString());
         TreeNode CI = new TreeNode(context.COR_IZQ().ToString());
         int largo = 4 + context.varDecl().Count();
@@ -971,5 +971,5 @@ class PrettyPrint : Parser1BaseVisitor<Object>
 	
     public virtual object VisitMulop([NotNull] Parser1.MulopContext context) { return VisitChildren(context); }
 
-
+    */
 }

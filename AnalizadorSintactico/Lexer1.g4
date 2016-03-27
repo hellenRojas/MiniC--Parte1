@@ -15,9 +15,6 @@ COMMMET
 : ('//' ('0'..'9'|'A'..'Z'| 'a'..'z'|' ')* )-> channel(HIDDEN)
 ;
 
-MULTICOMENT: ('/*' (options {greedy=false;
-                                 k = 2;}:.)* '*/') -> channel(HIDDEN);
-
 IN
 : 'in'
 ;
@@ -136,13 +133,11 @@ NUMBER
 
 
 ID
-: LETTER (LETTER | DIGIT)*
-;
-
-
-IDENT
 : LETTER (LETTER | DIGIT| '_')*
 ;
+
+
+
 
 CharConst: '\'' (PrintableChar|'\n'|'\r') '\'';
 

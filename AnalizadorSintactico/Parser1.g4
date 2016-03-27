@@ -15,39 +15,39 @@ tokenVocab = Lexer1;
 
 
 program 
-: CLASE IDENT (constDecl | varDecl | classDecl)* COR_DER (methodDecl)* COR_IZQ					#programAST
+: CLASE ID (constDecl | varDecl | classDecl)* COR_DER (methodDecl)* COR_IZQ					#programAST
 ;
 
 
 
 constDecl
-: CONSTANTE type IDENT ASIGN (NUMBER | CharConst) PyCOMA										#constDeclAST
+: CONSTANTE type ID ASIGN (NUMBER | CharConst) PyCOMA										#constDeclAST
 ;
 
 
 varDecl
-: type IDENT (COMA IDENT)* PyCOMA																#varDeclAST
+: type ID (COMA ID)* PyCOMA																#varDeclAST
 ;
 
 
 
 classDecl
-: CLASE IDENT COR_DER (varDecl)* COR_IZQ														#classDeclAST
+: CLASE ID COR_DER (varDecl)* COR_IZQ														#classDeclAST
 ;
 
 
 
 methodDecl
-: (type | VOID) IDENT PIZQ (formPars)? PDER (varDecl)* block									#methodDeclAST
+: (type | VOID) ID PIZQ (formPars)? PDER (varDecl)* block									#methodDeclAST
 ;
 
 
 formPars
-: type IDENT (COMA type IDENT)*																	#formParsAST
+: type ID (COMA type ID)*																	#formParsAST
 ;
 
 type
-: IDENT (PCUADRADO_IZQ PCUADRADO_DER)?															#typeAST
+: ID (PCUADRADO_IZQ PCUADRADO_DER)?															#typeAST
 ;
 
 statement
@@ -55,13 +55,14 @@ statement
 | CONDICION_IF PIZQ condition PDER statement (CONDICION_ELSE statement)?						#ifStatAST
 | CICLO_FOR PIZQ expr PyCOMA (condition)? PyCOMA (statement)? PDER statement					#forStatAST
 | CICLO_WHILE PIZQ condition PDER statement														#whileStatAST
-| CICLO_FOREACH PIZQ type IDENT IN expr PDER statement											#foreachStatAST
+| CICLO_FOREACH PIZQ type ID IN expr PDER statement											#foreachStatAST
 | BREAK PyCOMA																					#breakStatAST
 | RETURN (expr)? PyCOMA																			#returnStatAST
 | READ PIZQ designator PDER PyCOMA																#readStatAST
 | WRITE PIZQ expr (COMA NUMBER)? PDER PyCOMA													#writeStatAST
 | block																							#blockStatAST
 | PyCOMA																						#pyStatAST
+
 ;
 
 
@@ -86,7 +87,7 @@ condFact
 ;
 
 expr
-: (RESTA)? term (addop term)*															#exprAST
+: (RESTA)? term (addop term)*																	#exprAST
 ;
 
 term
@@ -98,12 +99,12 @@ factor
 | NUMBER																						#numberFactorAST
 | CharConst																						#charconstFactorAST
 | (TRUE | FALSE)																				#truefalseFactorAST
-| NEW IDENT (PCUADRADO_IZQ expr PCUADRADO_DER)?													#newFactorAST
+| NEW ID (PCUADRADO_IZQ expr PCUADRADO_DER)?													#newFactorAST
 | PIZQ expr PDER																				#exprFactorAST
 ;
 
 designator
-: IDENT (PUNTO IDENT | PCUADRADO_IZQ expr PCUADRADO_DER)*										#designatorAST
+: ID (PUNTO ID | PCUADRADO_IZQ expr PCUADRADO_DER)*												#designatorAST
 ;
 
 relop
