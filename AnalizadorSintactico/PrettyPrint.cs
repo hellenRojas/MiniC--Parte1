@@ -560,12 +560,12 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         TreeNode designator = (TreeNode)Visit(context.designator());
         TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
         TreeNode[] arreglo;
-        int largo = 2;
+        int largo = 0;
         if (context.ASIGN() != null)
         {
             TreeNode asign = new TreeNode(context.ASIGN().ToString());
             TreeNode expr = (TreeNode)Visit(context.expr());
-            largo += 2;
+            largo += 4; //2 estáticos y 2 posibles
             arreglo = new TreeNode[largo];
             arreglo[0] = designator;
             arreglo[1] = asign;
@@ -575,8 +575,48 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         else if (context.PIZQ() != null)
         {
             TreeNode PI = new TreeNode(context.PIZQ().ToString());
-            if(context.actPars()!=)
+            TreeNode PD = new TreeNode(context.PDER().ToString());
+            if (context.actPars() != null) //viene o no el actpars
+            {
+                TreeNode actpars = (TreeNode)Visit(context.actPars());
+                largo += 5; //2 estáticos y 3 posibles
+                arreglo = new TreeNode[largo];
+                arreglo[0] = designator;
+                arreglo[1] = PI;
+                arreglo[2] = actpars;
+                arreglo[3] = PD;
+                arreglo[4] = pycoma;
+            }
+            else
+            {
+                largo += 4; //2 estaticos y 2 posibles
+                arreglo = new TreeNode[largo];
+                arreglo[0] = designator;
+                arreglo[1] = PI;
+                arreglo[2] = PD;
+                arreglo[3] = pycoma;
+            }
         }
+        else if (context.INCRE() != null)
+        {
+            largo += 3; //2 estáticos 1 posible
+            TreeNode incre = new TreeNode(context.INCRE().ToString());
+            arreglo = new TreeNode[largo]; 
+            arreglo[0] = designator;
+            arreglo[1] = incre;
+            arreglo[2] = pycoma;
+        }
+        else //preguntar si debo evaluar el DECRE del statement, porque si uso else if me da error el arreglo al mandarlo como nodo final
+        {
+            largo += 3; //2 estáticos 1 posible
+            TreeNode decre = new TreeNode(context.DECRE().ToString());
+            arreglo = new TreeNode[largo];
+            arreglo[0] = designator;
+            arreglo[1] = decre;
+            arreglo[2] = pycoma;
+        }
+        TreeNode final = new TreeNode("Statement-Desig", arreglo);
+        return final;
     }
 
 	
@@ -703,7 +743,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             arreglo[count] = statement;
             count++;
         }
-        arreglo[0] = CI;
+        arreglo[count] = CI;
         TreeNode final = new TreeNode("Block", arreglo);
         return final; 
     }
