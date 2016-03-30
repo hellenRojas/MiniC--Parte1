@@ -8,31 +8,17 @@ NEWLINE
 ;
 
 COMMMETBLOCK
-: ('/*' ('0'..'9'|'A'..'Z'| 'a'..'z'|'\n'|'\r'|' ')* '*/')-> channel(HIDDEN)
+: ('/*' ('0'..'9'|'A'..'Z'| 'a'..'z'|'\n'|'\r'|' '|PrintableChar)* '*/')-> channel(HIDDEN)
 ;
 
 COMMMET
-: ('//' ('0'..'9'|'A'..'Z'| 'a'..'z'|' ')* )-> channel(HIDDEN)
+: ('//' ('0'..'9'|'A'..'Z'| 'a'..'z'|' ' |PrintableChar)* )-> channel(HIDDEN)
 ;
 
 IN
 : 'in'
 ;
-INT 
-: 'int'
-;
 
-STRING 
-: 'string'
-;
-
-FLOAT
-: 'float'
-;
-
-BOOLEAN
-: 'boolean'
-;
 
 VOID
 : 'void'
@@ -128,12 +114,12 @@ COR_IZQ: '}';
 
 
 NUMBER
-: '1'..'9' (DIGIT)*
+: '1'..'9' (DIGIT)*|'0'
 ;
 
 
 ID
-: LETTER (LETTER | DIGIT| '_')*
+: LETTER (LETTER | DIGIT | '_')*
 ;
 
 

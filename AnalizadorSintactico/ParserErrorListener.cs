@@ -16,7 +16,7 @@ namespace AnalisisSintactico
         public override void SyntaxError(IRecognizer recognizer, IToken offendingSymbol, int line, 
             int charPositionInLine, string msg, RecognitionException e)
         {
-            line = line - 1;
+            
             Program.p.error.AppendText("Error de Parser: linea= "+line+", columna= " + charPositionInLine+"  ");
             if (e != null)
             {

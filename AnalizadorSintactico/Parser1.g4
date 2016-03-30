@@ -15,39 +15,39 @@ tokenVocab = Lexer1;
 
 
 program 
-: CLASE ID (constDecl | varDecl | classDecl)* COR_DER (methodDecl)* COR_IZQ					#programAST
+: CLASE ID (constDecl | varDecl | classDecl)* COR_DER (methodDecl)* COR_IZQ						#programAST
 ;
 
 
 
 constDecl
-: CONSTANTE type ID ASIGN (NUMBER | CharConst) PyCOMA										#constDeclAST
+: CONSTANTE type ID ASIGN (NUMBER | CharConst) PyCOMA											#constDeclAST
 ;
 
 
 varDecl
-: type ID (COMA ID)* PyCOMA																#varDeclAST
+: type ID (COMA ID)* PyCOMA																		#varDeclAST
 ;
 
 
 
 classDecl
-: CLASE ID COR_DER (varDecl)* COR_IZQ														#classDeclAST
+: CLASE ID COR_DER (varDecl)* COR_IZQ															#classDeclAST
 ;
 
 
 
 methodDecl
-: (type | VOID) ID PIZQ (formPars)? PDER (varDecl)* block									#methodDeclAST
+: (type | VOID) ID PIZQ (formPars)? PDER (varDecl)* block										#methodDeclAST
 ;
 
 
 formPars
-: type ID (COMA type ID)*																	#formParsAST
+: type ID (COMA type ID)*																		#formParsAST
 ;
 
 type
-: ID (PCUADRADO_IZQ PCUADRADO_DER)?															#typeAST
+: ID (PCUADRADO_IZQ PCUADRADO_DER)?																#typeAST
 ;
 
 statement
@@ -55,7 +55,7 @@ statement
 | CONDICION_IF PIZQ condition PDER statement (CONDICION_ELSE statement)?						#ifStatAST
 | CICLO_FOR PIZQ expr PyCOMA (condition)? PyCOMA (statement)? PDER statement					#forStatAST
 | CICLO_WHILE PIZQ condition PDER statement														#whileStatAST
-| CICLO_FOREACH PIZQ type ID IN expr PDER statement											#foreachStatAST
+| CICLO_FOREACH PIZQ type ID IN expr PDER statement												#foreachStatAST
 | BREAK PyCOMA																					#breakStatAST
 | RETURN (expr)? PyCOMA																			#returnStatAST
 | READ PIZQ designator PDER PyCOMA																#readStatAST
