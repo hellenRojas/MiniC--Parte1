@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\usuario\Desktop\Nueva carpeta\MiniCSharp-Parte1\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
+// Generated from C:\Users\USUARIO1\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -354,6 +354,22 @@ public interface IParser1Visitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitDesignatorFactorAST([NotNull] Parser1.DesignatorFactorASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>strFactorAST</c>
+	/// labeled alternative in <see cref="Parser1.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitStrFactorAST([NotNull] Parser1.StrFactorASTContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>floatFactorAST</c>
+	/// labeled alternative in <see cref="Parser1.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFloatFactorAST([NotNull] Parser1.FloatFactorASTContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>numberFactorAST</c>

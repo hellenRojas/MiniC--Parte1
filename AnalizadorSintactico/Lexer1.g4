@@ -8,12 +8,16 @@ NEWLINE
 ;
 
 COMMMETBLOCK
-: ('/*' ('0'..'9'|'A'..'Z'| 'a'..'z'|'\n'|'\r'|' '|PrintableChar)* '*/')-> channel(HIDDEN)
+: ('/*' ('0'..'9'|'A'..'Z'| 'a'..'z'|'\n'|'\r'|' '|CARACTERESCOMENTBLOCK|COMMMETBLOCK)* '*/')-> channel(HIDDEN)
 ;
 
+
 COMMMET
-: ('//' ('0'..'9'|'A'..'Z'| 'a'..'z'|' ' |PrintableChar)* )-> channel(HIDDEN)
+: ('//' ('0'..'9'|'A'..'Z'| 'a'..'z'|' ' |PrintableChar|COMENTBLOCKCHAR1|COMENTBLOCKCHAR1)* )-> channel(HIDDEN)
 ;
+
+
+
 
 IN
 : 'in'
@@ -109,7 +113,28 @@ PCUADRADO_IZQ: '[';
 PCUADRADO_DER: ']';
 COR_DER: '{';
 COR_IZQ: '}';
+EXCLAMACION : '!';
+EXCLAMACIONA : '¡';
+NUMERAL : '#';
+DOLAR : '$';
+AMPERSON : '&';
+INTERROGACION : '?';
+ARROBA : '@';
+GUIONBAJO : '_';
+COMILLADOBLE : '"';
+VERTICAL : '|';
+COMENTCHAR: '//';
+COMENTBLOCKCHAR1: '/*';
+COMENTBLOCKCHAR2: '*/';
+DOSPUNTOS : ':';
+ENE: '~';
+BACKQUOTE: '`';
+TECHO:'^';
 
+
+STRI
+: COMILLADOBLE  (LETTER|DIGIT|PrintableChar|'\r'|' ')* COMILLADOBLE
+;
 
 
 
@@ -117,10 +142,65 @@ NUMBER
 : '1'..'9' (DIGIT)*|'0'
 ;
 
+FLOAT
+: ('1'..'9' (DIGIT)*|'0') '.' DIGIT (DIGIT)*
+;
 
 ID
 : LETTER (LETTER | DIGIT | '_')*
 ;
+
+
+CARACTERESCOMENTBLOCK
+: PyCOMA 
+| COMA
+| ASIGN 
+| PIZQ 
+| PDER 
+| SUMA
+| RESTA
+| DIVMOD 
+| COMPARACION
+| DIFERENTE
+| MENOR
+| MENORIGUAL
+| MAYOR
+| MAYORIGUAL
+| O 
+| Y 
+| INCRE
+| DECRE 
+| PUNTO 
+| PCUADRADO_IZQ
+| PCUADRADO_DER
+| COR_DER
+| COR_IZQ
+| EXCLAMACION 
+| EXCLAMACIONA 
+| NUMERAL 
+| DOLAR
+| AMPERSON 
+| INTERROGACION 
+| ARROBA 
+| GUIONBAJO
+| VERTICAL
+| COMENTCHAR
+| DOSPUNTOS 
+| ENE
+| BACKQUOTE
+| TECHO
+;
+
+
+ CARACTERES
+: CARACTERESCOMENTBLOCK
+| MUL 
+| DIV 
+;
+
+
+
+
 
 
 
@@ -134,11 +214,6 @@ fragment
 DIGIT: '0'..'9';
 
 fragment
-PrintableChar: (LETTER|DIGIT|'!'| '"'| '#'| '$'| '%'| '&'|'\''| '(' | ')' | '*'| '+'| ','| '-'| '.'| '/' |':'| ';'| '<'| '='| '>'| '?'| '@');
-
-LQUOTE : '"' -> more, mode(STRI) ;
+PrintableChar: (LETTER|DIGIT|CARACTERES);
 
 
-mode STRI;
-STR : '"' -> mode(DEFAULT_MODE) ; 
-TEXT : .-> more ;

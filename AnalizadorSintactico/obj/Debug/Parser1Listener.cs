@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\usuario\Desktop\Nueva carpeta\MiniCSharp-Parte1\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
+// Generated from C:\Users\USUARIO1\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\Parser1.g4 by ANTLR 4.5-SNAPSHOT
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -553,6 +553,32 @@ public interface IParser1Listener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitDesignatorFactorAST([NotNull] Parser1.DesignatorFactorASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>strFactorAST</c>
+	/// labeled alternative in <see cref="Parser1.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterStrFactorAST([NotNull] Parser1.StrFactorASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>strFactorAST</c>
+	/// labeled alternative in <see cref="Parser1.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitStrFactorAST([NotNull] Parser1.StrFactorASTContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>floatFactorAST</c>
+	/// labeled alternative in <see cref="Parser1.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFloatFactorAST([NotNull] Parser1.FloatFactorASTContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>floatFactorAST</c>
+	/// labeled alternative in <see cref="Parser1.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFloatFactorAST([NotNull] Parser1.FloatFactorASTContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>numberFactorAST</c>

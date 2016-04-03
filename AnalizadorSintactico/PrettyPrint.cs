@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 class PrettyPrint : Parser1BaseVisitor<Object>
 {
-    
+
     //private var for tree
     private TreeView treeview;
 
@@ -17,8 +17,9 @@ class PrettyPrint : Parser1BaseVisitor<Object>
     {
         this.treeview = tree;
     }
-   
-	public override object VisitClassDeclAST([NotNull] Parser1.ClassDeclASTContext context) {
+
+    public override object VisitClassDeclAST([NotNull] Parser1.ClassDeclASTContext context)
+    {
         TreeNode clase = new TreeNode(context.CLASE().ToString());
         TreeNode ID = new TreeNode(context.ID().ToString());
         TreeNode CD = new TreeNode(context.COR_DER().ToString());
@@ -29,7 +30,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         arreglo[1] = ID;
         arreglo[2] = CD;
         int cont = 3;
-        for (int i = 0; i <= context.varDecl().Count()-1; i++)
+        for (int i = 0; i <= context.varDecl().Count() - 1; i++)
         {
             TreeNode vardecl = (TreeNode)Visit(context.varDecl(i));
             arreglo[cont] = vardecl;
@@ -37,34 +38,37 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         }
         arreglo[cont] = CI;
         TreeNode final = new TreeNode("ClassDecl", arreglo);
-            return final; 
+        return final;
     }
 
-    
-    public override object VisitSumaAddopAST([NotNull] Parser1.SumaAddopASTContext context) {
+
+    public override object VisitSumaAddopAST([NotNull] Parser1.SumaAddopASTContext context)
+    {
         TreeNode suma = new TreeNode(context.SUMA().ToString());
         TreeNode[] arreglo = new TreeNode[] { suma };
         TreeNode final = new TreeNode("Addop-Suma", arreglo);
-        return final; 
+        return final;
     }
 
 
-    public override object VisitRestaAddopAST([NotNull] Parser1.RestaAddopASTContext context) {
+    public override object VisitRestaAddopAST([NotNull] Parser1.RestaAddopASTContext context)
+    {
         TreeNode resta = new TreeNode(context.RESTA().ToString());
         TreeNode[] arreglo = new TreeNode[] { resta };
         TreeNode final = new TreeNode("Addop-Resta", arreglo);
-        return final; 
+        return final;
     }
-	
 
-    public override object VisitCondTermAST([NotNull] Parser1.CondTermASTContext context) {
+
+    public override object VisitCondTermAST([NotNull] Parser1.CondTermASTContext context)
+    {
         TreeNode condfact1 = (TreeNode)Visit(context.condFact(0));
         int largo = context.Y().Count() + context.condFact().Count();
         TreeNode[] arreglo = new TreeNode[largo];
         arreglo[0] = condfact1;
         int count = 1; //contador del arreglo
         int iAnd = 0; //contador para AND
-        for (int i = 1; i <= context.condFact().Count()-1; i++)
+        for (int i = 1; i <= context.condFact().Count() - 1; i++)
         {
             TreeNode and = new TreeNode(context.Y(iAnd).ToString());
             TreeNode condfact2 = (TreeNode)Visit(context.condFact(i));
@@ -74,11 +78,12 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             iAnd++;
         }
         TreeNode final = new TreeNode("CondTerm", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitConstDeclAST([NotNull] Parser1.ConstDeclASTContext context) { 
+
+    public override object VisitConstDeclAST([NotNull] Parser1.ConstDeclASTContext context)
+    {
         TreeNode constante = new TreeNode(context.CONSTANTE().ToString());
         TreeNode type = (TreeNode)Visit(context.type());
         TreeNode ID = new TreeNode(context.ID().ToString());
@@ -109,8 +114,9 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         return final;
     }
 
-	
-    public override object VisitProgramAST([NotNull] Parser1.ProgramASTContext context) {
+
+    public override object VisitProgramAST([NotNull] Parser1.ProgramASTContext context)
+    {
         TreeNode Clase = new TreeNode(context.CLASE().ToString());
         TreeNode ID = new TreeNode(context.ID().ToString());
         TreeNode CD = new TreeNode(context.COR_DER().ToString());
@@ -119,33 +125,36 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         int largo = 4;
         //estimar el tamaño del arreglo a usar conociendo si vienen datos en dichas variables o no
         if (context.constDecl() != null) { largo += context.constDecl().Count(); }
-        else if (context.varDecl() != null) { largo += context.varDecl().Count(); }
-        else if (context.classDecl() != null) { largo += context.classDecl().Count(); }
-        largo += context.methodDecl().Count(); 
+        if (context.classDecl() != null) { largo += context.classDecl().Count(); }
+         if (context.varDecl() != null) { largo += context.varDecl().Count(); }
+        largo += context.methodDecl().Count();
 
-        
+
         TreeNode[] arreglo = new TreeNode[largo];
         arreglo[0] = Clase;
         arreglo[1] = ID;
         int cont = 2;//estado actual de posición del arreglo
 
         //recorrer las variables en un ciclo porque se ejecutan una o más veces
-        if (context.constDecl() != null) {
-            for (int i = 0; i <= context.constDecl().Count()-1; i++)
+        if (context.constDecl() != null)
+        {
+            for (int i = 0; i < context.constDecl().Count() ; i++)
             {
                 arreglo[cont] = (TreeNode)Visit(context.constDecl(i));
                 cont++;
             }
         }
-        else if (context.varDecl() != null) {
-            for (int i = 0; i <= context.varDecl().Count()-1; i++)
+         if (context.varDecl() != null)
+        {
+            for (int i = 0; i < context.varDecl().Count() ; i++)
             {
                 arreglo[cont] = (TreeNode)Visit(context.varDecl(i));
                 cont++;
             }
         }
-        else if (context.classDecl() != null) {
-            for (int i = 0; i <= context.classDecl().Count()-1; i++)
+         if (context.classDecl() != null)
+        {
+            for (int i = 0; i < context.classDecl().Count() ; i++)
             {
                 arreglo[cont] = (TreeNode)Visit(context.classDecl(i));
                 cont++;
@@ -154,19 +163,20 @@ class PrettyPrint : Parser1BaseVisitor<Object>
 
         arreglo[cont] = CD; //llave derecha
         cont++;
-        for (int i = 0; i <= context.methodDecl().Count()-1; i++)
+        for (int i = 0; i < context.methodDecl().Count() ; i++)
         {
             arreglo[cont] = (TreeNode)Visit(context.methodDecl(i));
             cont++;
         }
         arreglo[cont] = CI;
-        TreeNode final = new TreeNode("Program",arreglo);
+        TreeNode final = new TreeNode("Program", arreglo);
         treeview.Nodes.Add(final);
         return null; //en caso de ERROR cambiar a null
     }
 
-	
-    public override object VisitMethodDeclAST([NotNull] Parser1.MethodDeclASTContext context) {
+
+    public override object VisitMethodDeclAST([NotNull] Parser1.MethodDeclASTContext context)
+    {
         int largo = 0;
         TreeNode voids = new TreeNode(context.VOID().ToString());
         TreeNode ID = new TreeNode(context.ID().ToString());
@@ -188,7 +198,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
                 arreglo[3] = formpars;
                 arreglo[4] = PD;
                 int count = 5;
-                for (int i = 0; i <= context.varDecl().Count()-1; i++)
+                for (int i = 0; i <= context.varDecl().Count() - 1; i++)
                 {
                     TreeNode vardecl = (TreeNode)Visit(context.varDecl(i));
                     arreglo[count] = vardecl;
@@ -205,7 +215,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
                 arreglo[3] = formpars;
                 arreglo[4] = PD;
                 int count = 5;
-                for (int i = 0; i <= context.varDecl().Count()-1; i++)
+                for (int i = 0; i <= context.varDecl().Count() - 1; i++)
                 {
                     TreeNode vardecl = (TreeNode)Visit(context.varDecl(i));
                     arreglo[count] = vardecl;
@@ -226,7 +236,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
                 arreglo[2] = PI;
                 arreglo[3] = PD;
                 int count = 4;
-                for (int i = 0; i <= context.varDecl().Count()-1; i++)
+                for (int i = 0; i <= context.varDecl().Count() - 1; i++)
                 {
                     TreeNode vardecl = (TreeNode)Visit(context.varDecl(i));
                     arreglo[count] = vardecl;
@@ -241,7 +251,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
                 arreglo[2] = PI;
                 arreglo[3] = PD;
                 int count = 4;
-                for (int i = 0; i <= context.varDecl().Count()-1; i++)
+                for (int i = 0; i <= context.varDecl().Count() - 1; i++)
                 {
                     TreeNode vardecl = (TreeNode)Visit(context.varDecl(i));
                     arreglo[count] = vardecl;
@@ -254,8 +264,9 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         return final;
     }
 
-	
-    public override object VisitTypeAST([NotNull] Parser1.TypeASTContext context) {
+
+    public override object VisitTypeAST([NotNull] Parser1.TypeASTContext context)
+    {
         TreeNode ID = new TreeNode(context.ID().ToString());
         TreeNode[] arreglo;
         if (context.PCUADRADO_IZQ() != null) //comprobar si viene llaves o no (0/1)
@@ -271,57 +282,64 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         TreeNode final = new TreeNode("Type", arreglo);
         return final;
     }
-    
-    
-    public override object VisitMayorigualRelopAST([NotNull] Parser1.MayorigualRelopASTContext context) {
+
+
+    public override object VisitMayorigualRelopAST([NotNull] Parser1.MayorigualRelopASTContext context)
+    {
         TreeNode mayorigual = new TreeNode(context.MAYORIGUAL().ToString());
         TreeNode[] arreglo = new TreeNode[] { mayorigual };
         TreeNode final = new TreeNode("Relop-MayorIgual", arreglo);
-        return final; 
+        return final;
     }
 
-    
-    public override object VisitMayorRelopAST([NotNull] Parser1.MayorRelopASTContext context) {
+
+    public override object VisitMayorRelopAST([NotNull] Parser1.MayorRelopASTContext context)
+    {
         TreeNode mayor = new TreeNode(context.MAYOR().ToString());
         TreeNode[] arreglo = new TreeNode[] { mayor };
         TreeNode final = new TreeNode("Relop-Mayor", arreglo);
-        return final; 
+        return final;
     }
 
-    
-    public override object VisitMenorRelopAST([NotNull] Parser1.MenorRelopASTContext context) {
+
+    public override object VisitMenorRelopAST([NotNull] Parser1.MenorRelopASTContext context)
+    {
         TreeNode menor = new TreeNode(context.MENOR().ToString());
-        TreeNode[] arreglo = new TreeNode[] { menor};
+        TreeNode[] arreglo = new TreeNode[] { menor };
         TreeNode final = new TreeNode("Relop-Menor", arreglo);
-        return final; 
+        return final;
     }
 
-  
-    public override object VisitDiferenteRelopAST([NotNull] Parser1.DiferenteRelopASTContext context) {
+
+    public override object VisitDiferenteRelopAST([NotNull] Parser1.DiferenteRelopASTContext context)
+    {
         TreeNode diferente = new TreeNode(context.DIFERENTE().ToString());
         TreeNode[] arreglo = new TreeNode[] { diferente };
         TreeNode final = new TreeNode("Relop-Diferente", arreglo);
-        return final; 
+        return final;
     }
 
-    
-    public override object VisitMenorigualRelopAST([NotNull] Parser1.MenorigualRelopASTContext context) {
+
+    public override object VisitMenorigualRelopAST([NotNull] Parser1.MenorigualRelopASTContext context)
+    {
         TreeNode menorigual = new TreeNode(context.MENORIGUAL().ToString());
-        TreeNode[] arreglo = new TreeNode[]{menorigual};
-        TreeNode final = new TreeNode("Relop-MenorIgual",arreglo);
-        return final; 
+        TreeNode[] arreglo = new TreeNode[] { menorigual };
+        TreeNode final = new TreeNode("Relop-MenorIgual", arreglo);
+        return final;
     }
 
 
-    public override object VisitComparacionRelopAST([NotNull] Parser1.ComparacionRelopASTContext context) {
+    public override object VisitComparacionRelopAST([NotNull] Parser1.ComparacionRelopASTContext context)
+    {
         TreeNode comparacion = new TreeNode(context.COMPARACION().ToString());
         TreeNode[] arreglo = new TreeNode[] { comparacion };
         TreeNode final = new TreeNode("Relop-Comparacion", arreglo);
-        return final; 
+        return final;
     }
-	
-    
-    public override object VisitFormParsAST([NotNull] Parser1.FormParsASTContext context) {
+
+
+    public override object VisitFormParsAST([NotNull] Parser1.FormParsASTContext context)
+    {
         TreeNode type1 = (TreeNode)Visit(context.type(0));
         TreeNode ID1 = new TreeNode(context.ID(0).ToString());
         int largo = 2 + context.COMA().Count() + context.type().Count() + context.ID().Count();
@@ -329,7 +347,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         arreglo[0] = type1;
         arreglo[1] = ID1;
         int count = 2;
-        for (int i = 1; i <= context.type().Count()-1; i++)
+        for (int i = 1; i <= context.type().Count() - 1; i++)
         {
             TreeNode coma = new TreeNode(context.COMA(i).ToString());
             TreeNode type2 = (TreeNode)Visit(context.type(i));
@@ -344,15 +362,16 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         return final;
     }
 
-	
-    public override object VisitActParsAST([NotNull] Parser1.ActParsASTContext context) {
+
+    public override object VisitActParsAST([NotNull] Parser1.ActParsASTContext context)
+    {
         TreeNode expr1 = (TreeNode)Visit(context.expr(0));
         int largo = context.COMA().Count() + context.expr().Count();
         TreeNode[] arreglo = new TreeNode[largo];
         arreglo[0] = expr1;
         int count = 1; //contador del arreglo
         int icoma = 0; //contador para coma
-        for (int i = 1; i <= context.expr().Count()-1; i++)
+        for (int i = 1; i <= context.expr().Count() - 1; i++)
         {
             TreeNode coma = new TreeNode(context.COMA(icoma).ToString());
             TreeNode expr2 = (TreeNode)Visit(context.expr(i));
@@ -362,21 +381,22 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             icoma++;
         }
         TreeNode final = new TreeNode("Actpars", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitDesignatorAST([NotNull] Parser1.DesignatorASTContext context) {
+
+    public override object VisitDesignatorAST([NotNull] Parser1.DesignatorASTContext context)
+    {
         TreeNode ID1 = new TreeNode(context.ID(0).ToString());
         TreeNode[] arreglo;
         if (context.PUNTO() != null)
         {
             int ipunto = 0; //contador para punto
-            int largo =context.PUNTO().Count() + context.ID().Count();
+            int largo = context.PUNTO().Count() + context.ID().Count();
             arreglo = new TreeNode[largo]; //inicializar arreglo
             arreglo[0] = ID1;
             int count = 1; //contador para arreglo
-            for (int i = 1; i <= context.ID().Count()-1; i++)
+            for (int i = 1; i <= context.ID().Count() - 1; i++)
             {
                 TreeNode punto = new TreeNode(context.PUNTO(ipunto).ToString());
                 TreeNode ID2 = new TreeNode(context.ID(i).ToString());
@@ -390,10 +410,10 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         else
         {
             int largo = 1 + context.PCUADRADO_IZQ().Count() + context.PCUADRADO_DER().Count() + context.expr().Count();
-            arreglo =  new TreeNode[largo];
+            arreglo = new TreeNode[largo];
             arreglo[0] = ID1;
             int count = 1; //contador de arreglo
-            for (int i = 0; i <= context.expr().Count()-1; i++)
+            for (int i = 0; i <= context.expr().Count() - 1; i++)
             {
                 TreeNode PI = new TreeNode(context.PCUADRADO_IZQ(i).ToString());
                 TreeNode expr = (TreeNode)Visit(context.expr(i));
@@ -408,25 +428,27 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         return final;
     }
 
-	
-    public override object VisitCondFactAST([NotNull] Parser1.CondFactASTContext context) {
+
+    public override object VisitCondFactAST([NotNull] Parser1.CondFactASTContext context)
+    {
         TreeNode expr1 = (TreeNode)Visit(context.expr(0));
         TreeNode relop = (TreeNode)Visit(context.relop());
         TreeNode expr2 = (TreeNode)Visit(context.expr(1));
         TreeNode[] arreglo = new TreeNode[] { expr1, relop, expr2 };
         TreeNode final = new TreeNode("Condfact", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitConditionAST([NotNull] Parser1.ConditionASTContext context) { 
+
+    public override object VisitConditionAST([NotNull] Parser1.ConditionASTContext context)
+    {
         TreeNode condterm1 = (TreeNode)Visit(context.condTerm(0));
         int largo = context.O().Count() + context.condTerm().Count();
         TreeNode[] arreglo = new TreeNode[largo];
         arreglo[0] = condterm1;
         int count = 1; //contador del arreglo
         int iOr = 0; //contador para Or
-        for (int i = 1; i <= context.condTerm().Count()-1; i++)
+        for (int i = 1; i <= context.condTerm().Count() - 1; i++)
         {
             TreeNode Or = new TreeNode(context.O(iOr).ToString());
             TreeNode condterm2 = (TreeNode)Visit(context.condTerm(i));
@@ -436,35 +458,39 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             iOr++;
         }
         TreeNode final = new TreeNode("Condition", arreglo);
-        return final; 
+        return final;
     }
-    
-    
-    public override object VisitDivMulopAST([NotNull] Parser1.DivMulopASTContext context) {
+
+
+    public override object VisitDivMulopAST([NotNull] Parser1.DivMulopASTContext context)
+    {
         TreeNode div = new TreeNode(context.DIV().ToString());
         TreeNode[] arreglo = new TreeNode[] { div };
         TreeNode final = new TreeNode("Mulop-Div", arreglo);
-        return final;  
+        return final;
     }
 
 
-    public override object VisitDivmodMulopAST([NotNull] Parser1.DivmodMulopASTContext context) {
+    public override object VisitDivmodMulopAST([NotNull] Parser1.DivmodMulopASTContext context)
+    {
         TreeNode divmod = new TreeNode(context.DIVMOD().ToString());
         TreeNode[] arreglo = new TreeNode[] { divmod };
         TreeNode final = new TreeNode("Mulop-DivMod", arreglo);
-        return final; 
+        return final;
     }
 
 
-    public override object VisitMulMulopAST([NotNull] Parser1.MulMulopASTContext context) {
+    public override object VisitMulMulopAST([NotNull] Parser1.MulMulopASTContext context)
+    {
         TreeNode mul = new TreeNode(context.MUL().ToString());
         TreeNode[] arreglo = new TreeNode[] { mul };
         TreeNode final = new TreeNode("Mulop-Mul", arreglo);
         return final; ;
     }
-	
 
-    public override object VisitReadStatAST([NotNull] Parser1.ReadStatASTContext context) {
+
+    public override object VisitReadStatAST([NotNull] Parser1.ReadStatASTContext context)
+    {
         TreeNode read = new TreeNode(context.READ().ToString());
         TreeNode PI = new TreeNode(context.PIZQ().ToString());
         TreeNode designator = (TreeNode)Visit(context.designator());
@@ -472,11 +498,12 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
         TreeNode[] arreglo = new TreeNode[] { read, PI, designator, PD, pycoma };
         TreeNode final = new TreeNode("Statement", arreglo);
-        return final; 
+        return final;
     }
 
 
-    public override object VisitReturnStatAST([NotNull] Parser1.ReturnStatASTContext context) {
+    public override object VisitReturnStatAST([NotNull] Parser1.ReturnStatASTContext context)
+    {
         TreeNode returns = new TreeNode(context.RETURN().ToString());
         TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
         TreeNode[] arreglo;
@@ -495,31 +522,34 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             arreglo[1] = pycoma;
         }
         TreeNode final = new TreeNode("Statement", arreglo);
-        return final; 
+        return final;
     }
 
 
-    public override object VisitPyStatAST([NotNull] Parser1.PyStatASTContext context) {
+    public override object VisitPyStatAST([NotNull] Parser1.PyStatASTContext context)
+    {
         TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
         TreeNode[] arreglo = new TreeNode[] { pycoma };
         TreeNode final = new TreeNode("Statement", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitWhileStatAST([NotNull] Parser1.WhileStatASTContext context) {
+
+    public override object VisitWhileStatAST([NotNull] Parser1.WhileStatASTContext context)
+    {
         TreeNode ciclo_while = new TreeNode(context.CICLO_WHILE().ToString());
         TreeNode PI = new TreeNode(context.PIZQ().ToString());
         TreeNode condition = (TreeNode)Visit(context.condition());
         TreeNode PD = new TreeNode(context.PDER().ToString());
         TreeNode statement = (TreeNode)Visit(context.statement());
-        TreeNode[] arreglo = new TreeNode[]{ ciclo_while, PI, condition, PD, statement };
+        TreeNode[] arreglo = new TreeNode[] { ciclo_while, PI, condition, PD, statement };
         TreeNode final = new TreeNode("Statement", arreglo);
-        return final; 
+        return final;
     }
 
 
-    public override object VisitWriteStatAST([NotNull] Parser1.WriteStatASTContext context) {
+    public override object VisitWriteStatAST([NotNull] Parser1.WriteStatASTContext context)
+    {
         TreeNode write = new TreeNode(context.WRITE().ToString());
         TreeNode PI = new TreeNode(context.PIZQ().ToString());
         TreeNode expr = (TreeNode)Visit(context.expr());
@@ -537,11 +567,12 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             arreglo = new TreeNode[] { write, PI, expr, PD, pycoma };
         }
         TreeNode final = new TreeNode("Statement", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitForeachStatAST([NotNull] Parser1.ForeachStatASTContext context) {
+
+    public override object VisitForeachStatAST([NotNull] Parser1.ForeachStatASTContext context)
+    {
         TreeNode ciclo_foreach = new TreeNode(context.CICLO_FOREACH().ToString());
         TreeNode PI = new TreeNode(context.PIZQ().ToString());
         TreeNode type = (TreeNode)Visit(context.type());
@@ -555,8 +586,9 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         return final;
     }
 
-	
-    public override object VisitDesignatorStatAST([NotNull] Parser1.DesignatorStatASTContext context) {
+
+    public override object VisitDesignatorStatAST([NotNull] Parser1.DesignatorStatASTContext context)
+    {
         TreeNode designator = (TreeNode)Visit(context.designator());
         TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
         TreeNode[] arreglo;
@@ -601,7 +633,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         {
             largo += 3; //2 estáticos 1 posible
             TreeNode incre = new TreeNode(context.INCRE().ToString());
-            arreglo = new TreeNode[largo]; 
+            arreglo = new TreeNode[largo];
             arreglo[0] = designator;
             arreglo[1] = incre;
             arreglo[2] = pycoma;
@@ -619,8 +651,9 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         return final;
     }
 
-	
-    public override object VisitIfStatAST([NotNull] Parser1.IfStatASTContext context) {
+
+    public override object VisitIfStatAST([NotNull] Parser1.IfStatASTContext context)
+    {
         TreeNode cond_if = new TreeNode(context.CONDICION_IF().ToString());
         TreeNode PI = new TreeNode(context.PIZQ().ToString());
         TreeNode condition = (TreeNode)Visit(context.condition());
@@ -633,13 +666,14 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             TreeNode statement2 = (TreeNode)Visit(context.statement(1)); //como viene o no viene y solo 1 vez se usa el 1 y no un ciclo
             arreglo = new TreeNode[] { cond_if, PI, condition, PD, statement1, cond_else, statement2 };
         }
-        arreglo = new TreeNode[] { cond_if, PI, condition, PD, statement1};
+        arreglo = new TreeNode[] { cond_if, PI, condition, PD, statement1 };
         TreeNode final = new TreeNode("statement", arreglo);
         return final;
     }
 
 
-    public override object VisitForStatAST([NotNull] Parser1.ForStatASTContext context) {
+    public override object VisitForStatAST([NotNull] Parser1.ForStatASTContext context)
+    {
         TreeNode ciclo_for = new TreeNode(context.CICLO_FOR().ToString());
         TreeNode PI = new TreeNode(context.PIZQ().ToString());
         TreeNode expr = (TreeNode)Visit(context.expr());
@@ -709,35 +743,38 @@ class PrettyPrint : Parser1BaseVisitor<Object>
 
         }
         TreeNode final = new TreeNode("Statement", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitBlockStatAST([NotNull] Parser1.BlockStatASTContext context) {
+
+    public override object VisitBlockStatAST([NotNull] Parser1.BlockStatASTContext context)
+    {
         TreeNode block = (TreeNode)Visit(context.block());
         TreeNode[] arreglo = new TreeNode[] { block };
-        TreeNode final = new TreeNode("Statement", arreglo);
-        return final; 
-    }
-
-	
-    public override object VisitBreakStatAST([NotNull] Parser1.BreakStatASTContext context) {
-        TreeNode breaks = new TreeNode(context.BREAK().ToString());
-        TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
-        TreeNode[] arreglo = new TreeNode[] { breaks,pycoma};
         TreeNode final = new TreeNode("Statement", arreglo);
         return final;
     }
 
-	
-    public override object VisitBlockAST([NotNull] Parser1.BlockASTContext context) {
+
+    public override object VisitBreakStatAST([NotNull] Parser1.BreakStatASTContext context)
+    {
+        TreeNode breaks = new TreeNode(context.BREAK().ToString());
+        TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
+        TreeNode[] arreglo = new TreeNode[] { breaks, pycoma };
+        TreeNode final = new TreeNode("Statement", arreglo);
+        return final;
+    }
+
+
+    public override object VisitBlockAST([NotNull] Parser1.BlockASTContext context)
+    {
         TreeNode CD = new TreeNode(context.COR_DER().ToString());
         TreeNode CI = new TreeNode(context.COR_IZQ().ToString());
         int largo = 2 + context.statement().Count();
         TreeNode[] arreglo = new TreeNode[largo];
         arreglo[0] = CD;
         int count = 1;
-        for (int i = 0; i <= context.statement().Count()-1; i++)
+        for (int i = 0; i <= context.statement().Count() - 1; i++)
         {
             TreeNode statement = (TreeNode)Visit(context.statement(i));
             arreglo[count] = statement;
@@ -745,11 +782,12 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         }
         arreglo[count] = CI;
         TreeNode final = new TreeNode("Block", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitExprAST([NotNull] Parser1.ExprASTContext context) {
+
+    public override object VisitExprAST([NotNull] Parser1.ExprASTContext context)
+    {
         TreeNode[] arreglo;
         if (context.RESTA() != null)
         {
@@ -761,12 +799,12 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             arreglo[1] = term1;
             int count = 2; //contador de arreglo
             int iaddop = 0; //contador de mulop
-            for (int i = 1; i <= context.term().Count()-1; i++)
+            for (int i = 1; i <= context.term().Count() - 1; i++)
             {
                 TreeNode addop = (TreeNode)Visit(context.addop(iaddop));
                 TreeNode term2 = (TreeNode)Visit(context.term(i));
                 arreglo[count] = addop;
-                arreglo[count+1] = term2;
+                arreglo[count + 1] = term2;
                 count += 2;
                 iaddop++;
             }
@@ -779,7 +817,7 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             arreglo[0] = term1;
             int count = 1; //contador de arreglo
             int iaddop = 0; //contador de mulop
-            for (int i = 1; i <= context.term().Count()-1; i++)
+            for (int i = 1; i <= context.term().Count() - 1; i++)
             {
                 TreeNode addop = (TreeNode)Visit(context.addop(iaddop));
                 TreeNode term2 = (TreeNode)Visit(context.term(i));
@@ -790,18 +828,19 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             }
         }
         TreeNode final = new TreeNode("Expr", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitTermAST([NotNull] Parser1.TermASTContext context) {
+
+    public override object VisitTermAST([NotNull] Parser1.TermASTContext context)
+    {
         TreeNode factor1 = (TreeNode)Visit(context.factor(0));
         int largo = context.mulop().Count() + context.factor().Count();
         TreeNode[] arreglo = new TreeNode[largo];
         arreglo[0] = factor1;
         int count = 1; //contador del arreglo
         int iMulop = 0; //contador para mulop
-        for (int i = 1; i <= context.factor().Count()-1; i++)
+        for (int i = 1; i <= context.factor().Count() - 1; i++)
         {
             TreeNode mulop = new TreeNode(context.mulop(iMulop).ToString());
             TreeNode factor2 = (TreeNode)Visit(context.factor(i));
@@ -811,21 +850,23 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             iMulop++;
         }
         TreeNode final = new TreeNode("Factor", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitExprFactorAST([NotNull] Parser1.ExprFactorASTContext context) {
+
+    public override object VisitExprFactorAST([NotNull] Parser1.ExprFactorASTContext context)
+    {
         TreeNode PI = new TreeNode(context.PIZQ().ToString());
         TreeNode expr = (TreeNode)Visit(context.expr());
         TreeNode PD = new TreeNode(context.PDER().ToString());
         TreeNode[] arreglo = new TreeNode[] { PI, expr, PD };
         TreeNode final = new TreeNode("Factor-Expr", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitTruefalseFactorAST([NotNull] Parser1.TruefalseFactorASTContext context) {
+
+    public override object VisitTruefalseFactorAST([NotNull] Parser1.TruefalseFactorASTContext context)
+    {
         TreeNode[] arreglo;
         if (context.TRUE() != null)
         {
@@ -835,11 +876,12 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         TreeNode falses = new TreeNode(context.FALSE().ToString());
         arreglo = new TreeNode[] { falses };
         TreeNode final = new TreeNode("Factor-TrueFalse", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitNewFactorAST([NotNull] Parser1.NewFactorASTContext context) {
+
+    public override object VisitNewFactorAST([NotNull] Parser1.NewFactorASTContext context)
+    {
         TreeNode news = new TreeNode(context.NEW().ToString());
         TreeNode ID = new TreeNode(context.ID().ToString());
         TreeNode[] arreglo;
@@ -850,13 +892,14 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             TreeNode PD = new TreeNode(context.PCUADRADO_DER().ToString());
             arreglo = new TreeNode[] { news, ID, PI, expr, PD };
         }
-        arreglo = new TreeNode[] { news, ID};
+        arreglo = new TreeNode[] { news, ID };
         TreeNode final = new TreeNode("Factor-New", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitDesignatorFactorAST([NotNull] Parser1.DesignatorFactorASTContext context) {
+
+    public override object VisitDesignatorFactorAST([NotNull] Parser1.DesignatorFactorASTContext context)
+    {
         TreeNode designator = (TreeNode)Visit(context.designator());
         TreeNode[] arreglo;
         if (context.PIZQ() != null)
@@ -878,30 +921,49 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         }
         else
         {
-            arreglo = new TreeNode[] { designator};
+            arreglo = new TreeNode[] { designator };
         }
         TreeNode final = new TreeNode("Factor-Designator", arreglo);
         return VisitChildren(context);
     }
 
-	
-    public override object VisitNumberFactorAST([NotNull] Parser1.NumberFactorASTContext context) {
+
+    public override object VisitFloatFactorAST([NotNull] Parser1.FloatFactorASTContext context)
+    {
+        TreeNode flotante = new TreeNode(context.FLOAT().ToString());
+        TreeNode[] arreglo = new TreeNode[] { flotante };
+        TreeNode final = new TreeNode("Factor-Float", arreglo);
+        return final;
+    }
+    public override object VisitStrFactorAST([NotNull] Parser1.StrFactorASTContext context)
+    {
+        TreeNode str = new TreeNode(context.STRI().ToString());
+        TreeNode[] arreglo = new TreeNode[] { str };
+        TreeNode final = new TreeNode("Factor-String", arreglo);
+        return final;
+    }
+
+    public override object VisitNumberFactorAST([NotNull] Parser1.NumberFactorASTContext context)
+    {
         TreeNode number = new TreeNode(context.NUMBER().ToString());
         TreeNode[] arreglo = new TreeNode[] { number };
-        TreeNode final = new TreeNode("Factor-Number",arreglo)  ;
+        TreeNode final = new TreeNode("Factor-Number", arreglo);
         return final;
     }
 
 
-    public override object VisitCharconstFactorAST([NotNull] Parser1.CharconstFactorASTContext context) {
+
+    public override object VisitCharconstFactorAST([NotNull] Parser1.CharconstFactorASTContext context)
+    {
         TreeNode charconst = new TreeNode(context.CharConst().ToString());
         TreeNode[] arreglo = new TreeNode[] { charconst };
         TreeNode final = new TreeNode("Factor-Charconst", arreglo);
-        return final; 
+        return final;
     }
 
-	
-    public override object VisitVarDeclAST([NotNull] Parser1.VarDeclASTContext context) {
+
+    public override object VisitVarDeclAST([NotNull] Parser1.VarDeclASTContext context)
+    {
         TreeNode type = (TreeNode)Visit(context.type());
         TreeNode ID = new TreeNode(context.ID(0).ToString());
         TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
@@ -911,17 +973,17 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         arreglo[1] = ID;
         int cont = 2;
         int i2 = 0;
-        for (int i = 1; i <= context.ID().Count()-1; i++)
+        for (int i = 1; i <= context.ID().Count() - 1; i++)
         {
             TreeNode coma = new TreeNode(context.COMA(i2).ToString());
             TreeNode ID2 = new TreeNode(context.ID(i).ToString());
             arreglo[cont] = coma;
             arreglo[cont + 1] = ID2;
-            cont+=2;
+            cont += 2;
             i2++;
         }
         arreglo[cont] = pycoma;
         TreeNode final = new TreeNode("varDecl", arreglo);
         return final;
-    }    
+    }
 }

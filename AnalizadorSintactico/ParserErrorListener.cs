@@ -16,7 +16,7 @@ namespace AnalisisSintactico
         public override void SyntaxError(IRecognizer recognizer, IToken offendingSymbol, int line, 
             int charPositionInLine, string msg, RecognitionException e)
         {
-            
+ 
             Program.p.error.AppendText("Error de Parser: linea= "+line+", columna= " + charPositionInLine+"  ");
             if (e != null)
             {
@@ -34,6 +34,8 @@ namespace AnalisisSintactico
                 }
                 else if (e is InputMismatchException)
                 {
+                    
+             
                     IntervalSet expecting = e.GetExpectedTokens();
                     msg = "La entrada "+"'"+ e.OffendingToken.Text+"'"+" no coincide con lo que se espera "+ expecting.ToString(recognizer.TokenNames);
                 }

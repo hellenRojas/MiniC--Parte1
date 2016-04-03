@@ -8,5 +8,6 @@ namespace AnalizadorSintactico
 {
     class FarsyLibrary
     {
+ 
     }
 }

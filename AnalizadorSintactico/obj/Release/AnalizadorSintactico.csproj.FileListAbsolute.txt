@@ -1,0 +1,1 @@
+C:\Users\USUARIO1\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\bin\Release\AnalizadorSintactico.exe.config

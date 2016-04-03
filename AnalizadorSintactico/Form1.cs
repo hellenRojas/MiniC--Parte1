@@ -311,22 +311,31 @@ namespace AnalisisSintactico
                 treeView1.Nodes.Clear();
                 StreamReader inputStream = new StreamReader(tab.Tag.ToString());
                 AntlrInputStream input = new AntlrInputStream(inputStream.ReadToEnd());
-                try{
+                try
+                {
                     Lexer1 lexer = new Lexer1(input);
                     CommonTokenStream tokens = new CommonTokenStream(lexer);
                     Parser1 parser = new Parser1(tokens);
-
-
+                    /*
+                    IList<IToken> listatokens = lexer.GetAllTokens();
+                    
+                    foreach (IToken token in listatokens)
+                    {
+                        Console.WriteLine("Token: " + token.Type + " , Lexema: " + token.Text);
+                    }
+                    
+                    */
                     parser.RemoveErrorListeners();
                     parser.AddErrorListener(ParserErrorListener.Instancia);
-                    parser.ErrorHandler=new DefaultErrorStrategy1();
+                    parser.ErrorHandler = new DefaultErrorStrategy1();
                     IParseTree tree = parser.program();
                     error.AppendText("Compilación Correcta...\n");
                     PrettyPrint p = new PrettyPrint(treeView1);
                     p.Visit(tree);
-                    
+
                 }
-                catch(ParserException e){
+                catch (ParserException e)
+                {
                     error.AppendText("Compilación Erronea...\n");
                     TreeNode er = new TreeNode("Errores en el código");
                     treeView1.Nodes.Add(er);
@@ -334,6 +343,7 @@ namespace AnalisisSintactico
                 inputStream.Close();
             }
         }
+
 
         public class InvisibleCharsRenderer : Style
         {

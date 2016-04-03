@@ -97,6 +97,8 @@ term
 factor
 : designator (PIZQ (actPars)? PDER)?															#designatorFactorAST
 | NUMBER																						#numberFactorAST
+| FLOAT																							#floatFactorAST
+| STRI																							#strFactorAST
 | CharConst																						#charconstFactorAST
 | (TRUE | FALSE)																				#truefalseFactorAST
 | NEW ID (PCUADRADO_IZQ expr PCUADRADO_DER)?													#newFactorAST
