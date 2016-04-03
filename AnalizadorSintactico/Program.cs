@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -9,6 +10,8 @@ namespace AnalisisSintactico
 {
     static class Program
     {
+        public static StringBuilder errores = new StringBuilder();
+       
         public static Form1 p;
         /// <summary>
         /// Punto de entrada principal para la aplicación.

@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace AnalisisSintactico
 {
     public partial class Form1 : Form
@@ -300,6 +301,7 @@ namespace AnalisisSintactico
 
         private void compilar(FATabStripItem tab)
         {
+          
             var tb = (tab.Controls[0] as FastColoredTextBox);
             if (tab.Tag == null)
             {
@@ -328,6 +330,7 @@ namespace AnalisisSintactico
                     parser.RemoveErrorListeners();
                     parser.AddErrorListener(ParserErrorListener.Instancia);
                     parser.ErrorHandler = new DefaultErrorStrategy1();
+                    
                     IParseTree tree = parser.program();
                     error.AppendText("Compilación Correcta...\n");
                     PrettyPrint p = new PrettyPrint(treeView1);

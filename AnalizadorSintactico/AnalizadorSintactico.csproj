@@ -70,6 +70,7 @@
     <Compile Include="Lexer1.g4.cs">
       <DependentUpon>Lexer1.g4</DependentUpon>
     </Compile>
+    <Compile Include="MyErrorListener.cs" />
     <Compile Include="Parser1.g4.cs">
       <DependentUpon>Parser1.g4</DependentUpon>
     </Compile>

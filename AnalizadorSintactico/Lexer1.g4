@@ -199,12 +199,6 @@ CARACTERESCOMENTBLOCK
 ;
 
 
-
-
-
-
-
-
 CharConst: '\'' (PrintableChar|'\n'|'\r') '\'';
 
 fragment

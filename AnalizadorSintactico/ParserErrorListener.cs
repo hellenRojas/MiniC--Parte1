@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace AnalisisSintactico
 {
-    class ParserErrorListener:BaseErrorListener
-    {
+    class ParserErrorListener:BaseErrorListener{
         public static ParserErrorListener Instancia = new ParserErrorListener();
+    
 
         public override void SyntaxError(IRecognizer recognizer, IToken offendingSymbol, int line, 
             int charPositionInLine, string msg, RecognitionException e)
         {
  
-            Program.p.error.AppendText("Error de Parser: linea= "+line+", columna= " + charPositionInLine+"  ");
+            Program.errores.Append("Error de Parser: linea= "+line+", columna= " + charPositionInLine+"  ");
             if (e != null)
             {
                 if (e is NoViableAltException)
@@ -43,14 +43,17 @@ namespace AnalisisSintactico
                 {
                     msg = "Error del programa...";
                 }
-                Program.p.error.AppendText(msg+"\n");
+                Program.errores.Append(msg+"\n");
 
             }
             else {
-                Program.p.error.AppendText(msg + "\n");
+                Program.errores.Append(msg + "\n");
             }
+            Program.p.error.AppendText(Program.errores.ToString());
             throw new ParserException();
             
         }
     }
+    
 }
+
