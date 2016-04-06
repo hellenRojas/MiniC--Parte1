@@ -38,9 +38,9 @@ class MyErrorListener : BaseErrorListener
             msg = "Error en el parser en la línea: " + line + ", columna: " + charPositionInLine + "\n" +
                 msg + "\n\n"; //= "Error general!!!\n";*/
         
-        Program.errores.Append(msg);
+       
         Program.p.error.AppendText(Program.errores.ToString());
-       //throw new ParserException();
+      //throw new ParserException();
 
     }
 }

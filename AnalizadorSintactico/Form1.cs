@@ -332,12 +332,12 @@ namespace AnalisisSintactico
                     parser.ErrorHandler = new DefaultErrorStrategy1();
                     
                     IParseTree tree = parser.program();
-                    error.AppendText("Compilación Correcta...\n");
+                    //error.AppendText("Compilación Correcta...\n");
                     PrettyPrint p = new PrettyPrint(treeView1);
                     p.Visit(tree);
 
                 }
-                catch (ParserException e)
+                catch (Exception e)
                 {
                     error.AppendText("Compilación Erronea...\n");
                     TreeNode er = new TreeNode("Errores en el código");

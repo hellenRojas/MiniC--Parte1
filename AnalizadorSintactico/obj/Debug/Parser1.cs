@@ -278,6 +278,8 @@ public partial class Parser1 : Parser {
 		public ITerminalNode PyCOMA() { return GetToken(Parser1.PyCOMA, 0); }
 		public ITerminalNode NUMBER() { return GetToken(Parser1.NUMBER, 0); }
 		public ITerminalNode CharConst() { return GetToken(Parser1.CharConst, 0); }
+		public ITerminalNode STRI() { return GetToken(Parser1.STRI, 0); }
+		public ITerminalNode FLOAT() { return GetToken(Parser1.FLOAT, 0); }
 		public ConstDeclASTContext(ConstDeclContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IParser1Listener typedListener = listener as IParser1Listener;
@@ -309,7 +311,7 @@ public partial class Parser1 : Parser {
 			State = 62; Match(ASIGN);
 			State = 63;
 			_la = _input.La(1);
-			if ( !(_la==NUMBER || _la==CharConst) ) {
+			if ( !(((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (STRI - 64)) | (1L << (NUMBER - 64)) | (1L << (FLOAT - 64)) | (1L << (CharConst - 64)))) != 0)) ) {
 			_errHandler.RecoverInline(this);
 			} else {
 				Consume();
@@ -2551,7 +2553,7 @@ public partial class Parser1 : Parser {
 		"\x3\x14\x3\x14\x5\x14\x137\n\x14\x3\x15\x3\x15\x3\x15\x5\x15\x13C\n\x15"+
 		"\x3\x15\x2\x2\x2\x16\x2\x2\x4\x2\x6\x2\b\x2\n\x2\f\x2\xE\x2\x10\x2\x12"+
 		"\x2\x14\x2\x16\x2\x18\x2\x1A\x2\x1C\x2\x1E\x2 \x2\"\x2$\x2&\x2(\x2\x2"+
-		"\x4\x4\x2\x43\x43HH\x3\x2\x16\x17\x162\x2*\x3\x2\x2\x2\x4=\x3\x2\x2\x2"+
+		"\x4\x4\x2\x42\x44HH\x3\x2\x16\x17\x162\x2*\x3\x2\x2\x2\x4=\x3\x2\x2\x2"+
 		"\x6\x44\x3\x2\x2\x2\bO\x3\x2\x2\x2\n\\\x3\x2\x2\x2\fl\x3\x2\x2\x2\xEw"+
 		"\x3\x2\x2\x2\x10\xC9\x3\x2\x2\x2\x12\xCB\x3\x2\x2\x2\x14\xD4\x3\x2\x2"+
 		"\x2\x16\xDC\x3\x2\x2\x2\x18\xE4\x3\x2\x2\x2\x1A\xEC\x3\x2\x2\x2\x1C\xF1"+

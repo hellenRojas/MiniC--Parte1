@@ -21,7 +21,7 @@ program
 
 
 constDecl
-: CONSTANTE type ID ASIGN (NUMBER | CharConst) PyCOMA											#constDeclAST
+: CONSTANTE type ID ASIGN (NUMBER | CharConst|STRI|FLOAT) PyCOMA								#constDeclAST
 ;
 
 

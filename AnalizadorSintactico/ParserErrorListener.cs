@@ -17,25 +17,26 @@ namespace AnalisisSintactico
             int charPositionInLine, string msg, RecognitionException e)
         {
  
-            Program.errores.Append("Error de Parser: linea= "+line+", columna= " + charPositionInLine+"  ");
+            Program.p.error.AppendText("Error de Parser: linea= "+line+", columna= " + charPositionInLine+"  ");
             if (e != null)
             {
                 if (e is NoViableAltException)
                 {
-                    msg = "Símbolo inválido...";
+                    msg = "El token: " + offendingSymbol.Text + " no es una alternativa viable!!!\n\n";
+      
                 }
                 else if (e is LexerNoViableAltException)
                 {
-                    msg = "Símbolo inválido...";
+                    msg = "El símbolo: " + offendingSymbol.Text + " no es un token válido!!!\n\n";
                 }
                 else if (e is FailedPredicateException)
                 {
-                    msg = "La sintaxis de la expresión no es la correcta";
+                    msg = "Error en el parser en la línea: " + line + ", columna: " + charPositionInLine + "\n" +
+                 "La semántica de la expresión es inválida!!!";
                 }
                 else if (e is InputMismatchException)
                 {
-                    
-             
+
                     IntervalSet expecting = e.GetExpectedTokens();
                     msg = "La entrada "+"'"+ e.OffendingToken.Text+"'"+" no coincide con lo que se espera "+ expecting.ToString(recognizer.TokenNames);
                 }
@@ -43,14 +44,14 @@ namespace AnalisisSintactico
                 {
                     msg = "Error del programa...";
                 }
-                Program.errores.Append(msg+"\n");
+       
 
             }
             else {
-                Program.errores.Append(msg + "\n");
+              
             }
-            Program.p.error.AppendText(Program.errores.ToString());
-            throw new ParserException();
+            Program.p.error.AppendText(msg+"\n");
+           
             
         }
     }

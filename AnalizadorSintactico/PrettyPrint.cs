@@ -108,6 +108,18 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             arreglo[cont] = charconst;
             cont++;
         }
+        else if (context.STRI() != null)
+        {
+            TreeNode stri = new TreeNode(context.STRI().ToString());
+            arreglo[cont] = stri;
+            cont++;
+        }
+        else if (context.FLOAT() != null)
+        {
+            TreeNode floatCosn = new TreeNode(context.FLOAT().ToString());
+            arreglo[cont] = floatCosn;
+            cont++;
+        }
         TreeNode pycoma = new TreeNode(context.PyCOMA().ToString());
         arreglo[cont] = pycoma;
         TreeNode final = new TreeNode("ConstDecl", arreglo);
