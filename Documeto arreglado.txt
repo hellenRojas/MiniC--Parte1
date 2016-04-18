@@ -1,0 +1,162 @@
+//NOTAS AL FINAL
+class AllProds
+  const int nPoints = 2;
+  //const char exclaim = '!!'; //debe mostrar error de scanner(SI MUESTRA EL ERROR)
+  const char exclaim = '!'; 
+  //const char caracterEspecial = '/n'; //esto muestra errores ya que no se incluyo en los caracteres
+  const char caracterEspecial = 'n'; 
+
+  class Point {
+      // int x, y; @  //error de caracteres invalidos(SI MUESTRA EL ERROR)
+      int x, y; 
+  }
+
+  char[] msg;
+  Point[] pArr;
+  boolean test1;
+{
+  void WriteError ()
+    int i;
+    boolean test2;
+  {
+    /* imprimir mensaje error */
+    i     = 0;
+    
+    //test1 = true;// PROBLEMAS DEL ARBOL PERO NO DE PARSER
+    test1 = "ERTERG";
+    //while(i<len(msg)){write(msg[i]);i++;}
+    
+    // for(i;i<len(msg);i++) // PROBLEMAS DEL ARBOL PERO NO DE PARSER
+    //for(i;i<5;i++)// (SI MUESTRA EL ERROR)
+    for(i;i<5;i++;)
+    {
+        write(msg[i]);
+    
+    } //debe dar error por falta de ;
+    write(exclaim);
+    
+     while (i > 0) {
+      i--;
+      //if (i < 3 && test1==true) // PROBLEMAS DEL ARBOL PERO NO DE PARSER
+      if (i < 3 && test1==3) 
+          break;
+      write(msg[i], 2);
+    }
+   
+  }
+
+    //int GetX (Point p) // PROBLEMAS DEL ARBOL PERO NO DE PARSER
+    void GetX () 
+    { 
+       return p.x.Z[3+4];
+    }
+   
+   // void SetX (int x, Point p) // PROBLEMAS DEL ARBOL PERO NO DE PARSER
+    void SetX () {
+    if (x > -10 && x <= 9 ||
+        x == 4*3/4%4+12-11*(2147483647/(-2147483647-1)%2) )
+      p.x = x;
+    else WriteError();
+  }
+
+   void SetMsg () {
+    msg = new char[5];
+    msg[0] = 'E';
+    msg[1] = 'r';
+    msg[2] = 'r';
+    msg[3] = 'r';
+    msg[4] = msg[3];
+    msg[3] = 'o';
+  }
+
+  void SetPoints ()
+    int i;
+  {
+    pArr = new Point[nPoints];
+    i = 0;
+    //while (i < len(pArr)) // PROBLEMAS DEL ARBOL PERO NO DE PARSER
+    while (i < 6) {
+      pArr[i] = new Point;
+      pArr[i].x = i;
+      pArr[i].y = i;
+      i++;
+    }
+  }
+ //int prueba(Point x, char w) // PROBLEMAS DEL ARBOL PERO NO DE PARSER
+  void prueba()
+  {
+      return val.neg[i].algo;
+      
+     //(SI MUESTRA EL ERROR)
+    /*comentario
+    /*mal*/ /*anidado //corregir poniendo otro cierre de comentario
+    */*/
+  }
+ void Main ()
+    int i;
+  {
+    SetMsg();
+    SetPoints();
+    read(i);
+    if (i < nPoints) {
+        //write(GetX(pArr[i])); // PROBLEMAS DEL ARBOL PERO NO DE PARSER
+        write(sdfs);
+      write(pArr[i].y);
+    }
+    else
+      WriteError();
+    write('n');
+
+  }
+
+ 
+}
+
+
+// NOTAS
+
+/* Los cometrarios que dicen PROBLEMAS DEL ARBOL PERO NO DE PARSER
+ significa que si se corre el código tal y como estaba no va a dar 
+ errores y va a correr bien,pero a la hora de hacer el árbol si hay 
+ algunos erroes:
+
+
+  Estas líneas no las lee el arbol ya que no se les puede asignar
+  un boolean:
+                          
+    test1 = true; 
+    
+    if (i < 3 && test1==true) 
+
+  Estas otras no las lee el arból ya que en los ciclos no se puede 
+  utilizar el resultado de una función como restricción:
+    
+    
+    for(i;i<len(msg);i++){write(msg[i])
+        
+    while (i < len(pArr)) 
+  
+  Esta muestra un error similar al aterior no admite resultados de funciones 
+  como pararametros
+        
+    write(GetX(pArr[i]));
+        
+  Y por último tenemos estas funciones que dan error en el árbol ya 
+  no admite otro tipo de función que no sea void y no admite parametros
+  en las funciones.
+    
+    int GetX (Point p)
+
+    void SetX (int x, Point p)
+    
+    int prueba(Point x, char w)
+
+*/
+
+//SI SE PONEN LAS LINEAS ORIGINALES SI CORRE PERO NO HACE EL ÁRBOL
+
+/*
+    Además todos los comentarios que dicen SI MUESTRA EL ERROR significa 
+    que la línea si muestra el error indicado pero se le quitaron los
+    errores para que se pueda ver el árbol
+*/
