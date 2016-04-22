@@ -301,6 +301,7 @@ namespace AnalisisSintactico
 
         private void compilar(FATabStripItem tab)
         {
+            
           
             var tb = (tab.Controls[0] as FastColoredTextBox);
             if (tab.Tag == null)
@@ -327,14 +328,16 @@ namespace AnalisisSintactico
                     }
                     
                     */
+                    error.AppendText("Compilando...\n");
                     parser.RemoveErrorListeners();
                     parser.AddErrorListener(ParserErrorListener.Instancia);
                     parser.ErrorHandler = new DefaultErrorStrategy1();
                     
                     IParseTree tree = parser.program();
-                    //error.AppendText("Compilación Correcta...\n");
+                    
                     PrettyPrint p = new PrettyPrint(treeView1);
                     p.Visit(tree);
+                    error.AppendText("Fin de compilación...\n");
 
                 }
                 catch (Exception e)

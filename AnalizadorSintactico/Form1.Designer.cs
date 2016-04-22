@@ -59,7 +59,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(348, 266);
+            this.label1.Location = new System.Drawing.Point(522, 432);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 2;
@@ -70,7 +71,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(408, 265);
+            this.label2.Location = new System.Drawing.Point(612, 431);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 3;
@@ -79,7 +81,8 @@
             // numl
             // 
             this.numl.AutoSize = true;
-            this.numl.Location = new System.Drawing.Point(389, 266);
+            this.numl.Location = new System.Drawing.Point(584, 432);
+            this.numl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.numl.Name = "numl";
             this.numl.Size = new System.Drawing.Size(13, 13);
             this.numl.TabIndex = 4;
@@ -88,7 +91,8 @@
             // numc
             // 
             this.numc.AutoSize = true;
-            this.numc.Location = new System.Drawing.Point(462, 265);
+            this.numc.Location = new System.Drawing.Point(693, 431);
+            this.numc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.numc.Name = "numc";
             this.numc.Size = new System.Drawing.Size(13, 13);
             this.numc.TabIndex = 5;
@@ -97,9 +101,9 @@
             // tabcode
             // 
             this.tabcode.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.tabcode.Location = new System.Drawing.Point(0, 28);
+            this.tabcode.Location = new System.Drawing.Point(0, 46);
             this.tabcode.Name = "tabcode";
-            this.tabcode.Size = new System.Drawing.Size(487, 234);
+            this.tabcode.Size = new System.Drawing.Size(730, 380);
             this.tabcode.TabIndex = 6;
             this.tabcode.Text = "faTabStrip1";
             this.tabcode.TabStripItemClosing += new FarsiLibrary.Win.TabStripItemClosingHandler(this.tabcode_TabStripItemClosing);
@@ -123,7 +127,8 @@
             this.toolStripButton11});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(657, 25);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(990, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -250,24 +255,27 @@
             // error
             // 
             this.error.BackColor = System.Drawing.SystemColors.Window;
-            this.error.Location = new System.Drawing.Point(0, 283);
+            this.error.Location = new System.Drawing.Point(0, 460);
+            this.error.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.error.Name = "error";
-            this.error.Size = new System.Drawing.Size(487, 66);
+            this.error.Size = new System.Drawing.Size(728, 105);
             this.error.TabIndex = 8;
             this.error.Text = "";
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(494, 29);
+            this.treeView1.Location = new System.Drawing.Point(741, 47);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(163, 320);
+            this.treeView1.Size = new System.Drawing.Size(242, 518);
             this.treeView1.TabIndex = 9;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(4F, 8F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 361);
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ClientSize = new System.Drawing.Size(990, 587);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.error);
             this.Controls.Add(this.toolStrip1);
@@ -276,6 +284,9 @@
             this.Controls.Add(this.numl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "IDE Mini C#";
             this.Load += new System.EventHandler(this.Form1_Load);

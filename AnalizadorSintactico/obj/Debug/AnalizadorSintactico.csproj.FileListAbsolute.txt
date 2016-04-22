@@ -49,6 +49,7 @@ C:\Users\USUARIO1\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\Anali
 C:\Users\USUARIO1\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.csproj.GenerateResource.Cache
 C:\Users\USUARIO1\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.exe
 C:\Users\USUARIO1\Desktop\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.pdb
+<<<<<<< HEAD
 C:\Users\usuario\Desktop\Nueva carpeta\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\AnalizadorSintactico.exe.config
 C:\Users\usuario\Desktop\Nueva carpeta\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.exe
 C:\Users\usuario\Desktop\Nueva carpeta\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.pdb
@@ -69,3 +70,14 @@ C:\Users\usuario\Desktop\Nueva carpeta\MiniCSharp-Parte1\AnalizadorSintactico\ob
 C:\Users\usuario\Desktop\Nueva carpeta\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalisisSintactico.Form1.resources
 C:\Users\usuario\Desktop\Nueva carpeta\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.FormP.resources
 C:\Users\usuario\Desktop\Nueva carpeta\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.csproj.GenerateResource.Cache
+=======
+C:\Users\USUARIO1\Dropbox\TECNOLÓGICO\VII Semestre\Compiladores\Proyectos\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\AnalizadorSintactico.exe
+C:\Users\USUARIO1\Dropbox\TECNOLÓGICO\VII Semestre\Compiladores\Proyectos\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\AnalizadorSintactico.pdb
+C:\Users\USUARIO1\Dropbox\TECNOLÓGICO\VII Semestre\Compiladores\Proyectos\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\Antlr4.Runtime.dll
+C:\Users\USUARIO1\Dropbox\TECNOLÓGICO\VII Semestre\Compiladores\Proyectos\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\FastColoredTextBox.dll
+C:\Users\USUARIO1\Dropbox\TECNOLÓGICO\VII Semestre\Compiladores\Proyectos\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\Antlr4.Runtime.xml
+C:\Users\USUARIO1\Dropbox\TECNOLÓGICO\VII Semestre\Compiladores\Proyectos\MiniCSharp-Parte1\AnalizadorSintactico\bin\Debug\FastColoredTextBox.xml
+C:\Users\USUARIO1\Dropbox\TECNOLÓGICO\VII Semestre\Compiladores\Proyectos\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\USUARIO1\Dropbox\TECNOLÓGICO\VII Semestre\Compiladores\Proyectos\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalisisSintactico.Form1.resources
+C:\Users\USUARIO1\Dropbox\TECNOLÓGICO\VII Semestre\Compiladores\Proyectos\MiniCSharp-Parte1\AnalizadorSintactico\obj\Debug\AnalizadorSintactico.csproj.GenerateResource.Cache
+>>>>>>> e72ea5ef3b6b818da642dd73360908ef48751592
