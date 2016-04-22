@@ -339,7 +339,8 @@ namespace AnalisisSintactico
                 }
                 catch (Exception e)
                 {
-                    error.AppendText("Compilación Erronea...\n");
+                    error.AppendText(e.ToString());
+                    //error.AppendText("Compilación Erronea...\n");
                     TreeNode er = new TreeNode("Errores en el código");
                     treeView1.Nodes.Add(er);
                 }

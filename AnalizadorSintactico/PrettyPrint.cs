@@ -189,87 +189,103 @@ class PrettyPrint : Parser1BaseVisitor<Object>
 
     public override object VisitMethodDeclAST([NotNull] Parser1.MethodDeclASTContext context)
     {
-        int largo = 0;
-        TreeNode voids = new TreeNode(context.VOID().ToString());
-        TreeNode ID = new TreeNode(context.ID().ToString());
-        TreeNode PI = new TreeNode(context.PIZQ().ToString());
-        TreeNode PD = new TreeNode(context.PDER().ToString());
-        TreeNode block = (TreeNode)Visit(context.block());
         TreeNode[] arreglo;
-        if (context.formPars() != null) //verificar si viene o no algo en el form pars
+        if (context.formPars() != null)
         {
-            largo = 6 + context.varDecl().Count();
-            arreglo = new TreeNode[largo];
-            if (context.type() != null) //comprobar su viene un type, sino es void
+            if (context.type() != null)
             {
                 TreeNode type = (TreeNode)Visit(context.type());
+                TreeNode ID = new TreeNode(context.ID().ToString());
+                TreeNode PIZQ = new TreeNode(context.PIZQ().ToString());
                 TreeNode formpars = (TreeNode)Visit(context.formPars());
+                TreeNode PDER = new TreeNode(context.PDER().ToString());
+                TreeNode block = (TreeNode)Visit(context.block());
+                int largo = 6 + context.varDecl().Count();
+                arreglo = new TreeNode[largo];
                 arreglo[0] = type;
                 arreglo[1] = ID;
-                arreglo[2] = PI;
+                arreglo[2] = PIZQ;
                 arreglo[3] = formpars;
-                arreglo[4] = PD;
-                int count = 5;
-                for (int i = 0; i <= context.varDecl().Count() - 1; i++)
+                arreglo[4] = PDER;
+                int cont = 5; //contador arreglo
+                for (int i = 0; i <= context.varDecl().Count()-1; i++)
                 {
-                    TreeNode vardecl = (TreeNode)Visit(context.varDecl(i));
-                    arreglo[count] = vardecl;
-                    count++;
+                    TreeNode varDecl = (TreeNode)Visit(context.varDecl(i));
+                    arreglo[cont] = varDecl;
+                    cont++;
                 }
-                arreglo[count] = block;
+                arreglo[cont] = block;
             }
             else
             {
+                TreeNode voids = new TreeNode(context.VOID().ToString());
+                TreeNode ID = new TreeNode(context.ID().ToString());
+                TreeNode PIZQ = new TreeNode(context.PIZQ().ToString());
                 TreeNode formpars = (TreeNode)Visit(context.formPars());
+                TreeNode PDER = new TreeNode(context.PDER().ToString());
+                TreeNode block = (TreeNode)Visit(context.block());
+                int largo = 6 + context.varDecl().Count();
+                arreglo = new TreeNode[largo];
                 arreglo[0] = voids;
                 arreglo[1] = ID;
-                arreglo[2] = PI;
+                arreglo[2] = PIZQ;
                 arreglo[3] = formpars;
-                arreglo[4] = PD;
-                int count = 5;
-                for (int i = 0; i <= context.varDecl().Count() - 1; i++)
+                arreglo[4] = PDER;
+                int cont = 5; //contador arreglo
+                for (int i = 0; i <= context.varDecl().Count()-1; i++)
                 {
-                    TreeNode vardecl = (TreeNode)Visit(context.varDecl(i));
-                    arreglo[count] = vardecl;
-                    count++;
+                    TreeNode varDecl = (TreeNode)Visit(context.varDecl(i));
+                    arreglo[cont] = varDecl;
+                    cont++;
                 }
-                arreglo[count] = block;
+                arreglo[cont] = block;
             }
         }
         else
         {
-            largo = 5 + context.varDecl().Count();
-            arreglo = new TreeNode[largo];
             if (context.type() != null)
             {
                 TreeNode type = (TreeNode)Visit(context.type());
+                TreeNode ID = new TreeNode(context.ID().ToString());
+                TreeNode PIZQ = new TreeNode(context.PIZQ().ToString());
+                TreeNode PDER = new TreeNode(context.PDER().ToString());
+                TreeNode block = (TreeNode)Visit(context.block());
+                int largo = 5 + context.varDecl().Count();
+                arreglo = new TreeNode[largo];
                 arreglo[0] = type;
                 arreglo[1] = ID;
-                arreglo[2] = PI;
-                arreglo[3] = PD;
-                int count = 4;
-                for (int i = 0; i <= context.varDecl().Count() - 1; i++)
+                arreglo[2] = PIZQ;
+                arreglo[3] = PDER;
+                int cont = 4; //contador arreglo
+                for (int i = 0; i <= context.varDecl().Count()-1; i++)
                 {
-                    TreeNode vardecl = (TreeNode)Visit(context.varDecl(i));
-                    arreglo[count] = vardecl;
-                    count++;
+                    TreeNode varDecl = (TreeNode)Visit(context.varDecl(i));
+                    arreglo[cont] = varDecl;
+                    cont++;
                 }
-                arreglo[count] = block;
+                arreglo[cont] = block;
             }
             else
             {
+                TreeNode voids = new TreeNode(context.VOID().ToString());
+                TreeNode ID = new TreeNode(context.ID().ToString());
+                TreeNode PIZQ = new TreeNode(context.PIZQ().ToString());
+                TreeNode PDER = new TreeNode(context.PDER().ToString());
+                TreeNode block = (TreeNode)Visit(context.block());
+                int largo = 5 + context.varDecl().Count();
+                arreglo = new TreeNode[largo];
                 arreglo[0] = voids;
                 arreglo[1] = ID;
-                arreglo[2] = PI;
-                arreglo[3] = PD;
-                int count = 4;
-                for (int i = 0; i <= context.varDecl().Count() - 1; i++)
+                arreglo[2] = PIZQ;
+                arreglo[3] = PDER;
+                int cont = 4; //contador arreglo
+                for (int i = 0; i <= context.varDecl().Count()-1; i++)
                 {
-                    TreeNode vardecl = (TreeNode)Visit(context.varDecl(i));
-                    arreglo[count] = vardecl;
-                    count++;
+                    TreeNode varDecl = (TreeNode)Visit(context.varDecl(i));
+                    arreglo[cont] = varDecl;
+                    cont++;
                 }
-                arreglo[count] = block;
+                arreglo[cont] = block;
             }
         }
         TreeNode final = new TreeNode("MethodDecl", arreglo);
@@ -354,21 +370,24 @@ class PrettyPrint : Parser1BaseVisitor<Object>
     {
         TreeNode type1 = (TreeNode)Visit(context.type(0));
         TreeNode ID1 = new TreeNode(context.ID(0).ToString());
-        int largo = 2 + context.COMA().Count() + context.type().Count() + context.ID().Count();
+        int largo = context.COMA().Count() + context.type().Count() + context.ID().Count();
         TreeNode[] arreglo = new TreeNode[largo];
         arreglo[0] = type1;
         arreglo[1] = ID1;
         int count = 2;
+        int icoma = 1; //contador de coma
         for (int i = 1; i <= context.type().Count() - 1; i++)
         {
-            TreeNode coma = new TreeNode(context.COMA(i).ToString());
+            TreeNode coma = new TreeNode(context.COMA(icoma).ToString());
             TreeNode type2 = (TreeNode)Visit(context.type(i));
             TreeNode ID2 = new TreeNode(context.ID(i).ToString());
             arreglo[count] = coma;
-            arreglo[count + 1] = type2;
             count++;
-            arreglo[count + 1] = ID2;
+            arreglo[count] = type2;
             count++;
+            arreglo[count] = ID2;
+            count++;
+            icoma++;
         }
         TreeNode final = new TreeNode("FormPars", arreglo);
         return final;
@@ -854,11 +873,12 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         int iMulop = 0; //contador para mulop
         for (int i = 1; i <= context.factor().Count() - 1; i++)
         {
-            TreeNode mulop = new TreeNode(context.mulop(iMulop).ToString());
+            TreeNode mulop = (TreeNode)Visit(context.mulop(iMulop));
             TreeNode factor2 = (TreeNode)Visit(context.factor(i));
             arreglo[count] = mulop;
+            count++;
             arreglo[count + 1] = factor2;
-            count += 2;
+            count++; ;
             iMulop++;
         }
         TreeNode final = new TreeNode("Factor", arreglo);
@@ -885,8 +905,11 @@ class PrettyPrint : Parser1BaseVisitor<Object>
             TreeNode trues = new TreeNode(context.TRUE().ToString());
             arreglo = new TreeNode[] { trues };
         }
-        TreeNode falses = new TreeNode(context.FALSE().ToString());
-        arreglo = new TreeNode[] { falses };
+        else
+        {
+            TreeNode falses = new TreeNode(context.FALSE().ToString());
+            arreglo = new TreeNode[] { falses };
+        }
         TreeNode final = new TreeNode("Factor-TrueFalse", arreglo);
         return final;
     }
@@ -921,22 +944,30 @@ class PrettyPrint : Parser1BaseVisitor<Object>
                 TreeNode PI = new TreeNode(context.PIZQ().ToString());
                 TreeNode actpars = (TreeNode)Visit(context.actPars());
                 TreeNode PD = new TreeNode(context.PDER().ToString());
-                arreglo = new TreeNode[] { designator, PI, actpars, PD };
+                arreglo = new TreeNode[4];
+                arreglo[0] = designator;
+                arreglo[1] = PI;
+                arreglo[2] = actpars;
+                arreglo[3] = PD;
 
             }
             else
             {
                 TreeNode PI = new TreeNode(context.PIZQ().ToString());
                 TreeNode PD = new TreeNode(context.PDER().ToString());
-                arreglo = new TreeNode[] { designator, PI, PD };
+                arreglo = new TreeNode[3];
+                arreglo[0] = designator;
+                arreglo[1] = PI;
+                arreglo[2] = PD;
             }
         }
         else
         {
-            arreglo = new TreeNode[] { designator };
+            arreglo = new TreeNode[1];
+            arreglo[0] = designator;
         }
         TreeNode final = new TreeNode("Factor-Designator", arreglo);
-        return VisitChildren(context);
+        return final;
     }
 
 
@@ -983,8 +1014,8 @@ class PrettyPrint : Parser1BaseVisitor<Object>
         TreeNode[] arreglo = new TreeNode[largo];
         arreglo[0] = type;
         arreglo[1] = ID;
-        int cont = 2;
-        int i2 = 0;
+        int cont = 2; //arreglo
+        int i2 = 0; //coma
         for (int i = 1; i <= context.ID().Count() - 1; i++)
         {
             TreeNode coma = new TreeNode(context.COMA(i2).ToString());
